@@ -1,0 +1,12 @@
+{
+  "Version": "1.0",
+  "IncludeWorkflows": [
+    "Main.xaml",
+    "Init_Config.xaml",
+    "Read_Input_Data.xaml",
+    "Normalize_Data.xaml",
+    "Build_Lookups.xaml",
+    "Apply_Rules.xaml",
+    "Generate_Final_Report.xaml"
+  ]
+}

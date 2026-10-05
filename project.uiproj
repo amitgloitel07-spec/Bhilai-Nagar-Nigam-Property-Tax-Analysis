@@ -1,0 +1,6 @@
+{
+  "Name": "Property Tax POC",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "Main.xaml"
+}

@@ -1,0 +1,18 @@
+﻿{
+  "Version": "1.0",
+  "Metadata": [
+    {
+      "ApplicationType": "WindowsApplication",
+      "ExecutablePath": {
+        "Value": "excel.exe",
+        "IsExpression": false
+      },
+      "Url": null,
+      "Arguments": {
+        "Value": "C:\\Users\\amitg\\OneDrive\\Documents\\UiPath\\Property Tax POC\\Generated_Output\\R01_MobileNo_Analysis.xlsx",
+        "IsExpression": false
+      },
+      "Version": null
+    }
+  ]
+}

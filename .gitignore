@@ -1,0 +1,11 @@
+# UiPath local/generated files
+.metadata/
+.objects/
+.settings/
+
+# Client/input Excel files
+*.xlsx
+!Config_File.xlsx
+
+# Generated reports
+Generate_Output/
