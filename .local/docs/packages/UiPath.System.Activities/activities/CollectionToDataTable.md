@@ -19,7 +19,7 @@ Converts a Collection to a DataTable.
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `DataTable` | DataTable | `OutArgument` | `DataTable` | The resulting DataTable. For primitive and built-in types (string, int, DateTime, etc.) the table has a single column named after the type. For complex types, each public instance property becomes a column. |
+| `DataTable` | Data table | `OutArgument` | `DataTable` | The resulting DataTable. For primitive and built-in types (string, int, DateTime, etc.) the table has a single column named after the type. For complex types, each public instance property becomes a column. |
 
 ## XAML Example
 

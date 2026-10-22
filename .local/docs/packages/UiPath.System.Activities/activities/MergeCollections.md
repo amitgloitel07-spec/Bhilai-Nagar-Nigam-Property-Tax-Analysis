@@ -14,13 +14,13 @@ Combine collections in a new collection that contains all the elements.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `Collection` | Collection | `InArgument` | `ICollection<T>` | Yes | — | The first collection to merge. |
-| `SecondCollection` | Second Collection | `InArgument` | `ICollection<T>` | Yes | — | The second collection to merge. |
+| `SecondCollection` | Second collection | `InArgument` | `ICollection<T>` | Yes | — | The second collection to merge. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | `OutArgument` | `List<T>` | A new list containing all elements from `Collection` followed by all elements from `SecondCollection`. |
+| `Result` | Merged collection | `OutArgument` | `List<T>` | A new list containing all elements from `Collection` followed by all elements from `SecondCollection`. |
 
 ## XAML Example
 

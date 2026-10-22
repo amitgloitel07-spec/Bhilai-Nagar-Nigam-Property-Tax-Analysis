@@ -19,14 +19,14 @@ Start a job when a new item is added to the specified queue.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `FolderPath` | Folder Path | `string` | `null` | The Orchestrator folder containing the queue. Leave empty to use the folder of the current process. |
+| `FolderPath` | Folder path | `string` | `null` | The Orchestrator folder containing the queue. Leave empty to use the folder of the current process. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `TransactionItem` | Transaction Item | OutArgument | `QueueItem` | The new queue item that triggered the job. |
-| `ExtractedQueueItem` | Specific Data | OutArgument | `object` | The specific data payload extracted from the queue item. |
+| `TransactionItem` | Transaction item | OutArgument | `QueueItem` | The new queue item that triggered the job. |
+| `ExtractedQueueItem` | Specific data | OutArgument | `object` | The specific data payload extracted from the queue item. |
 
 ## XAML Example
 
@@ -43,4 +43,5 @@ Start a job when a new item is added to the specified queue.
 - **New Item Added to Queue** is a trigger scope/container activity. Place the transaction processing logic inside its body.
 - Requires an active Orchestrator connection. The robot must be connected to Orchestrator and the specified queue must exist in the configured folder.
 - `TransactionItem` gives access to the full `QueueItem` object including all metadata, `ExtractedQueueItem` gives direct access to the item's specific data.
+- Fetching the triggering item writes an Info-level `Transaction Started` (or `No Transaction Data`) robot log line, the same as **Get Transaction Item**. Turn it off per project via **Project Settings → System → Queues → Log transaction messages** (key `UiPath.System.Activities.Queues.LogTransactionMessages`, default on).
 - The `FolderPath` property supports Orchestrator modern folder paths (e.g., `Finance/Invoices`).

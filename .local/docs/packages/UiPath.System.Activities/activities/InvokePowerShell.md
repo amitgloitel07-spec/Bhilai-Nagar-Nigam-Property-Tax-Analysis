@@ -13,17 +13,17 @@ Runs a PowerShell command or script and returns the pipeline output converted to
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `CommandText` | Command Text | `InArgument` | `string` | Yes | `null` | PowerShell command text or script text to execute. |
+| `CommandText` | Command text | `InArgument` | `string` | Yes | `null` | PowerShell command text or script text to execute. |
 | `Input` | Input | `InArgument` | `Collection<PSObject>` | No | `null` | Pipeline input objects passed to the command. |
 | `Parameters` | Parameters | Property | `Dictionary<string, InArgument>` | No | Empty | PowerShell parameters passed by name. Boolean parameters can be used as switch parameters. |
-| `PowerShellVariables` | PowerShell Variables | Property | `Dictionary<string, Argument>` | No | Empty | Variables made available to the PowerShell runspace. |
+| `PowerShellVariables` | PowerShell variables | Property | `Dictionary<string, Argument>` | No | Empty | Variables made available to the PowerShell runspace. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `IsScript` | Is Script | `bool` | `false` | When `true`, treats `CommandText` as script text instead of a command name. |
-| `PowerShellProcess` | PowerShell Process | `PowerShellProcessVersion` | `PowerShellCore` | Selects the PowerShell host process on Windows builds. |
+| `IsScript` | Is script | `bool` | `false` | When `true`, treats `CommandText` as script text instead of a command name. |
+| `PowerShellProcess` | Execution mode | `PowerShellProcessVersion` | `PowerShellCore` | Selects the PowerShell host process on Windows builds. |
 
 ### Output
 
@@ -35,7 +35,7 @@ Runs a PowerShell command or script and returns the pipeline output converted to
 
 | Name | Display Name | Kind | Type | Default | Description |
 |------|-------------|------|------|---------|-------------|
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | `false` | When `true`, suppresses execution exceptions and continues the workflow. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | `false` | When `true`, suppresses execution exceptions and continues the workflow. |
 
 ## XAML Example
 

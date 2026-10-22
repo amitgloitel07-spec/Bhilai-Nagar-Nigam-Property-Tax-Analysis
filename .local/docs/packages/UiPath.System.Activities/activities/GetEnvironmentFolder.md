@@ -17,13 +17,13 @@ _No input arguments._
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| SpecialFolder | Special Folder | `System.Environment.SpecialFolder` | — | The well-known system folder whose path is to be retrieved. Required. |
+| SpecialFolder | Special folder | `System.Environment.SpecialFolder` | — | The well-known system folder whose path is to be retrieved. Required. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| FolderPath | Folder Path | OutArgument | `string` | The full file system path of the selected special folder. |
+| FolderPath | Folder path | OutArgument | `string` | The full file system path of the selected special folder. |
 
 ## Enum Reference
 

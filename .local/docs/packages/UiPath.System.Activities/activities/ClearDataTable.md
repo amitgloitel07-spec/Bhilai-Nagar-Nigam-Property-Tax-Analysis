@@ -15,7 +15,7 @@ Clears the specified DataTable of all data.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InOutArgument | DataTable | Yes | — | The DataTable to clear. All rows are removed; the schema (columns) is preserved. The variable is updated in place. |
+| DataTable | Data table | InOutArgument | DataTable | Yes | — | The DataTable to clear. All rows are removed; the schema (columns) is preserved. The variable is updated in place. |
 
 ## Notes
 

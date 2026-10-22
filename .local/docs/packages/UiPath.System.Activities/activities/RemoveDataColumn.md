@@ -13,8 +13,8 @@ Removes a DataColumn from a specified DataTable.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| ColumnName | Column Name | InArgument | String | Yes* | — | The name of the column to remove. Mutually exclusive with **Column Number**. |
-| ColumnIndex | Column Number | InArgument | Int32 | Yes* | — | The zero-based index of the column to remove. Mutually exclusive with **Column Name**. |
+| ColumnName | Column name | InArgument | String | Yes* | — | The name of the column to remove. Mutually exclusive with **Column number**. |
+| ColumnIndex | Column number | InArgument | Int32 | Yes* | — | The zero-based index of the column to remove. Mutually exclusive with **Column name**. |
 
 ### Input/Output
 
@@ -22,7 +22,7 @@ Removes a DataColumn from a specified DataTable.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | From Data Table | InOutArgument | DataTable | Yes | — | The DataTable from which the column will be removed. Modified in place. |
+| DataTable | From data table | InOutArgument | DataTable | Yes | — | The DataTable from which the column will be removed. Modified in place. |
 
 \* Exactly one of `ColumnName` (overload group `ColumnName`) or `ColumnIndex` (overload group `ColumnIndex`) must be provided. `Column` (DataColumn object) exists in the source but is hidden in the designer (`isVisible: false`).
 

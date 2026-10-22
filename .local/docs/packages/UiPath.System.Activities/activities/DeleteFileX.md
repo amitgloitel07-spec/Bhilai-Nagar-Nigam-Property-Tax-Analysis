@@ -13,7 +13,8 @@ Deletes the specified file.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | Path | `InArgument` | `string` | Yes | - | Full path of the file to delete. |
+| `Path` | File (local path) | `InArgument` | `string` | Yes* | - | Full path of the file to delete. Overload group: `Path`. |
+| `FileResource` | File | `InArgument` | `IResource` | Yes* | - | Resource reference to the file to delete, used when `Path` is empty. A folder resource is rejected while the folder exists. Overload group: `FileResource`. |
 
 ## XAML Example
 
@@ -28,4 +29,5 @@ Deletes the specified file.
 ## Notes
 
 - This activity is Windows-only.
-- The activity calls `System.IO.File.Delete`. If the file does not exist, no exception is thrown by `File.Delete`.
+- If there is no file at the path and its folder exists, nothing happens and no error is raised. If the folder does not exist, the activity fails.
+- A path that points to a folder fails with `The provided path points to a folder, not a file.`; neither a path nor a resource fails with `File path is missing. Provide either a file path or a file resource.`

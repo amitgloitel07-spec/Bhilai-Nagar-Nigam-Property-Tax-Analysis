@@ -13,23 +13,23 @@ Adds a DataColumn to a specified DataTable.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InArgument | DataTable | Yes | — | The DataTable to which the column will be added. |
-| ColumnName | Column Name | InArgument | String | Yes* | — | The name of the new column to create. Mutually exclusive with **Column**. Used when defining a new column by name. |
-| Column | Column | InArgument | DataColumn | Yes* | — | An existing DataColumn object to add directly. Mutually exclusive with **Column Name**. |
+| DataTable | To data table | InArgument | DataTable | Yes | — | The DataTable to which the column will be added. |
+| ColumnName | Column name | InArgument | String | Yes* | — | The name of the new column to create. Mutually exclusive with **Column**. Used when defining a new column by name. |
+| Column | Data column | InArgument | DataColumn | Yes* | — | An existing DataColumn object to add directly. Mutually exclusive with **Column name**. |
 
 \* Exactly one of `ColumnName` or `Column` must be provided (overload groups).
 
 ### Configuration
 
-When creating a new column by **Column Name**, the following options are available:
+When creating a new column by **Column name**, the following options are available:
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| AllowDBNull | Allow DB Null | InArgument\<Boolean\> | true | Whether the column allows null/DBNull values. |
-| AutoIncrement | Auto Increment | InArgument\<Boolean\> | false | Whether the column value auto-increments. Applicable only to numeric types. When true, **Default Value** is hidden. |
-| DefaultValue | Default Value | InArgument\<T\> | — | Default value for new rows. Hidden when **Auto Increment** is true. |
-| MaxLength | Max Length | InArgument\<Int32\> | 100 | Maximum character length. Visible only when the column type is `String`. |
-| Unique | Unique | InArgument\<Boolean\> | false | Whether column values must be unique across all rows. |
+| AllowDBNull | Allow null values | InArgument\<Boolean\> | true | Whether the column allows null/DBNull values. |
+| AutoIncrement | Auto increment | InArgument\<Boolean\> | false | Whether the column value auto-increments. Applicable only to numeric types. When true, **Default value** is hidden. |
+| DefaultValue | Default value | InArgument\<T\> | — | Default value for new rows. Hidden when **Auto increment** is true. |
+| MaxLength | Max length | InArgument\<Int32\> | 100 | Maximum character length. Visible only when the column type is `String`. |
+| Unique | Must be unique | InArgument\<Boolean\> | false | Whether column values must be unique across all rows. |
 
 The column's data type `T` (TypeArgument) controls which options are relevant:
 - `AutoIncrement` is only applicable to numeric types (e.g. `Int32`, `Int64`).

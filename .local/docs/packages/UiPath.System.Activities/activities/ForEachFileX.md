@@ -15,7 +15,7 @@ Iterates through files in a folder and runs the body once for each file.
 |------|-------------|------|------|----------|---------|-------------|
 | `Folder` | In folder | `InArgument` | `string` | Yes | - | Folder whose files are enumerated. |
 | `Filter` | Filter | `InArgument` | `string` | No | `null` | Wildcard file name filter. Empty values are treated as `*`. |
-| `IncludeSubDirectories` | IncludeSubdirectories | Property | `bool` | No | `false` | When `true`, also searches subfolders. |
+| `IncludeSubDirectories` | Include subdirectories | Property | `bool` | No | `false` | When `true`, also searches subfolders. |
 | `SkipFolderWithoutPermission` | Skip folders where access is denied | Property | `bool` | No | `false` | When `true`, ignores inaccessible subfolders below the root folder. |
 | `OrderBy` | Order | Property | `ForEachFileOrderByOptions` | No | `NameAscFirst` | Sort order for the files before iteration. |
 

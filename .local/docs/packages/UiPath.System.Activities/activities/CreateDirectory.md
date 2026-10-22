@@ -13,8 +13,8 @@ Creates a folder in the specified location.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | Create Folder | `InArgument` | `string` | Yes | — | Full path of the folder to create, including the new folder name. |
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
+| `Path` | Folder name | `InArgument` | `string` | Yes | — | Full path of the folder to create, including the new folder name. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
 
 ### Output
 

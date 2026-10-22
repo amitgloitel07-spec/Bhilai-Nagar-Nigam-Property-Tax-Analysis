@@ -13,7 +13,7 @@ Writes the specified diagnostic message at the specified level. These messages a
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| Level | Level | InArgument | `LogLevel` | Yes | `LogLevel.Info` | The severity level of the log message. Configurable as a project setting. |
+| Level | Log level | InArgument | `LogLevel` | Yes | `LogLevel.Info` | The severity level of the log message. Configurable as a project setting. |
 | Message | Message | InArgument | `object` | No | — | The text of the message to log. |
 
 ### Configuration

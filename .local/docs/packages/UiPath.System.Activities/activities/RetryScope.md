@@ -13,11 +13,11 @@ Retries the contained activities as long as the condition is not met or an error
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | No | — | When `True`, the workflow continues execution even if the activity fails after all retries are exhausted. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | No | — | When `True`, the workflow continues execution even if the activity fails after all retries are exhausted. |
 | `NumberOfRetries` | Number of attempts | `InArgument` | `int` | No | `3` (project default) | The maximum number of retry attempts. Configurable via project settings (`Section.RetryScope`, `Property.NumberOfRetries`). |
 | `RetryInterval` | Retry interval | `InArgument` | `TimeSpan` | No | `5000` ms (project default) | The time to wait between retry attempts. Configurable via project settings (`Section.RetryScope`, `Property.RetryInterval`). |
 | `LogRetriedExceptions` | Log exceptions | `InArgument` | `bool` | No | `False` (project default) | When `True`, exceptions that trigger a retry are logged. Configurable via project settings (`Section.RetryScope`, `Property.LogRetriedExceptions`). |
-| `RetriedExceptionsLogLevel` | Log Level | `InArgument` | `LogLevel` | No | `Trace` (project default) | The log level used when logging retried exceptions. Configurable via project settings (`Section.RetryScope`, `Property.RetriedExceptionsLogLevel`). |
+| `RetriedExceptionsLogLevel` | Log level | `InArgument` | `LogLevel` | No | `Trace` (project default) | The log level used when logging retried exceptions. Configurable via project settings (`Section.RetryScope`, `Property.RetriedExceptionsLogLevel`). |
 
 ## XAML Example
 

@@ -13,7 +13,7 @@
     <SourceRoot Include="C:\Users\amitg\.nuget\packages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgUiPath_UIAutomation_CLI Condition=" '$(PkgUiPath_UIAutomation_CLI)' == '' ">C:\Users\amitg\.nuget\packages\uipath.uiautomation.cli\26.10.5</PkgUiPath_UIAutomation_CLI>
+    <PkgUiPath_UIAutomation_CLI Condition=" '$(PkgUiPath_UIAutomation_CLI)' == '' ">C:\Users\amitg\.nuget\packages\uipath.uiautomation.cli\26.10.6</PkgUiPath_UIAutomation_CLI>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\amitg\.nuget\packages\microsoft.codeanalysis.analyzers\3.11.0</PkgMicrosoft_CodeAnalysis_Analyzers>
   </PropertyGroup>
 </Project>

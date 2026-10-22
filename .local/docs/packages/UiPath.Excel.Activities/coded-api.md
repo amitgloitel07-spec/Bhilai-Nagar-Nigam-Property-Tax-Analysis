@@ -146,6 +146,39 @@ Handle to the workbook for portable (Open XML) coded operations.
 | `InsertChart(CreateChartConfig config)` | `string` | Inserts a chart into the workbook. Returns the chart name. |
 | `UpdateChart(UpdateChartConfiguration config)` | `void` | Applies modifications to an existing chart. |
 | `InsertImage(string sheetName, CreateImageConfig config)` | `void` | Inserts an image into the specified sheet, anchored at a cell. Configure path, anchor cell, pixel offsets, and optional size via `CreateImageConfig`. Changes saved immediately. |
+| `InsertRows(string sheetName, InsertRowPosition position, int? specificRowIndex, int numberOfRows)` | `void` | Inserts one or more rows at the given position (Start, End, or a specific 1-based row index). |
+| `InsertRows(string sheetName, InsertRowPosition position, int? specificRowIndex, int numberOfRows, string range, bool hasHeaders = false)` | `void` | Same inside `range` (default: used range): the index is relative to the range, the header row stays on top, and with a range only its columns shift down. |
+| `DeleteRows(string sheetName, DeleteRowsOption option, string range, string rowPositions, bool hasHeaders)` | `int` | Deletes rows matching the given option (a specific range, all visible rows, all hidden rows, or duplicate rows) within `range` (or the whole used range if `range` is null/empty). For `Specific`, `rowPositions` is a list of 1-based row numbers and ranges relative to the start of `range` (for example `"3, 5-7, 10"`). Returns the number of rows actually deleted. |
+| `InsertColumns(string sheetName, ColumnRelativePosition position, string referenceColumn, int numberOfColumns)` | `void` | Inserts one or more columns before or after `referenceColumn` (a column letter, e.g. `"B"`). |
+| `InsertColumns(string sheetName, ColumnRelativePosition position, string referenceColumn, int numberOfColumns, string range, bool hasHeaders = false, string newColumnName = null)` | `void` | Same, with `referenceColumn` a header name when `hasHeaders` is true; `newColumnName` is written in the first new column, in the first row of `range`. |
+| `DeleteColumns(string sheetName, string startColumn, int numberOfColumns)` | `void` | Deletes one or more consecutive columns starting at `startColumn` (a column letter). |
+| `DeleteColumns(string sheetName, string startColumn, int numberOfColumns, string range, bool hasHeaders = false)` | `void` | Same, with `startColumn` a header name when `hasHeaders` is true; `range` holds the header row (default: used range). |
+| `FillRange(string sheetName, string range, string value)` | `void` | Fills every cell in `range` with `value`. Literal values are type-coerced (boolean, number, date, else text); if `value` starts with `=` it is written as a formula and filled across `range` with relative references shifted per cell, as an Excel fill would. |
+| `ClearRange(string sheetName, string range, bool clearFormatting)` | `void` | Clears the contents (and, when `clearFormatting` is `true`, also the formatting) of `range`, without shifting cells. |
+| `ClearRange(string sheetName, string range, bool clearFormatting, bool hasHeaders)` | `void` | Same, leaving the first row of `range` (the header row) as it is when `hasHeaders` is `true`. |
+| `FormatRange(string sheetName, string range, FormatRangeOptions options)` | `void` | Applies number/date/time format, alignment, and font (including color, fill and underline) options to `range`. See `FormatRangeOptions` below. |
+| `SortRange(string sheetName, string range, IEnumerable<SortColumnCriteria> sortColumns, bool hasHeaders)` | `void` | Sorts `range` by one or more columns, in the priority order given by `sortColumns`. When `hasHeaders` is `true`, the first row is excluded from the sort. |
+| `RemoveDuplicates(string sheetName, string range, IEnumerable<string> columnsToCompare, ColumnsCompare mode, bool hasHeaders)` | `int` | Removes duplicate rows from `range` (or the whole used range if `range` is null/empty), comparing either all columns or the subset in `columnsToCompare`. Returns the number of rows removed. |
+| `FindFirstLastDataRow(string sheetName, string range, string columnName, bool hasHeaders = true, bool visibleRowsOnly = false, int firstRowOffset = 0, int lastRowOffset = 0, int blankRowsToSkip = 1, LastRowConfiguration configureLastRowAs = LastRowConfiguration.LastPopulatedRow)` | `(int FirstRowIndex, int LastRowIndex)` | Returns the 1-based worksheet row numbers (not offsets relative to `range`) of the first row containing data, and of the last populated row (or the first empty row after it), in the `columnName` column of `range` (or of the whole used range). Up to `blankRowsToSkip` consecutive blank rows are accepted inside the data. `-1` when there is no data (`0` for the last row with `FirstEmptyRow`). |
+| `InsertSheet(string newSheetName, int? position)` | `void` | Inserts a new sheet named `newSheetName`, optionally at a 1-based `position` (must be >= 1; a value beyond the current sheet count appends at the end). Appends at the end when `position` is `null`. |
+| `RenameSheet(string sheetName, string newSheetName)` | `void` | Renames the existing sheet `sheetName` to `newSheetName`. |
+| `DeleteSheet(string sheetName)` | `void` | Deletes the sheet `sheetName`. Throws if it is the only remaining sheet in the workbook. |
+| `DuplicateSheet(string sheetName, string newSheetName)` | `void` | Duplicates `sheetName` under the name `newSheetName`. The new sheet is placed immediately after the source sheet. |
+| `AutoFit(string sheetName, string range, bool fitColumns, bool fitRows)` | `void` | Autofits column widths and/or row heights of `range` (or the whole used range) to their contents. |
+| `ProtectSheet(string sheetName, string sheetPassword, ProtectSheetAdditionalPermissions allowedPermissions)` | `void` | Protects `sheetName`, optionally with a password, allowing the given actions even while protected. |
+| `UnprotectSheet(string sheetName, string sheetPassword)` | `void` | Removes protection from `sheetName`. A no-op if the sheet is not currently protected. |
+| `Lookup(string sheetName, string lookupRange, object lookupValue, string resultRange)` | `object` | Approximate-match lookup (Excel `LOOKUP` semantics): returns the value in `resultRange` (or `lookupRange` itself if `resultRange` is null) corresponding to the largest entry in `lookupRange` that is ≤ `lookupValue`. Returns `null` when not found. `lookupRange` must be sorted ascending. |
+| `VLookup(string sheetName, string tableRange, object lookupValue, int columnIndex, bool exactMatch)` | `object` | Looks up `lookupValue` in the first column of `tableRange` and returns the value at `columnIndex` (1-based) in the matching row. Returns `null` when not found. |
+| `MatchFunction(string sheetName, string range, object lookupValue, MatchType matchType)` | `int` | Returns the 1-based position of `lookupValue` within `range`, relative to the start of `range`. Returns `-1` when not found. |
+| `FilterRange(string sheetName, string range, string columnName, IEnumerable<string> allowedValues)` | `void` | Filters `range` (or the whole used range) to the rows whose value in the `columnName` header column is one of `allowedValues` (Basic filter; matched case-insensitively against the displayed text). The first row of the range is the header row. |
+| `FilterRange(string sheetName, string range, string columnName, ExcelFilterOperator operator1, string value1, LogicalOperator logicalOperator = And, ExcelFilterOperator operator2 = None, string value2 = null)` | `void` | Advanced filter: keeps the rows whose value meets one or two conditions combined with `logicalOperator`. `value1`/`value2` are not used by the Is empty / Is not empty operators. |
+| `ClearFilter(string sheetName, string range, string columnName = null)` | `void` | Clears the filter of `columnName`, or every filter of the sheet when `columnName` is empty. |
+
+> `InsertSheet`, `RenameSheet`, `DeleteSheet`, and `DuplicateSheet` act directly on a sheet by name and do not take a `sheetName` parameter identifying a "current" sheet — the sheet(s) they operate on are named explicitly in their own parameters.
+
+> All of the row/column/sheet/range/data-shaping methods above throw `NotSupportedException` when the handle's workbook is a legacy `.xls` file — they are implemented only for `.xlsx` (Open XML) workbooks.
+
+> `FormatRangeOptions` (passed to `FormatRange`) and `SortColumnCriteria` (list items passed to `SortRange`) are documented under [Options & Configuration Classes](#options--configuration-classes).
 
 > For CSV file read/write operations, see [CSV File Operations](#csv-file-operations) — those are standalone static methods that do not require a workbook handle.
 
@@ -550,6 +583,40 @@ Configuration for inserting an image (portable API).
 | `Width` | `int?` | `null` | Image width in pixels. `null` or `0` keeps the original width (or scales from `Height` if that is set). |
 | `Height` | `int?` | `null` | Image height in pixels. `null` or `0` keeps the original height (or scales from `Width` if that is set). |
 
+### `FormatRangeOptions`
+
+Configuration for `FormatRange` (portable API).
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `Category` | `CellFormat?` | `null` | The number format category to apply. `null` leaves the existing number format untouched. |
+| `NumberDecimalPlaces` | `int` | `2` | Number of decimal places (Number, Currency, and Percentage categories). |
+| `NumberUseThousandSeparator` | `bool` | `false` | Use a thousands separator (Number and Currency categories). |
+| `CurrencySymbol` | `string` | `"$"` | The currency symbol (Currency category). |
+| `CurrencySetAtTheEnd` | `bool` | `false` | Place the currency symbol after the value instead of before it. |
+| `DateType` | `DateType` | `Short` | The date format to use (Date category). |
+| `TimeType` | `TimeType` | `HoursMinutes` | The time format to use (Time category). |
+| `TimeIsAMPM` | `bool` | `false` | Use 12-hour AM/PM format instead of 24-hour. |
+| `CustomFormat` | `string` | `null` | A custom Excel number format string (Custom category). |
+| `HorizontalAlignment` | `ExcelRangeHorizontalAlignment?` | `null` | Horizontal alignment for cell content. `null` leaves the existing alignment untouched. |
+| `VerticalAlignment` | `ExcelRangeVerticalAlignment?` | `null` | Vertical alignment for cell content. `null` leaves the existing alignment untouched. |
+| `WrapText` | `bool?` | `null` | Wrap text within the cell. `null` leaves the existing setting untouched. |
+| `FontFamily` | `string` | `null` | The font family name. `null` leaves the existing font untouched. |
+| `FontSize` | `double?` | `null` | The font size in points. `null` leaves the existing size untouched. |
+| `FontStyle` | `ExcelRangeFontStyle?` | `null` | The font style: `Regular`, `Italic`, `Bold` or `BoldItalic`. `null` leaves the existing style untouched. |
+| `FontColor` | `string` | `null` | The font color: a color name (for example `"Red"`) or a hex color (`"#RRGGBB"` or `"#AARRGGBB"`). `null` leaves the existing color untouched. |
+| `FontFillColor` | `string` | `null` | The fill color, as `FontColor`. `"Transparent"` removes the fill. `null` leaves the existing fill untouched. |
+| `FontUnderlineStyle` | `ExcelRangeUnderlineStyle?` | `null` | The underline style. `null` leaves the existing style untouched. |
+
+### `SortColumnCriteria`
+
+One entry in the `sortColumns` list passed to `SortRange` (portable API).
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `ColumnName` | `string` | `string.Empty` | Column to sort by. Assigning `null` normalizes to `string.Empty`. Must match a header exactly when sorting with `hasHeaders=true` (never interpreted as a column letter in that mode); must be a column letter within the sorted range when `hasHeaders=false`. |
+| `Order` | `OrderType` | `Ascending` | Sort direction for this column. |
+
 ### `UpdateChartConfiguration`
 
 Configuration for updating an existing chart (portable API).
@@ -774,9 +841,13 @@ Sensitivity label to apply to or retrieve from a workbook.
 
 **`CellFormat`**: `General`, `Number`, `Date`, `Time`, `Percentage`, `Currency`, `Text`, `Custom`
 
-**`ExcelRangeHorizontalAlignment`**: `xlHAlignGeneral`, `xlHAlignLeft`, `xlHAlignCenter`, `xlHAlignRight`, `xlHAlignFill`, `xlHAlignJustify`, `xlHAlignCenterAcrossSelection`, `xlHAlignDistributed`
+**`DateType`** (used by the Portable `FormatRange`): `Long`, `Short`
 
-**`ExcelRangeVerticalAlignment`**: `xlVAlignTop`, `xlVAlignCenter`, `xlVAlignBottom`, `xlVAlignJustify`, `xlVAlignDistributed`
+**`TimeType`** (used by the Portable `FormatRange`): `HoursMinutes`, `HoursMinutesSeconds`
+
+**`ExcelRangeHorizontalAlignment`** (used by both the Portable `FormatRange` and the Windows `FormatRangeX`): `xlHAlignGeneral`, `xlHAlignLeft`, `xlHAlignCenter`, `xlHAlignRight`, `xlHAlignFill`, `xlHAlignJustify`, `xlHAlignCenterAcrossSelection`, `xlHAlignDistributed`
+
+**`ExcelRangeVerticalAlignment`** (used by both the Portable `FormatRange` and the Windows `FormatRangeX`): `xlVAlignTop`, `xlVAlignCenter`, `xlVAlignBottom`, `xlVAlignJustify`, `xlVAlignDistributed`
 
 **`ExcelRangeFontStyle`**: `Regular`, `Italic`, `Bold`, `BoldItalic`
 
@@ -803,6 +874,29 @@ public void Execute()
         var amount = Convert.ToDecimal(row["Amount"]);
         Log($"Processing {name}: {amount:C}");
     }
+}
+```
+
+### Restructure a sheet: insert a header row, sort, and de-duplicate (Portable)
+
+```csharp
+[Workflow]
+public void Execute()
+{
+    using var workbook = excel.UseWorkBook("C:\\Data\\report.xlsx", createNew: false);
+
+    workbook.InsertRows("Sheet1", InsertRowPosition.Start, specificRowIndex: null, numberOfRows: 1);
+    workbook.WriteCell("Sheet1", "A1", "Name");
+    workbook.WriteCell("Sheet1", "B1", "Amount");
+
+    workbook.SortRange(
+        "Sheet1",
+        "A1:B200",
+        new List<SortColumnCriteria> { new SortColumnCriteria { ColumnName = "Amount", Order = OrderType.Descending } },
+        hasHeaders: true);
+
+    var removed = workbook.RemoveDuplicates("Sheet1", "A1:B200", columnsToCompare: null, mode: ColumnsCompare.AllColumns, hasHeaders: true);
+    Log($"Removed {removed} duplicate rows");
 }
 ```
 

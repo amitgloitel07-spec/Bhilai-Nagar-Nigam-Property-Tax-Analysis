@@ -14,24 +14,24 @@ Initiates a new job via Orchestrator to be picked up by any available robots. It
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `ProcessName` | Process name | InArgument | `string` | Yes | — | The name of the process (release) to start in Orchestrator. |
-| `JobPriority` | Job Priority | InArgument | `StartProcessDtoJobPriority` | No | Normal | The priority of the started job in the Orchestrator queue. |
-| `NumberOfRobots` | Number Of Robots | InArgument | `int` | No | — | The number of robot instances to allocate for the job. |
-| `ModernFolder` | Modern Folder | InArgument | `bool` | No | true | Indicates whether the target process is in a modern (non-classic) Orchestrator folder. |
-| `ResumeOnSameContext` | Resume On Same Context | InArgument | `bool` | No | false | When true, the job will resume on the same robot/machine context if suspended. |
+| `JobPriority` | Job priority | InArgument | `StartProcessDtoJobPriority` | No | Normal | The priority of the started job in the Orchestrator queue. |
+| `NumberOfRobots` | Number of robots | InArgument | `int` | No | — | The number of robot instances to allocate for the job. |
+| `ModernFolder` | Modern folder | InArgument | `bool` | No | true | Indicates whether the target process is in a modern (non-classic) Orchestrator folder. |
+| `ResumeOnSameContext` | Resume on same context | InArgument | `bool` | No | false | When true, the job will resume on the same robot/machine context if suspended. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
 | `Arguments` | Arguments | `Dictionary<string, Argument>` | `{}` | The inline collection of input arguments to pass to the started process. Keys must match the process's declared input argument names. |
-| `ArgumentsVariable` | Arguments Variable | `InArgument<Dictionary<string, object>>` | null | A variable dictionary of input arguments. Alternative to the inline `Arguments` dictionary. |
+| `ArgumentsVariable` | Arguments variable | `InArgument<Dictionary<string, object>>` | null | A variable dictionary of input arguments. Alternative to the inline `Arguments` dictionary. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `JobId` | Job Id | OutArgument | `string` | The numeric identifier of the started job in Orchestrator. |
-| `Key` | Key | OutArgument | `string` | The GUID key of the started job in Orchestrator. |
+| `JobId` | Job ID | OutArgument | `string` | The numeric identifier of the started job in Orchestrator. |
+| `Key` | Key | OutArgument | `string` | The GUID key of the Orchestrator process (release) that was started (`releaseDto.Key`) - the process identifier, not the started job's key (see `JobId`). |
 
 ## Valid Configurations
 

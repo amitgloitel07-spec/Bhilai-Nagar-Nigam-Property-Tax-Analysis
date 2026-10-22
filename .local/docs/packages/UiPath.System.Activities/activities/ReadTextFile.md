@@ -13,7 +13,7 @@ Copies all the characters from a specified text file.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `FileName` | Read Text File | `InArgument` | `string` | Yes* | — | Full path of the text file to read. Overload group: `FileName`. |
+| `FileName` | File path | `InArgument` | `string` | Yes* | — | Full path of the text file to read. Overload group: `FileName`. |
 | `File` | File | `InArgument` | `IResource` | Yes* | — | Resource reference to the file to read. Overload group: `File`. |
 | `Encoding` | Encoding | `InArgument` | `string` | No | `null` | The encoding to use when reading the file (e.g. `"utf-8"`, `"windows-1252"`). When `null`, the encoding is auto-detected. Configurable as a project setting. |
 

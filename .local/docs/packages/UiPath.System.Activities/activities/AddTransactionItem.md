@@ -51,3 +51,4 @@ Adds a new item in the queue and starts a transaction. The status of the item wi
 - Unlike **Add Queue Item**, this activity immediately sets the new item's status to **In Progress**, making it ready for processing in a single step.
 - The returned `QueueItem` should be passed to **Set Transaction Status** when processing is complete.
 - `ServiceBaseAddress` is deprecated and ignored.
+- Writes an Info-level `Transaction Started` (or `No Transaction Data`) robot log line on every execution. Turn it off per project via **Project Settings → System → Queues → Log transaction messages** (key `UiPath.System.Activities.Queues.LogTransactionMessages`, default on).

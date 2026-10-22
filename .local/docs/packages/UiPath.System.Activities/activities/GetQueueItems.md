@@ -22,14 +22,14 @@ Retrieves a list of transactions from an indicated queue, according to multiple 
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `FilterBuilder` | Filter Builder | `QueueItemFilterSettings` | null | A structured filter built using the visual Filter Builder widget. Supports filtering by Status, Priority, Reference, Duration, and date fields. |
-| `FilterByCurrentRobot` | Filter By Current Robot | `bool` | false | When true, only returns items processed by the current robot. |
+| `FilterBuilder` | Filter builder | `QueueItemFilterSettings` | null | A structured filter built using the visual Filter Builder widget. Supports filtering by Status, Priority, Reference, Duration, and date fields. |
+| `FilterByCurrentRobot` | Filter by current robot | `bool` | false | When true, only returns items processed by the current robot. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `IEnumerable<QueueItem>` | The list of queue items matching the specified filters. |
+| `Result` | Queue items | OutArgument | `IEnumerable<QueueItem>` | The list of queue items matching the specified filters. |
 
 ## Valid Configurations
 

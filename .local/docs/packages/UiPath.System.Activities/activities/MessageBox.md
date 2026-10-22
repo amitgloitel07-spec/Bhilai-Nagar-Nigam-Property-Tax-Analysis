@@ -17,8 +17,8 @@ Displays a message box with a specified text and buttons.
 | Text | Text | InArgument | `object` | Yes | — | The message to display in the body of the dialog. |
 | Caption | Caption | InArgument | `string` | No | — | The title bar text of the message box dialog. |
 | Buttons | Buttons | InArgument | `ButtonOptions` | No | `ButtonOptions.Ok` | Specifies which buttons to display. Configurable as a project setting. |
-| AutoCloseAfter | Automatically Close After | InArgument | `TimeSpan` | No | — | If set, the dialog closes automatically after this duration without user input. |
-| TopMost | TopMost | InArgument | `bool` | No | `true` | If set, always brings the message box to the foreground. Configurable as a project setting. |
+| AutoCloseAfter | Automatically close after | InArgument | `TimeSpan` | No | — | If set, the dialog closes automatically after this duration without user input. |
+| TopMost | Topmost | InArgument | `bool` | No | `true` | If set, always brings the message box to the foreground. Configurable as a project setting. |
 
 ### Configuration
 
@@ -28,7 +28,7 @@ _No configuration properties._
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| ChosenButton | Chosen Button | OutArgument | `string` | The label of the button pressed by the user. Possible values: `Ok`, `Yes`, `No`, `Cancel`. |
+| ChosenButton | Chosen button | OutArgument | `string` | The label of the button pressed by the user. Possible values: `Ok`, `Yes`, `No`, `Cancel`. |
 
 ## Valid Configurations
 

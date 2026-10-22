@@ -15,7 +15,7 @@ Updates the value of a specific item in a list. Add a Read List Item activity af
 |------|-------------|------|------|----------|---------|-------------|
 | List | List | InArgument | `IList<T>` | Yes | — | The list containing the item to update. The list object is mutated in place (no reassignment needed). |
 | Index | Index | InArgument | `int` | Yes | — | The zero-based index of the item to update. |
-| Value | Value | InArgument | `T` | Yes | — | The new value to set at the specified index. |
+| Value | New value | InArgument | `T` | Yes | — | The new value to set at the specified index. |
 
 ### Configuration
 

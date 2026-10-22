@@ -13,7 +13,7 @@ Extracts text from the given input matching the specified criteria. The followin
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Source` | Source | InArgument | `String` | Yes | — | The input text from which to extract content. |
+| `Source` | Source text | InArgument | `String` | Yes | — | The input text from which to extract content. |
 | `StartingText` | Starting text | InArgument | `String` | No | — | Text that marks the beginning of the substring to extract. Defaults to start of text when empty. Visible only when `ExtractOptions` is `BetweenStrings`. |
 | `EndingText` | Ending text | InArgument | `String` | No | — | Text that marks the ending of the substring to extract. Defaults to end of text when empty. Visible only when `ExtractOptions` is `BetweenStrings`. |
 
@@ -30,8 +30,8 @@ Extracts text from the given input matching the specified criteria. The followin
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result / First match | OutArgument | `String` | The first extracted value. Display name changes based on the selected `ExtractOptions`. Not produced in `FromHTML` mode when using the `Results` output. |
-| `Results` | Results | OutArgument | `IEnumerable<String>` | All extracted values. Not available in `FromHTML` mode (use `Result` instead for that mode). |
+| `Result` | First extracted text | OutArgument | `String` | The first extracted value. Display name changes based on the selected `ExtractOptions`: `First extracted text`, `First e-mail address`, `First URL`, or `Extracted text` for `FromHTML`. Not produced in `FromHTML` mode when using the `Results` output. |
+| `Results` | All extracted text | OutArgument | `IEnumerable<String>` | All extracted values. Display name changes the same way: `All extracted text`, `All e-mail addresses`, or `All URLs`. Not available in `FromHTML` mode (use `Result` instead for that mode). |
 
 ## Valid Configurations
 

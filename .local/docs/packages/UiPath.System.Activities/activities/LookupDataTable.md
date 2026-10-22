@@ -13,12 +13,12 @@ This activity searches for the value provided in the Lookup Value property insid
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InArgument | DataTable | Yes | — | The DataTable to search. |
-| LookupValue | Lookup Value | InArgument | String | Yes | — | The value to search for within the lookup column. |
-| LookupColumnName | Column Name | InArgument | String | Yes* | — | The name of the column to search in. Mutually exclusive with **Column Number** (lookup). |
-| LookupColumnIndex | Column Number | InArgument | Int32? | Yes* | — | The zero-based index of the column to search in. Mutually exclusive with **Column Name** (lookup). |
-| TargetColumnName | Column Name | InArgument | String | No | — | The name of the column from which to retrieve the cell value at the found row. Mutually exclusive with **Column Number** (target). |
-| TargetColumnIndex | Column Number | InArgument | Int32? | No | — | The zero-based index of the column from which to retrieve the cell value. Mutually exclusive with **Column Name** (target). |
+| DataTable | In this data table | InArgument | DataTable | Yes | — | The DataTable to search. |
+| LookupValue | Find this value | InArgument | String | Yes | — | The value to search for within the lookup column. |
+| LookupColumnName | In the column name | InArgument | String | Yes* | — | The name of the column to search in. Mutually exclusive with **Column number** (lookup). |
+| LookupColumnIndex | In the column number | InArgument | Int32? | Yes* | — | The zero-based index of the column to search in. Mutually exclusive with **Column name** (lookup). |
+| TargetColumnName | Return value from column name | InArgument | String | No | — | The name of the column from which to retrieve the cell value at the found row. Mutually exclusive with **Column number** (target). |
+| TargetColumnIndex | Return value from column number | InArgument | Int32? | No | — | The zero-based index of the column from which to retrieve the cell value. Mutually exclusive with **Column name** (target). |
 
 \* Exactly one of `LookupColumnName` or `LookupColumnIndex` must be provided. `LookupDataColumn` (a DataColumn object overload) exists in the source but is hidden (`isVisible: false`) and is not exposed in the designer UI.
 
@@ -26,8 +26,8 @@ This activity searches for the value provided in the Lookup Value property insid
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| RowIndex | RowIndex | OutArgument | Int32 | The zero-based index of the row where the lookup value was found. Returns `-1` if not found. |
-| CellValue | CellValue | OutArgument | Object | The value of the cell at the found row in the target column. Only populated when a target column is specified. |
+| RowIndex | Found row number | OutArgument | Int32 | The zero-based index of the row where the lookup value was found. Returns `-1` if not found. |
+| CellValue | Found cell value | OutArgument | Object | The value of the cell at the found row in the target column. Only populated when a target column is specified. |
 
 ## Valid Configurations
 

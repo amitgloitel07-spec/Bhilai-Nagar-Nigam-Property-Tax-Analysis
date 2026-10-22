@@ -14,8 +14,8 @@ Returns the text content of a certain file in an Orchestrator storage bucket.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `StorageBucketName` | Storage bucket name | InArgument | `string` | Yes (inherited) | — | The name of the Orchestrator storage bucket. Inherited from the storage activity base class — declared on the activity element, not as a child binding. |
-| `FolderPath` | Folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
-| `Path` | Path | InArgument | `string` | Yes | — | The path of the file within the storage bucket to read (e.g., `data/output.txt`). |
+| `FolderPath` | Orchestrator folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
+| `Path` | File path | InArgument | `string` | Yes | — | The path of the file within the storage bucket to read (e.g., `data/output.txt`). |
 | `Encoding` | Encoding | InArgument | `string` | No | `null` | The character encoding to use when reading the file (e.g., `"utf-8"`, `"utf-16"`). Defaults to UTF-8 when not specified. Can be set as a project-level default. |
 
 ### Output

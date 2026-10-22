@@ -14,8 +14,8 @@ Deletes a certain file from the designated Orchestrator storage bucket.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `StorageBucketName` | Storage bucket name | InArgument | `string` | Yes (inherited) | — | The name of the Orchestrator storage bucket. Inherited from the storage activity base class — declared on the activity element, not as a child binding. |
-| `FolderPath` | Folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
-| `Path` | Path | InArgument | `string` | Yes | — | The path of the file to delete within the storage bucket (e.g., `reports/output.pdf`). |
+| `FolderPath` | Orchestrator folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
+| `Path` | File path | InArgument | `string` | Yes | — | The path of the file to delete within the storage bucket (e.g., `reports/output.pdf`). |
 
 ## XAML Example
 

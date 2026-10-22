@@ -13,7 +13,7 @@ Extracts date and time from the given input text matching the specified format a
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Source` | Source | InArgument | `String` | Yes | — | The text from which date and time values are to be extracted. |
+| `Source` | Source text | InArgument | `String` | Yes | — | The text from which date and time values are to be extracted. |
 | `Format` | Date and time format | InArgument | `String` | Yes | — | The expected date/time format string. Accepts standard single-character format specifiers (e.g. `d`, `D`, `f`, `F`, `g`, `G`) or custom format patterns (e.g. `MM/dd/yyyy`). Supports autocomplete. |
 
 ### Configuration
@@ -26,8 +26,8 @@ Extracts date and time from the given input text matching the specified format a
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `DateTime` | The first `DateTime` value extracted from the text. |
-| `Results` | All Extracted DateTimes | OutArgument | `IEnumerable<DateTime>` | A collection of all `DateTime` values found in the text that match the specified format. |
+| `Result` | First extracted DateTime | OutArgument | `DateTime` | The first `DateTime` value extracted from the text. |
+| `Results` | All extracted DateTimes | OutArgument | `IEnumerable<DateTime>` | A collection of all `DateTime` values found in the text that match the specified format. |
 
 ## XAML Example
 

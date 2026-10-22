@@ -13,8 +13,8 @@ Renames the selected file.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `FilePath` | File Path | `InArgument` | `string` | Yes* | — | Full path of the file to rename. Mutually exclusive with `FileResource`. |
-| `FileResource` | File Resource | `InArgument` | `IResource` | Yes* | — | Resource reference to the file to rename. Mutually exclusive with `FilePath`. |
+| `FilePath` | File path | `InArgument` | `string` | Yes* | — | Full path of the file to rename. Mutually exclusive with `FileResource`. |
+| `FileResource` | File resource | `InArgument` | `IResource` | Yes* | — | Resource reference to the file to rename. Mutually exclusive with `FilePath`. |
 | `NewName` | New name | `InArgument` | `string` | Yes | — | The new name for the file. |
 
 ### Configuration
@@ -27,7 +27,7 @@ Renames the selected file.
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `OutputFileResource` | Renamed File | `OutArgument` | `IResource` | Reference to the renamed file. |
+| `OutputFileResource` | Renamed file | `OutArgument` | `IResource` | Reference to the renamed file. |
 
 ## Valid Configurations
 

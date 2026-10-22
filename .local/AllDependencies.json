@@ -15,14 +15,14 @@
           }
         }
       },
-      "ClosedXML/0.105.0": {
+      "ClosedXML/0.105.1": {
         "type": "package",
         "dependencies": {
           "ClosedXML.Parser": "2.0.0",
           "DocumentFormat.OpenXml": "[3.1.1, 4.0.0)",
           "ExcelNumberFormat": "1.1.0",
           "RBush.Signed": "4.0.0",
-          "SixLabors.Fonts": "1.0.0"
+          "SixLabors.Fonts": "[1.0.0, 3.0.0)"
         },
         "compile": {
           "lib/netstandard2.1/_._": {
@@ -48,7 +48,7 @@
           }
         }
       },
-      "CsvHelper/33.0.1": {
+      "CsvHelper/33.1.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/_._": {
@@ -61,10 +61,10 @@
           }
         }
       },
-      "DocumentFormat.OpenXml/3.3.0": {
+      "DocumentFormat.OpenXml/3.5.1": {
         "type": "package",
         "dependencies": {
-          "DocumentFormat.OpenXml.Framework": "3.3.0"
+          "DocumentFormat.OpenXml.Framework": "3.5.1"
         },
         "compile": {
           "lib/net8.0/_._": {
@@ -77,7 +77,7 @@
           }
         }
       },
-      "DocumentFormat.OpenXml.Framework/3.3.0": {
+      "DocumentFormat.OpenXml.Framework/3.5.1": {
         "type": "package",
         "dependencies": {
           "System.IO.Packaging": "8.0.1"
@@ -1879,7 +1879,7 @@
           }
         }
       },
-      "SixLabors.ImageSharp/2.1.11": {
+      "SixLabors.ImageSharp/2.1.13": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0",
@@ -4171,7 +4171,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "UiPath/26.10.207.36139": {
+      "UiPath/26.10.210.65305": {
         "type": "package",
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -4200,7 +4200,7 @@
           "lib/net6.0-windows7.0/UiPath.Activities.RuntimeGovernance.dll": {}
         }
       },
-      "UiPath.AppSignatures/26.10.207.36139": {
+      "UiPath.AppSignatures/26.10.210.65305": {
         "type": "package",
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -4210,6 +4210,22 @@
         },
         "build": {
           "build/_._": {}
+        }
+      },
+      "UiPath.BusinessRules.Client/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/UiPath.BusinessRules.Client.dll": {
+            "related": ".xml"
+          }
         }
       },
       "UiPath.CodedWorkflows/24.10.3": {
@@ -4326,15 +4342,15 @@
           "lib/net8.0-windows7.0/UiPath.ErrorInfo.dll": {}
         }
       },
-      "UiPath.Excel.Activities/3.6.1": {
+      "UiPath.Excel.Activities/3.7.0-preview": {
         "type": "package",
         "dependencies": {
-          "ClosedXML": "0.105.0",
-          "CsvHelper": "33.0.1",
-          "DocumentFormat.OpenXml": "3.3.0",
+          "ClosedXML": "0.105.1",
+          "CsvHelper": "33.1.0",
+          "DocumentFormat.OpenXml": "3.5.1",
           "NPOI": "2.7.3",
           "SharpZipLib": "1.4.2",
-          "SixLabors.ImageSharp": "2.1.11",
+          "SixLabors.ImageSharp": "2.1.13",
           "System.Activities.ViewModels": "1.20260609.1",
           "System.Drawing.Common": "6.0.0",
           "System.Formats.Asn1": "8.0.1",
@@ -4343,9 +4359,9 @@
           "System.Security.Cryptography.Xml": "8.0.4",
           "System.Text.Encoding.CodePages": "6.0.0",
           "System.Text.RegularExpressions": "4.3.1",
-          "UiPath.CodedWorkflows": "24.10.1",
+          "UiPath.CodedWorkflows": "24.10.3",
           "UiPath.OfficeLibs": "1.0.0",
-          "UiPath.Platform": "25.10.1",
+          "UiPath.Platform": "26.9.0",
           "UiPath.Telemetry.Client": "2.12.0"
         },
         "compile": {
@@ -4732,10 +4748,10 @@
           "lib/net8.0-windows7.0/UiPath.Plugin.Activities.Tracing.dll": {}
         }
       },
-      "UiPath.System.Activities/26.8.2": {
+      "UiPath.System.Activities/26.10.0": {
         "type": "package",
         "dependencies": {
-          "CsvHelper": "33.0.1",
+          "CsvHelper": "33.1.0",
           "Microsoft.AspNet.SignalR.Client": "2.4.3",
           "Microsoft.AspNetCore.SignalR.Client": "6.0.36",
           "Microsoft.CSharp": "4.7.0",
@@ -4749,11 +4765,12 @@
           "SharpZipLib": "1.4.2",
           "System.Activities.ViewModels": "1.20260609.1",
           "System.Management.Automation": "7.4.18",
+          "UiPath.BusinessRules.Client": "2.1.0",
           "UiPath.CodedWorkflows": "24.10.1",
           "UiPath.ErrorInfo": "25.10.2",
           "UiPath.Platform": "26.9.0",
           "UiPath.Plugin.Activities.Tracing": "1.0.1",
-          "UiPath.System.Activities.Runtime": "26.8.2",
+          "UiPath.System.Activities.Runtime": "26.10.0",
           "UiPath.Telemetry.Client": "2.12.0",
           "net.adamec.lib.common.dmn.engine": "1.1.1"
         },
@@ -4852,10 +4869,10 @@
           }
         }
       },
-      "UiPath.System.Activities.Runtime/26.8.2": {
+      "UiPath.System.Activities.Runtime/26.10.0": {
         "type": "package",
         "dependencies": {
-          "UiPath.System.Activities.Runtime.Windows": "26.8.2"
+          "UiPath.System.Activities.Runtime.Windows": "26.10.0"
         },
         "compile": {
           "lib/net8.0-windows7.0/_._": {}
@@ -4864,10 +4881,10 @@
           "lib/net8.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll": {}
         }
       },
-      "UiPath.System.Activities.Runtime.Windows/26.8.2": {
+      "UiPath.System.Activities.Runtime.Windows/26.10.0": {
         "type": "package",
         "dependencies": {
-          "CsvHelper": "33.0.1",
+          "CsvHelper": "33.1.0",
           "Microsoft.AspNet.SignalR.Client": "2.4.3",
           "Microsoft.AspNetCore.SignalR.Client": "6.0.36",
           "Microsoft.CSharp": "4.7.0",
@@ -4881,6 +4898,7 @@
           "Microsoft.VisualBasic": "10.3.0",
           "SharpZipLib": "1.4.2",
           "System.Management.Automation": "7.4.18",
+          "UiPath.BusinessRules.Client": "2.1.0",
           "UiPath.CodedWorkflows": "24.10.1",
           "UiPath.ErrorInfo": "25.10.2",
           "UiPath.Platform": "26.9.0",
@@ -5005,13 +5023,13 @@
           "lib/netstandard2.0/TelemetryClient.dll": {}
         }
       },
-      "UiPath.UIAutomation.Activities/26.10.5": {
+      "UiPath.UIAutomation.Activities/26.10.6": {
         "type": "package",
         "dependencies": {
           "System.Activities.ViewModels": "1.20260609.1",
-          "UiPath.UIAutomation.Activities.Runtime": "[26.10.5]",
-          "UiPath.UIAutomation.CLI": "[26.10.5]",
-          "UiPath.UIAutomation.Design.RecoveryPanel": "[26.10.5]"
+          "UiPath.UIAutomation.Activities.Runtime": "[26.10.6]",
+          "UiPath.UIAutomation.CLI": "[26.10.6]",
+          "UiPath.UIAutomation.Design.RecoveryPanel": "[26.10.6]"
         },
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -5188,13 +5206,13 @@
           }
         }
       },
-      "UiPath.UIAutomation.Activities.Runtime/26.10.5": {
+      "UiPath.UIAutomation.Activities.Runtime/26.10.6": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "UiPath": "[26.10.207.36139]",
+          "UiPath": "[26.10.210.65305]",
           "UiPath.Activities.RuntimeGovernance": "1.1.7",
-          "UiPath.AppSignatures": "26.10.207.36139",
+          "UiPath.AppSignatures": "26.10.210.65305",
           "UiPath.CodedWorkflows": "24.10.3",
           "UiPath.ImageProcessing": "23.4.0",
           "UiPath.OCR.Activities": "4.3.0",
@@ -5202,7 +5220,7 @@
           "UiPath.Platform": "26.4.0",
           "UiPath.Plugin.Activities.Tracing": "1.0.1",
           "UiPath.Telemetry.Client": "2.12.0",
-          "UiPath.UIAutomation.Activities.Runtime.Design": "[26.10.5]",
+          "UiPath.UIAutomation.Activities.Runtime.Design": "[26.10.6]",
           "UiPath.Vision": "4.1.0"
         },
         "compile": {
@@ -5397,7 +5415,7 @@
           }
         }
       },
-      "UiPath.UIAutomation.Activities.Runtime.Design/26.10.5": {
+      "UiPath.UIAutomation.Activities.Runtime.Design/26.10.6": {
         "type": "package",
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -5406,10 +5424,10 @@
           "lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Runtime.Design.dll": {}
         }
       },
-      "UiPath.UIAutomation.CLI/26.10.5": {
+      "UiPath.UIAutomation.CLI/26.10.6": {
         "type": "package"
       },
-      "UiPath.UIAutomation.Design.RecoveryPanel/26.10.5": {
+      "UiPath.UIAutomation.Design.RecoveryPanel/26.10.6": {
         "type": "package",
         "compile": {
           "lib/net6.0/_._": {}
@@ -5450,14 +5468,14 @@
           }
         }
       },
-      "ClosedXML/0.105.0": {
+      "ClosedXML/0.105.1": {
         "type": "package",
         "dependencies": {
           "ClosedXML.Parser": "2.0.0",
           "DocumentFormat.OpenXml": "[3.1.1, 4.0.0)",
           "ExcelNumberFormat": "1.1.0",
           "RBush.Signed": "4.0.0",
-          "SixLabors.Fonts": "1.0.0"
+          "SixLabors.Fonts": "[1.0.0, 3.0.0)"
         },
         "compile": {
           "lib/netstandard2.1/_._": {
@@ -5483,7 +5501,7 @@
           }
         }
       },
-      "CsvHelper/33.0.1": {
+      "CsvHelper/33.1.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/_._": {
@@ -5496,10 +5514,10 @@
           }
         }
       },
-      "DocumentFormat.OpenXml/3.3.0": {
+      "DocumentFormat.OpenXml/3.5.1": {
         "type": "package",
         "dependencies": {
-          "DocumentFormat.OpenXml.Framework": "3.3.0"
+          "DocumentFormat.OpenXml.Framework": "3.5.1"
         },
         "compile": {
           "lib/net8.0/_._": {
@@ -5512,7 +5530,7 @@
           }
         }
       },
-      "DocumentFormat.OpenXml.Framework/3.3.0": {
+      "DocumentFormat.OpenXml.Framework/3.5.1": {
         "type": "package",
         "dependencies": {
           "System.IO.Packaging": "8.0.1"
@@ -7387,7 +7405,7 @@
           }
         }
       },
-      "SixLabors.ImageSharp/2.1.11": {
+      "SixLabors.ImageSharp/2.1.13": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "5.0.0",
@@ -9484,7 +9502,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "UiPath/26.10.207.36139": {
+      "UiPath/26.10.210.65305": {
         "type": "package",
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -9513,7 +9531,7 @@
           "lib/net6.0-windows7.0/UiPath.Activities.RuntimeGovernance.dll": {}
         }
       },
-      "UiPath.AppSignatures/26.10.207.36139": {
+      "UiPath.AppSignatures/26.10.210.65305": {
         "type": "package",
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -9523,6 +9541,22 @@
         },
         "build": {
           "build/_._": {}
+        }
+      },
+      "UiPath.BusinessRules.Client/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/UiPath.BusinessRules.Client.dll": {
+            "related": ".xml"
+          }
         }
       },
       "UiPath.CodedWorkflows/24.10.3": {
@@ -9639,15 +9673,15 @@
           "lib/net8.0-windows7.0/UiPath.ErrorInfo.dll": {}
         }
       },
-      "UiPath.Excel.Activities/3.6.1": {
+      "UiPath.Excel.Activities/3.7.0-preview": {
         "type": "package",
         "dependencies": {
-          "ClosedXML": "0.105.0",
-          "CsvHelper": "33.0.1",
-          "DocumentFormat.OpenXml": "3.3.0",
+          "ClosedXML": "0.105.1",
+          "CsvHelper": "33.1.0",
+          "DocumentFormat.OpenXml": "3.5.1",
           "NPOI": "2.7.3",
           "SharpZipLib": "1.4.2",
-          "SixLabors.ImageSharp": "2.1.11",
+          "SixLabors.ImageSharp": "2.1.13",
           "System.Activities.ViewModels": "1.20260609.1",
           "System.Drawing.Common": "6.0.0",
           "System.Formats.Asn1": "8.0.1",
@@ -9656,9 +9690,9 @@
           "System.Security.Cryptography.Xml": "8.0.4",
           "System.Text.Encoding.CodePages": "6.0.0",
           "System.Text.RegularExpressions": "4.3.1",
-          "UiPath.CodedWorkflows": "24.10.1",
+          "UiPath.CodedWorkflows": "24.10.3",
           "UiPath.OfficeLibs": "1.0.0",
-          "UiPath.Platform": "25.10.1",
+          "UiPath.Platform": "26.9.0",
           "UiPath.Telemetry.Client": "2.12.0"
         },
         "compile": {
@@ -10045,10 +10079,10 @@
           "lib/net8.0-windows7.0/UiPath.Plugin.Activities.Tracing.dll": {}
         }
       },
-      "UiPath.System.Activities/26.8.2": {
+      "UiPath.System.Activities/26.10.0": {
         "type": "package",
         "dependencies": {
-          "CsvHelper": "33.0.1",
+          "CsvHelper": "33.1.0",
           "Microsoft.AspNet.SignalR.Client": "2.4.3",
           "Microsoft.AspNetCore.SignalR.Client": "6.0.36",
           "Microsoft.CSharp": "4.7.0",
@@ -10062,11 +10096,12 @@
           "SharpZipLib": "1.4.2",
           "System.Activities.ViewModels": "1.20260609.1",
           "System.Management.Automation": "7.4.18",
+          "UiPath.BusinessRules.Client": "2.1.0",
           "UiPath.CodedWorkflows": "24.10.1",
           "UiPath.ErrorInfo": "25.10.2",
           "UiPath.Platform": "26.9.0",
           "UiPath.Plugin.Activities.Tracing": "1.0.1",
-          "UiPath.System.Activities.Runtime": "26.8.2",
+          "UiPath.System.Activities.Runtime": "26.10.0",
           "UiPath.Telemetry.Client": "2.12.0",
           "net.adamec.lib.common.dmn.engine": "1.1.1"
         },
@@ -10165,10 +10200,10 @@
           }
         }
       },
-      "UiPath.System.Activities.Runtime/26.8.2": {
+      "UiPath.System.Activities.Runtime/26.10.0": {
         "type": "package",
         "dependencies": {
-          "UiPath.System.Activities.Runtime.Windows": "26.8.2"
+          "UiPath.System.Activities.Runtime.Windows": "26.10.0"
         },
         "compile": {
           "lib/net8.0-windows7.0/_._": {}
@@ -10177,10 +10212,10 @@
           "lib/net8.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll": {}
         }
       },
-      "UiPath.System.Activities.Runtime.Windows/26.8.2": {
+      "UiPath.System.Activities.Runtime.Windows/26.10.0": {
         "type": "package",
         "dependencies": {
-          "CsvHelper": "33.0.1",
+          "CsvHelper": "33.1.0",
           "Microsoft.AspNet.SignalR.Client": "2.4.3",
           "Microsoft.AspNetCore.SignalR.Client": "6.0.36",
           "Microsoft.CSharp": "4.7.0",
@@ -10194,6 +10229,7 @@
           "Microsoft.VisualBasic": "10.3.0",
           "SharpZipLib": "1.4.2",
           "System.Management.Automation": "7.4.18",
+          "UiPath.BusinessRules.Client": "2.1.0",
           "UiPath.CodedWorkflows": "24.10.1",
           "UiPath.ErrorInfo": "25.10.2",
           "UiPath.Platform": "26.9.0",
@@ -10318,13 +10354,13 @@
           "lib/netstandard2.0/TelemetryClient.dll": {}
         }
       },
-      "UiPath.UIAutomation.Activities/26.10.5": {
+      "UiPath.UIAutomation.Activities/26.10.6": {
         "type": "package",
         "dependencies": {
           "System.Activities.ViewModels": "1.20260609.1",
-          "UiPath.UIAutomation.Activities.Runtime": "[26.10.5]",
-          "UiPath.UIAutomation.CLI": "[26.10.5]",
-          "UiPath.UIAutomation.Design.RecoveryPanel": "[26.10.5]"
+          "UiPath.UIAutomation.Activities.Runtime": "[26.10.6]",
+          "UiPath.UIAutomation.CLI": "[26.10.6]",
+          "UiPath.UIAutomation.Design.RecoveryPanel": "[26.10.6]"
         },
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -10501,13 +10537,13 @@
           }
         }
       },
-      "UiPath.UIAutomation.Activities.Runtime/26.10.5": {
+      "UiPath.UIAutomation.Activities.Runtime/26.10.6": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "UiPath": "[26.10.207.36139]",
+          "UiPath": "[26.10.210.65305]",
           "UiPath.Activities.RuntimeGovernance": "1.1.7",
-          "UiPath.AppSignatures": "26.10.207.36139",
+          "UiPath.AppSignatures": "26.10.210.65305",
           "UiPath.CodedWorkflows": "24.10.3",
           "UiPath.ImageProcessing": "23.4.0",
           "UiPath.OCR.Activities": "4.3.0",
@@ -10515,7 +10551,7 @@
           "UiPath.Platform": "26.4.0",
           "UiPath.Plugin.Activities.Tracing": "1.0.1",
           "UiPath.Telemetry.Client": "2.12.0",
-          "UiPath.UIAutomation.Activities.Runtime.Design": "[26.10.5]",
+          "UiPath.UIAutomation.Activities.Runtime.Design": "[26.10.6]",
           "UiPath.Vision": "4.1.0"
         },
         "compile": {
@@ -10710,7 +10746,7 @@
           }
         }
       },
-      "UiPath.UIAutomation.Activities.Runtime.Design/26.10.5": {
+      "UiPath.UIAutomation.Activities.Runtime.Design/26.10.6": {
         "type": "package",
         "compile": {
           "lib/net6.0-windows7.0/_._": {}
@@ -10719,10 +10755,10 @@
           "lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Runtime.Design.dll": {}
         }
       },
-      "UiPath.UIAutomation.CLI/26.10.5": {
+      "UiPath.UIAutomation.CLI/26.10.6": {
         "type": "package"
       },
-      "UiPath.UIAutomation.Design.RecoveryPanel/26.10.5": {
+      "UiPath.UIAutomation.Design.RecoveryPanel/26.10.6": {
         "type": "package",
         "compile": {
           "lib/net6.0/_._": {}
@@ -10771,14 +10807,14 @@
         "packageIcon.png"
       ]
     },
-    "ClosedXML/0.105.0": {
-      "sha512": "U0hAdnYyPvF7TqHMFloxrS7pmozab79tFFF4c/bgPtqeelUs7ILpUd3r3c7C0a/DXsUZb3k1n4Pf7Q2LMyMQOg==",
+    "ClosedXML/0.105.1": {
+      "sha512": "X1ruIP9h2FBEK7jmO0peq3s6/Zqt5ve5a9f9kn6WUjdsUWvGbQlqxuGLz822xuFLlmnSeAfWFTGeX/tZlmAt+g==",
       "type": "package",
-      "path": "closedxml/0.105.0",
+      "path": "closedxml/0.105.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "closedxml.0.105.0.nupkg.sha512",
+        "closedxml.0.105.1.nupkg.sha512",
         "closedxml.nuspec",
         "lib/netstandard2.0/ClosedXML.dll",
         "lib/netstandard2.0/ClosedXML.pdb",
@@ -10805,15 +10841,15 @@
         "lib/netstandard2.1/ClosedXML.Parser.xml"
       ]
     },
-    "CsvHelper/33.0.1": {
-      "sha512": "fev4lynklAU2A9GVMLtwarkwaanjSYB4wUqO2nOJX5hnzObORzUqVLe+bDYCUyIIRQM4o5Bsq3CcyJR89iMmEQ==",
+    "CsvHelper/33.1.0": {
+      "sha512": "kqfTOZGrn7NarNeXgjh86JcpTHUoeQDMB8t9NVa/ZtlSYiV1rxfRnQ49WaJsob4AiGrbK0XDzpyKkBwai4F8eg==",
       "type": "package",
-      "path": "csvhelper/33.0.1",
+      "path": "csvhelper/33.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "csvhelper.33.0.1.nupkg.sha512",
+        "csvhelper.33.1.0.nupkg.sha512",
         "csvhelper.nuspec",
         "lib/net462/CsvHelper.dll",
         "lib/net462/CsvHelper.xml",
@@ -10821,29 +10857,29 @@
         "lib/net47/CsvHelper.xml",
         "lib/net48/CsvHelper.dll",
         "lib/net48/CsvHelper.xml",
-        "lib/net6.0/CsvHelper.dll",
-        "lib/net6.0/CsvHelper.xml",
-        "lib/net7.0/CsvHelper.dll",
-        "lib/net7.0/CsvHelper.xml",
         "lib/net8.0/CsvHelper.dll",
         "lib/net8.0/CsvHelper.xml",
+        "lib/net9.0/CsvHelper.dll",
+        "lib/net9.0/CsvHelper.xml",
         "lib/netstandard2.0/CsvHelper.dll",
         "lib/netstandard2.0/CsvHelper.xml",
         "lib/netstandard2.1/CsvHelper.dll",
         "lib/netstandard2.1/CsvHelper.xml"
       ]
     },
-    "DocumentFormat.OpenXml/3.3.0": {
-      "sha512": "JogRPJNiE6kKvbuCqVRX691pPWeGMqdQgjrUwRYkdpfkMmtElfqAgcRR73geYj7OtBeEpstldZXXzJw27LUI9w==",
+    "DocumentFormat.OpenXml/3.5.1": {
+      "sha512": "zxdOf5VVCe/uNklbRhj8dVBzQGj3DoqkUuqOp9cAZVuN8mNYDjof1lvSQA2OQNr8Ptc9d7pbA7Azq/ReaI3FpA==",
       "type": "package",
-      "path": "documentformat.openxml/3.3.0",
+      "path": "documentformat.openxml/3.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "documentformat.openxml.3.3.0.nupkg.sha512",
+        "documentformat.openxml.3.5.1.nupkg.sha512",
         "documentformat.openxml.nuspec",
         "icon.png",
+        "lib/net10.0/DocumentFormat.OpenXml.dll",
+        "lib/net10.0/DocumentFormat.OpenXml.xml",
         "lib/net35/DocumentFormat.OpenXml.dll",
         "lib/net35/DocumentFormat.OpenXml.xml",
         "lib/net40/DocumentFormat.OpenXml.dll",
@@ -10856,17 +10892,19 @@
         "lib/netstandard2.0/DocumentFormat.OpenXml.xml"
       ]
     },
-    "DocumentFormat.OpenXml.Framework/3.3.0": {
-      "sha512": "R5CLzEoeyr7XDB7g3NTxRobcU19agaxVAhGZm+fZUShJGiU4bw8oUgnA2BNFepigJckfFMayOBMAbV3kDXNInA==",
+    "DocumentFormat.OpenXml.Framework/3.5.1": {
+      "sha512": "U5txtc3ORno73xQx9Lf2gWzfaSZnZwKHfLkTAslhlew9lxe5XbUiCt0dY1fHeAf8yRqszUAe5i/+xLC9R/Xfsw==",
       "type": "package",
-      "path": "documentformat.openxml.framework/3.3.0",
+      "path": "documentformat.openxml.framework/3.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "documentformat.openxml.framework.3.3.0.nupkg.sha512",
+        "documentformat.openxml.framework.3.5.1.nupkg.sha512",
         "documentformat.openxml.framework.nuspec",
         "icon.png",
+        "lib/net10.0/DocumentFormat.OpenXml.Framework.dll",
+        "lib/net10.0/DocumentFormat.OpenXml.Framework.xml",
         "lib/net35/DocumentFormat.OpenXml.Framework.dll",
         "lib/net35/DocumentFormat.OpenXml.Framework.xml",
         "lib/net40/DocumentFormat.OpenXml.Framework.dll",
@@ -14632,10 +14670,10 @@
         "sixlabors.fonts.nuspec"
       ]
     },
-    "SixLabors.ImageSharp/2.1.11": {
-      "sha512": "tUvsejgzUmEbES114yLseRxmFiYlQbH5RyaYXUQsEL7ksDo1/kW+ZL1EfD6iSUfxj7LHU8p110oFvSrRfsaWSQ==",
+    "SixLabors.ImageSharp/2.1.13": {
+      "sha512": "zmVHZR13XE477TBAVXE71VcMhqhiv1PbzMWIfuIDytVdBPl3KZlvYYBkqcuQSDdszVY2XHanW98VmDffoNzSSw==",
       "type": "package",
-      "path": "sixlabors.imagesharp/2.1.11",
+      "path": "sixlabors.imagesharp/2.1.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -14650,7 +14688,7 @@
         "lib/netstandard2.1/SixLabors.ImageSharp.dll",
         "lib/netstandard2.1/SixLabors.ImageSharp.xml",
         "sixlabors.imagesharp.128.png",
-        "sixlabors.imagesharp.2.1.11.nupkg.sha512",
+        "sixlabors.imagesharp.2.1.13.nupkg.sha512",
         "sixlabors.imagesharp.nuspec"
       ]
     },
@@ -19703,10 +19741,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "UiPath/26.10.207.36139": {
-      "sha512": "CnHa9vLmj/DrEtH6H4E8b7iZOM1Glvr5g038am+wszceOoPYnDkA3kPH32+PnJY2EaXUmVC6puyG1/Er31GITw==",
+    "UiPath/26.10.210.65305": {
+      "sha512": "88iTtM8NQcg2riYk22WsGgvVqw6agCyKzP9FXrnVkHdFgpoZiLBP6XyTHQkEXBXsKIRy3DuFWpuihDUxso2DsQ==",
       "type": "package",
-      "path": "uipath/26.10.207.36139",
+      "path": "uipath/26.10.210.65305",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -19796,7 +19834,7 @@
         "build/UiPath/libcurl_x64.dll",
         "build/UiPath/libcurl_x86.dll",
         "build/UiPath/net30/WpfHook.dll",
-        "build/UiPath/net6.0-windows/ManagedDotNetCoreHook_26_10_207_36139.dll",
+        "build/UiPath/net6.0-windows/ManagedDotNetCoreHook_26_10_210_65305.dll",
         "build/UiPath/slinject.exe",
         "build/net461/SapAutomationConnectivitySdk.dll",
         "build/net461/SapAutomationLogger.dll",
@@ -19817,7 +19855,7 @@
         "lib/net6.0-windows7.0/UiPath.DriverCore.dll",
         "lib/net6.0-windows7.0/UiPath.Interop.dll",
         "lib/net6.0/UiPath.Locator.dll",
-        "uipath.26.10.207.36139.nupkg.sha512",
+        "uipath.26.10.210.65305.nupkg.sha512",
         "uipath.nuspec"
       ]
     },
@@ -19835,10 +19873,10 @@
         "uipath.activities.runtimegovernance.nuspec"
       ]
     },
-    "UiPath.AppSignatures/26.10.207.36139": {
-      "sha512": "Yev8HFy3gS59aWh5bBHt57HUywkqIeINaiqWKBuP4ile2n36sKqhyfXQuJeyDMdpKdRzjre7N8WBhdR6IRICEw==",
+    "UiPath.AppSignatures/26.10.210.65305": {
+      "sha512": "LcEgKVxsb0kYgzVASdEPJRrLnSwLlF3rkgDrEpgJ2wcmtofdmRQ+y9l/hTnR8MRY6K7RrHxjzExuR0i0OQDLeg==",
       "type": "package",
-      "path": "uipath.appsignatures/26.10.207.36139",
+      "path": "uipath.appsignatures/26.10.210.65305",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -19849,8 +19887,21 @@
         "build/UiPath.AppSignatures.targets",
         "lib/net461/AppSignatures.Locator.dll",
         "lib/net6.0-windows7.0/AppSignatures.Locator.dll",
-        "uipath.appsignatures.26.10.207.36139.nupkg.sha512",
+        "uipath.appsignatures.26.10.210.65305.nupkg.sha512",
         "uipath.appsignatures.nuspec"
+      ]
+    },
+    "UiPath.BusinessRules.Client/2.1.0": {
+      "sha512": "/jKfrSSFEBgUtnpe6vKGjW5SAcTSzHGL/W1+3UbaEFQpUWDkPWRF+EJ8odP6uBixGTyd8wr4lR/vgYGDMAvHyQ==",
+      "type": "package",
+      "path": "uipath.businessrules.client/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/UiPath.BusinessRules.Client.dll",
+        "lib/netstandard2.0/UiPath.BusinessRules.Client.xml",
+        "uipath.businessrules.client.2.1.0.nupkg.sha512",
+        "uipath.businessrules.client.nuspec"
       ]
     },
     "UiPath.CodedWorkflows/24.10.3": {
@@ -19947,10 +19998,10 @@
         "uipath.errorinfo.nuspec"
       ]
     },
-    "UiPath.Excel.Activities/3.6.1": {
-      "sha512": "RWWX0vMG53pKkNoS8f5A+fsNxNhb+csVUVzXGUuyDs9/7pxqZEl2ryvo2PvC9zLTKd3WHpD2NlXdnG1sUaQiQQ==",
+    "UiPath.Excel.Activities/3.7.0-preview": {
+      "sha512": "z56FJ+nV2tekacnsENWdUU/ZyQenrrx2qJIucq+h4y4zvQW9NAMQu/FJBwZlvReoMtjrB/o4LHt0iMJVDq4A2Q==",
       "type": "package",
-      "path": "uipath.excel.activities/3.6.1",
+      "path": "uipath.excel.activities/3.7.0-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -19959,8 +20010,10 @@
         "content/docs/activities/AppendRangeX.md",
         "content/docs/activities/AppendWriteCsvFile.md",
         "content/docs/activities/AutoFillX.md",
+        "content/docs/activities/AutoFit.md",
         "content/docs/activities/AutoFitX.md",
         "content/docs/activities/ChangePivotTableDataSourceX.md",
+        "content/docs/activities/ClearRange.md",
         "content/docs/activities/ClearRangeX.md",
         "content/docs/activities/CopyChartToClipboardX.md",
         "content/docs/activities/CopyPasteRangeX.md",
@@ -19969,20 +20022,28 @@
         "content/docs/activities/CreatePivotTableXv2.md",
         "content/docs/activities/CreateTableX.md",
         "content/docs/activities/DeleteColumnX.md",
+        "content/docs/activities/DeleteColumns.md",
+        "content/docs/activities/DeleteRows.md",
         "content/docs/activities/DeleteRowsX.md",
+        "content/docs/activities/DeleteSheet.md",
         "content/docs/activities/DeleteSheetX.md",
+        "content/docs/activities/DuplicateSheet.md",
         "content/docs/activities/DuplicateSheetX.md",
         "content/docs/activities/ExcelApplicationCard.md",
         "content/docs/activities/ExcelForEachRowX.md",
         "content/docs/activities/ExcelProcessScopeX.md",
         "content/docs/activities/ExecuteMacroX.md",
         "content/docs/activities/ExportExcelToCsvX.md",
+        "content/docs/activities/FillRange.md",
         "content/docs/activities/FillRangeX.md",
         "content/docs/activities/FilterPivotTableX.md",
+        "content/docs/activities/FilterRange.md",
         "content/docs/activities/FilterX.md",
+        "content/docs/activities/FindFirstLastDataRow.md",
         "content/docs/activities/FindFirstLastDataRowX.md",
         "content/docs/activities/FindReplaceValueX.md",
         "content/docs/activities/ForEachSheetX.md",
+        "content/docs/activities/FormatRange.md",
         "content/docs/activities/FormatRangeX.md",
         "content/docs/activities/GetCellColor.md",
         "content/docs/activities/GetCellColorX.md",
@@ -19992,13 +20053,19 @@
         "content/docs/activities/GetTableRange.md",
         "content/docs/activities/InsertChart.md",
         "content/docs/activities/InsertColumnX.md",
+        "content/docs/activities/InsertColumns.md",
         "content/docs/activities/InsertExcelChartX.md",
         "content/docs/activities/InsertImage.md",
+        "content/docs/activities/InsertRows.md",
         "content/docs/activities/InsertRowsX.md",
+        "content/docs/activities/InsertSheet.md",
         "content/docs/activities/InsertSheetX.md",
         "content/docs/activities/InvokeVBAX.md",
+        "content/docs/activities/Lookup.md",
         "content/docs/activities/LookupX.md",
+        "content/docs/activities/MatchFunction.md",
         "content/docs/activities/MatchFunctionX.md",
+        "content/docs/activities/ProtectSheet.md",
         "content/docs/activities/ProtectSheetX.md",
         "content/docs/activities/ReadCell.md",
         "content/docs/activities/ReadCellFormula.md",
@@ -20011,18 +20078,23 @@
         "content/docs/activities/ReadRow.md",
         "content/docs/activities/RefreshDataConnectionsX.md",
         "content/docs/activities/RefreshPivotTableX.md",
+        "content/docs/activities/RemoveDuplicates.md",
         "content/docs/activities/RemoveDuplicatesX.md",
+        "content/docs/activities/RenameSheet.md",
         "content/docs/activities/RenameSheetX.md",
         "content/docs/activities/SaveAsPdfX.md",
         "content/docs/activities/SaveExcelFileAsX.md",
         "content/docs/activities/SaveExcelFileX.md",
         "content/docs/activities/SelectRangeX.md",
         "content/docs/activities/SetRangeColor.md",
+        "content/docs/activities/SortRange.md",
         "content/docs/activities/SortX.md",
         "content/docs/activities/TextToColumnsX.md",
+        "content/docs/activities/UnprotectSheet.md",
         "content/docs/activities/UnprotectSheetX.md",
         "content/docs/activities/UpdateChart.md",
         "content/docs/activities/UpdateChartX.md",
+        "content/docs/activities/VLookup.md",
         "content/docs/activities/VLookupX.md",
         "content/docs/activities/WriteCell.md",
         "content/docs/activities/WriteCellX.md",
@@ -20113,7 +20185,7 @@
         "lib/net6.0/zh-TW/UiPath.Excel.resources.dll",
         "lib/net6.0/zu/UiPath.Excel.Activities.resources.dll",
         "lib/net6.0/zu/UiPath.Excel.resources.dll",
-        "uipath.excel.activities.3.6.1.nupkg.sha512",
+        "uipath.excel.activities.3.7.0-preview.nupkg.sha512",
         "uipath.excel.activities.nuspec"
       ]
     },
@@ -20462,10 +20534,10 @@
         "uipath.plugin.activities.tracing.nuspec"
       ]
     },
-    "UiPath.System.Activities/26.8.2": {
-      "sha512": "KvGxSFKa6hLxBxwrfxrYZwi+b5Y/BofaZNviYH8JZ6E4CjKNAIg7+AZomKFsHYWLYR4G866epbd2y9uSNhrfaA==",
+    "UiPath.System.Activities/26.10.0": {
+      "sha512": "+rrlQj3Kh4ry8ip2TIQnYxD2ZpzPEKMWvVGI1FobwOgBmEacWDz29PZtM9tas+YT6OCBnBtFcINlPOcFb1GSqQ==",
       "type": "package",
-      "path": "uipath.system.activities/26.8.2",
+      "path": "uipath.system.activities/26.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -20479,16 +20551,19 @@
         "content/docs/activities/AppendItemToCollection.md",
         "content/docs/activities/AppendItemToList.md",
         "content/docs/activities/AppendLine.md",
+        "content/docs/activities/Assign.md",
         "content/docs/activities/Beep.md",
         "content/docs/activities/BeginProcess.md",
         "content/docs/activities/Break.md",
         "content/docs/activities/BuildCollection.md",
         "content/docs/activities/BuildDataTable.md",
         "content/docs/activities/BulkAddQueueItems.md",
+        "content/docs/activities/Catch.md",
         "content/docs/activities/ChangeCase.md",
         "content/docs/activities/ChangeType.md",
         "content/docs/activities/CheckFalse.md",
         "content/docs/activities/CheckTrue.md",
+        "content/docs/activities/ClearCollection.md",
         "content/docs/activities/ClearDataTable.md",
         "content/docs/activities/CollectionToDataTable.md",
         "content/docs/activities/CombineText.md",
@@ -20502,6 +20577,7 @@
         "content/docs/activities/CreateFile.md",
         "content/docs/activities/CreateList.md",
         "content/docs/activities/CustomInput.md",
+        "content/docs/activities/Delay.md",
         "content/docs/activities/Delete.md",
         "content/docs/activities/DeleteFileX.md",
         "content/docs/activities/DeleteFolderX.md",
@@ -20546,9 +20622,11 @@
         "content/docs/activities/GetSecret.md",
         "content/docs/activities/GetUsernamePasswordX.md",
         "content/docs/activities/GlobalVariableChangedTrigger.md",
+        "content/docs/activities/If.md",
         "content/docs/activities/InputDialog.md",
         "content/docs/activities/InvokeCode.md",
         "content/docs/activities/InvokeComMethod.md",
+        "content/docs/activities/InvokeMethod.md",
         "content/docs/activities/InvokePowerShell.md",
         "content/docs/activities/InvokeProcess.md",
         "content/docs/activities/InvokeVBScript.md",
@@ -20595,6 +20673,7 @@
         "content/docs/activities/ReportStatus.md",
         "content/docs/activities/ResetTimer.md",
         "content/docs/activities/ResumeTimer.md",
+        "content/docs/activities/Rethrow.md",
         "content/docs/activities/RetryScope.md",
         "content/docs/activities/Return.md",
         "content/docs/activities/RunJob.md",
@@ -20602,6 +20681,7 @@
         "content/docs/activities/SelectFile.md",
         "content/docs/activities/SelectFolder.md",
         "content/docs/activities/SendEmailNotification.md",
+        "content/docs/activities/Sequence.md",
         "content/docs/activities/SetAsset.md",
         "content/docs/activities/SetCredential.md",
         "content/docs/activities/SetEnvironmentVariable.md",
@@ -20617,16 +20697,21 @@
         "content/docs/activities/StartTimer.md",
         "content/docs/activities/StopJob.md",
         "content/docs/activities/StopTimer.md",
+        "content/docs/activities/Switch.md",
+        "content/docs/activities/TerminateWorkflow.md",
         "content/docs/activities/TextToLeftRight.md",
+        "content/docs/activities/Throw.md",
         "content/docs/activities/TimeTrigger.md",
         "content/docs/activities/TimeoutScope.md",
         "content/docs/activities/TrackObject.md",
         "content/docs/activities/TriggerScope.md",
+        "content/docs/activities/TryCatch.md",
         "content/docs/activities/UpdateListItem.md",
         "content/docs/activities/UpdateRowItem.md",
         "content/docs/activities/UploadStorageFile.md",
         "content/docs/activities/WaitQueueItem.md",
         "content/docs/activities/While.md",
+        "content/docs/activities/WriteLine.md",
         "content/docs/activities/WriteStorageText.md",
         "content/docs/activities/WriteTextFile.md",
         "content/docs/coded/coded-api.md",
@@ -20709,28 +20794,28 @@
         "lib/net8.0-windows7.0/zh-TW/UiPath.System.Activities.Rules.resources.dll",
         "lib/net8.0-windows7.0/zu/UiPath.System.Activities.Design.resources.dll",
         "lib/net8.0-windows7.0/zu/UiPath.System.Activities.Rules.resources.dll",
-        "uipath.system.activities.26.8.2.nupkg.sha512",
+        "uipath.system.activities.26.10.0.nupkg.sha512",
         "uipath.system.activities.nuspec"
       ]
     },
-    "UiPath.System.Activities.Runtime/26.8.2": {
-      "sha512": "N+/dkWm9dePAQ2YHNvZc6+NK1SEtQS8u9gOr8ym8Mw06q/7kmkuWQBFhjg3Rw1s/qQ3/KORPaw6keH8NiRQSsw==",
+    "UiPath.System.Activities.Runtime/26.10.0": {
+      "sha512": "EKTAhtUSMALL8MFX1AexzRymXEPomUQgfGStRWEAE7yFObuqxIBYqdseQuNhJ/j0b12cZ76DUW025Du5SoXXvA==",
       "type": "package",
-      "path": "uipath.system.activities.runtime/26.8.2",
+      "path": "uipath.system.activities.runtime/26.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net6.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
         "lib/net6.0/UiPath.System.Activities.Package.Runtime.dll",
         "lib/net8.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
-        "uipath.system.activities.runtime.26.8.2.nupkg.sha512",
+        "uipath.system.activities.runtime.26.10.0.nupkg.sha512",
         "uipath.system.activities.runtime.nuspec"
       ]
     },
-    "UiPath.System.Activities.Runtime.Windows/26.8.2": {
-      "sha512": "/CosGGR9IRmY5H8lBj5Jnxg5/TkREG/DNHHiD+1+3g1iYwUwxvBuQmmw0EKqXb7BVww7HcENUm4jepiCfF8pSA==",
+    "UiPath.System.Activities.Runtime.Windows/26.10.0": {
+      "sha512": "HOZc+VjjRRyAZvFPqBSJ2OKzuEtcpNfoTUYVMG/iiYPfLqcTQ2kWDhaLqDsqdhpihBBu8V69GVe+rEmjKxkL2Q==",
       "type": "package",
-      "path": "uipath.system.activities.runtime.windows/26.8.2",
+      "path": "uipath.system.activities.runtime.windows/26.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -20818,7 +20903,7 @@
         "lib/net8.0-windows7.0/zh-TW/UiPath.System.Activities.resources.dll",
         "lib/net8.0-windows7.0/zu/UiPath.ServiceClients.resources.dll",
         "lib/net8.0-windows7.0/zu/UiPath.System.Activities.resources.dll",
-        "uipath.system.activities.runtime.windows.26.8.2.nupkg.sha512",
+        "uipath.system.activities.runtime.windows.26.10.0.nupkg.sha512",
         "uipath.system.activities.runtime.windows.nuspec"
       ]
     },
@@ -20835,10 +20920,10 @@
         "uipath.telemetry.client.nuspec"
       ]
     },
-    "UiPath.UIAutomation.Activities/26.10.5": {
-      "sha512": "LjnapTjWt78nJTwJ1teXILtMtm2fhwOYHCEMVQ2x4YBsaBbG6gMd4PIqrTw91zQFHXeNh1TMawJkw7y7/mBQBA==",
+    "UiPath.UIAutomation.Activities/26.10.6": {
+      "sha512": "l4NGDsVs80lEu5Scqsy5kYQibN9mnAa7SS+3FXqNBRKbrDQd22xeqlB4FWb/ZqQ8QOhcxEOopOsYir0j7qOXqg==",
       "type": "package",
-      "path": "uipath.uiautomation.activities/26.10.5",
+      "path": "uipath.uiautomation.activities/26.10.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -21047,14 +21132,14 @@
         "lib/net6.0/ru/UiPath.UIAutomationNext.Activities.Design.resources.dll",
         "lib/net6.0/tr/UiPath.UIAutomationNext.Activities.Design.resources.dll",
         "lib/net6.0/zh-CN/UiPath.UIAutomationNext.Activities.Design.resources.dll",
-        "uipath.uiautomation.activities.26.10.5.nupkg.sha512",
+        "uipath.uiautomation.activities.26.10.6.nupkg.sha512",
         "uipath.uiautomation.activities.nuspec"
       ]
     },
-    "UiPath.UIAutomation.Activities.Runtime/26.10.5": {
-      "sha512": "bAqv5pD/ONN6tZ34O59hSOCE5DoSllcO9lB/P8ABrJ5F6LcgCUdIcFrlPTT3lbuwjQI+QduDkmWxILjADqGZdQ==",
+    "UiPath.UIAutomation.Activities.Runtime/26.10.6": {
+      "sha512": "nmkhMyGDTF/5lgyup2MUuq5WwCLFechcxoG7Jr7uDodJ74Md4HWMvJAc5hCb1wyg82yBkumMWsXU07PncQLyEw==",
       "type": "package",
-      "path": "uipath.uiautomation.activities.runtime/26.10.5",
+      "path": "uipath.uiautomation.activities.runtime/26.10.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -21126,14 +21211,14 @@
         "lib/net6.0-windows7.0/zu/UiPath.CV.resources.dll",
         "lib/net6.0-windows7.0/zu/UiPath.UIAutomationNext.resources.dll",
         "lib/net6.0-windows7.0/zu/UiPath.UiAutomation.Activities.resources.dll",
-        "uipath.uiautomation.activities.runtime.26.10.5.nupkg.sha512",
+        "uipath.uiautomation.activities.runtime.26.10.6.nupkg.sha512",
         "uipath.uiautomation.activities.runtime.nuspec"
       ]
     },
-    "UiPath.UIAutomation.Activities.Runtime.Design/26.10.5": {
-      "sha512": "O0YOtK2l/cwfrI64fs1OiEvaZ6FLClHcTG0t7ljMMwbf8c+HBYSgH0ORdj1rH2wN6Ua2J5JDA+3Ehfz7EdVi3A==",
+    "UiPath.UIAutomation.Activities.Runtime.Design/26.10.6": {
+      "sha512": "+UVt4wDPa9X9sP7NZKx4INn39S13dbT5cI52UQkjgEdVLdOh2N+FEhtIFvW4mEv6tzF/60Sj1TQ2kWu0/sj6dg==",
       "type": "package",
-      "path": "uipath.uiautomation.activities.runtime.design/26.10.5",
+      "path": "uipath.uiautomation.activities.runtime.design/26.10.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -21378,14 +21463,14 @@
         "build/net6.0/zu/UiPath.UIAutomationNext.Activities.resources.dll",
         "lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Runtime.Design.dll",
         "lib/net6.0/UiPath.UIAutomation.Activities.Runtime.Design.dll",
-        "uipath.uiautomation.activities.runtime.design.26.10.5.nupkg.sha512",
+        "uipath.uiautomation.activities.runtime.design.26.10.6.nupkg.sha512",
         "uipath.uiautomation.activities.runtime.design.nuspec"
       ]
     },
-    "UiPath.UIAutomation.CLI/26.10.5": {
-      "sha512": "4nGihwzlu8hJ/dx0MWP+SHEPcOdsVX+LOCXeelJbALCkyHDRnPgkmxP5ZoSG3SG7uAJFfu8rrajDbp5oPshojg==",
+    "UiPath.UIAutomation.CLI/26.10.6": {
+      "sha512": "a2T1zGjs0FWLvBe9fD6EAL8rEh84yPu6ydjaGljJJkd5Ls/k9s6oiU0hpZ9Rp107do5KT5rut7MR+dCIVYTtlg==",
       "type": "package",
-      "path": "uipath.uiautomation.cli/26.10.5",
+      "path": "uipath.uiautomation.cli/26.10.6",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -21473,14 +21558,14 @@
         "tools/net6.0/cli/zh-Hant/System.CommandLine.resources.dll",
         "tools/net6.0/cli/zh-TW/UiPath.UIAutomation.CLI.Core.resources.dll",
         "tools/net6.0/cli/zu/UiPath.UIAutomation.CLI.Core.resources.dll",
-        "uipath.uiautomation.cli.26.10.5.nupkg.sha512",
+        "uipath.uiautomation.cli.26.10.6.nupkg.sha512",
         "uipath.uiautomation.cli.nuspec"
       ]
     },
-    "UiPath.UIAutomation.Design.RecoveryPanel/26.10.5": {
-      "sha512": "bYdR5NYJ/rWjI1FGLpAigw8Atcndduuwy20rfG17MwUk6TRcv6Rc8PS5HdmTPn5GP6KXVGcMpRvOX0Itlfd2ZA==",
+    "UiPath.UIAutomation.Design.RecoveryPanel/26.10.6": {
+      "sha512": "QeewHQTeMGoPgVC3ndFcd0EbTWIDizv0U/ibKs1Dnl73z6PQUonzYdaRQGBrSWjCSEafZB7YtVdF4uhixSHgkg==",
       "type": "package",
-      "path": "uipath.uiautomation.design.recoverypanel/26.10.5",
+      "path": "uipath.uiautomation.design.recoverypanel/26.10.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -21606,7 +21691,7 @@
         "content/runtime.js",
         "content/styles.css",
         "lib/net6.0/UiPath.UIAutomation.Design.RecoveryPanel.dll",
-        "uipath.uiautomation.design.recoverypanel.26.10.5.nupkg.sha512",
+        "uipath.uiautomation.design.recoverypanel.26.10.6.nupkg.sha512",
         "uipath.uiautomation.design.recoverypanel.nuspec"
       ]
     },
@@ -21762,9 +21847,9 @@
   "projectFileDependencyGroups": {
     "": [],
     "net8.0-windows7.0": [
-      "UiPath.Excel.Activities >= 3.6.1 <= 3.6.1",
-      "UiPath.System.Activities >= 26.8.2 <= 26.8.2",
-      "UiPath.UIAutomation.Activities >= 26.10.5 <= 26.10.5"
+      "UiPath.Excel.Activities >= 3.7.0-preview <= 3.7.0-preview",
+      "UiPath.System.Activities >= 26.10.0 <= 26.10.0",
+      "UiPath.UIAutomation.Activities >= 26.10.6 <= 26.10.6"
     ]
   },
   "packageFolders": {
@@ -21788,20 +21873,20 @@
           "UiPath.Excel.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[3.6.1, 3.6.1]"
+            "version": "[3.7.0-preview, 3.7.0-preview]"
           },
           "UiPath.System.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[26.8.2, 26.8.2]"
+            "version": "[26.10.0, 26.10.0]"
           },
           "UiPath.UIAutomation.Activities": {
             "include": "Runtime",
             "target": "Package",
-            "version": "[26.10.5, 26.10.5]"
+            "version": "[26.10.6, 26.10.6]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\amitg\\AppData\\Local\\Programs\\UiPathPlatform\\Studio\\26.0.203-cloud.25204\\SolutionPackager\\Tools\\WorkflowCompiler\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\amitg\\AppData\\Local\\Programs\\UiPathPlatform\\Studio\\26.0.204-cloud.25537\\WorkflowCompiler\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

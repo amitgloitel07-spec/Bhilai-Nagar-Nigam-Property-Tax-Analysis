@@ -13,13 +13,13 @@ Writes a DataTable object to a string using the CSV format.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InArgument | DataTable | Yes | — | The DataTable to convert to a CSV-formatted string. |
+| DataTable | Convert from data table | InArgument | DataTable | Yes | — | The DataTable to convert to a CSV-formatted string. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| Text | Text | OutArgument | String | The resulting CSV string. Each row maps to a line; column values are comma-separated. |
+| Text | To string | OutArgument | String | The resulting CSV string. Each row maps to a line; column values are comma-separated. |
 
 ## Notes
 

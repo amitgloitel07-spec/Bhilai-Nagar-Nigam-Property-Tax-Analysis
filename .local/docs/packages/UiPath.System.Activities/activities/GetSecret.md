@@ -2,7 +2,7 @@
 
 `UiPath.Core.Activities.GetSecret`
 
-Gets a specified secret asset by using a provided Asset Name. If the secret asset is not global, it must be assigned to the local robot in order to be retrieved.
+Gets a specified secret asset by using a provided asset name. If the secret asset is not global, it must be assigned to the local robot in order to be retrieved.
 
 **Package:** `UiPath.System.Activities`
 **Category:** Assets
@@ -13,13 +13,13 @@ Gets a specified secret asset by using a provided Asset Name. If the secret asse
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `AssetName` | Asset Name | InArgument | `string` | No | — | The name of the Orchestrator secret asset to retrieve. |
+| `AssetName` | Secret asset name | InArgument | `string` | No | — | The name of the Orchestrator secret asset to retrieve. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Secret` | Password | OutArgument | `SecureString` | The secret value retrieved from Orchestrator, returned as a `SecureString` to avoid exposing the plaintext value in memory. |
+| `Secret` | Secret | OutArgument | `SecureString` | The secret value retrieved from Orchestrator, returned as a `SecureString` to avoid exposing the plaintext value in memory. |
 
 ## XAML Example
 

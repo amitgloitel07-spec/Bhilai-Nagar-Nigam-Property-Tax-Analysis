@@ -16,14 +16,14 @@ Displays a dialog box that prompts the user for text, password input, or a selec
 | `Title` | Title | `InArgument` | `string` | No | - | The dialog title. |
 | `Label` | Label | `InArgument` | `string` | No | - | Prompt text shown in the dialog body. |
 | `Options` | Options | `InArgument` | `string[]` | No | - | Fixed list of options to show as choices. Mutually exclusive with `OptionsString`. |
-| `OptionsString` | Options String | `InArgument` | `string` | No | - | String that is split into option values by the dialog helper. Mutually exclusive with `Options`. |
-| `IsPassword` | IsPassword | Property | `bool` | No | `false` | Masks typed input. Cannot be used together with `Options` or `OptionsString`. |
+| `OptionsString` | Options string | `InArgument` | `string` | No | - | String that is split into option values by the dialog helper. Mutually exclusive with `Options`. |
+| `IsPassword` | Is password | Property | `bool` | No | `false` | Masks typed input. Cannot be used together with `Options` or `OptionsString`. |
 
 ### Options
 
 | Name | Display Name | Kind | Type | Default | Description |
 |------|-------------|------|------|---------|-------------|
-| `TopMost` | TopMost | `InArgument` | `bool` | `false` | Keeps the input dialog above other windows. |
+| `TopMost` | Topmost | `InArgument` | `bool` | `false` | Keeps the input dialog above other windows. |
 
 ### Output
 

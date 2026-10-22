@@ -13,21 +13,21 @@ Combines rows from two tables by using values common to each other, according to
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable1 | DataTable1 | InArgument | DataTable | Yes | — | The first (left) DataTable in the join. |
-| DataTable2 | DataTable2 | InArgument | DataTable | Yes | — | The second (right) DataTable in the join. |
+| DataTable1 | Data table 1 | InArgument | DataTable | Yes | — | The first (left) DataTable in the join. |
+| DataTable2 | Data table 2 | InArgument | DataTable | Yes | — | The second (right) DataTable in the join. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| JoinType | JoinType | Property (JoinType) | — | The type of join to perform. See **Enum Reference** below. |
-| Arguments | Arguments | Property (List\<JoinOperationArgument\>) | — | The join conditions built using the designer's Join widget. Each condition pairs a column from DataTable1 with a column from DataTable2 using a comparison operator. All conditions are combined with AND. |
+| JoinType | Join type | Property (JoinType) | — | The type of join to perform. See **Enum Reference** below. |
+| Arguments | Join rules | Property (List\<JoinOperationArgument\>) | — | The join conditions built using the designer's Join widget. Each condition pairs a column from DataTable1 with a column from DataTable2 using a comparison operator. All conditions are combined with AND. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| OutputDataTable | Data Table | OutArgument | DataTable | The resulting joined DataTable. |
+| OutputDataTable | Output data table | OutArgument | DataTable | The resulting joined DataTable. |
 
 ## Join Conditions
 

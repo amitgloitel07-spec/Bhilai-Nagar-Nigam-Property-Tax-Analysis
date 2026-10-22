@@ -23,7 +23,7 @@ _No configuration properties._
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| VariableValue | Variable Value | OutArgument | `string` | The value of the specified environment variable. Returns an empty string if the variable does not exist. |
+| VariableValue | Variable value | OutArgument | `string` | The value of the specified environment variable. Returns an empty string if the variable does not exist. |
 
 ## XAML Example
 

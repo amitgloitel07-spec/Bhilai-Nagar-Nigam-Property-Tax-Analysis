@@ -1,4 +1,4 @@
-# Select Folder
+# Browse for Folder
 
 `UiPath.Core.Activities.SelectFolder`
 
@@ -13,13 +13,13 @@ Opens a folder picker dialog and returns the selected folder path.
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `SelectedFolder` | SelectedFolder | `OutArgument` | `string` | The selected folder path. |
+| `SelectedFolder` | Selected folder | `OutArgument` | `string` | The selected folder path. |
 
 ## XAML Example
 
 ```xml
 <ui:SelectFolder
-    DisplayName="Select Folder"
+    DisplayName="Browse for Folder"
     SelectedFolder="[folderPath]" />
 ```
 

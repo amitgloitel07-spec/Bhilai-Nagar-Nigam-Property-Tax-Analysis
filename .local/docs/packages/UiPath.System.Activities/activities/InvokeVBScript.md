@@ -17,7 +17,7 @@ Executes a specified VBScript, optionally passing it a list of input parameters.
 | FileName | VBScript file name | InArgument | `string` | Yes | — | The full file path of the `.vbs` script to execute. |
 | TimeoutMS | Timeout | InArgument | `int` | No | — | Maximum time in milliseconds to wait for the script to finish. Only applies when `WaitForOutput` is `True`. |
 | KillOnTimeout | KillOnTimeout | InArgument | `bool` | No | `False` | When `True`, forcibly terminates the VBScript process if the timeout is reached. |
-| RunInBatchMode | HidePopups | InArgument | `bool` | No | `False` | When `True`, suppresses display alerts, scripting errors, and input dialogs (runs silently). |
+| RunInBatchMode | Hide popups | InArgument | `bool` | No | `False` | When `True`, suppresses display alerts, scripting errors, and input dialogs (runs silently). |
 | UnicodeSupport | UnicodeSupport | InArgument | `bool` | No | `False` | When `True`, enables correct handling of non-ASCII characters (e.g., Japanese) in arguments and output. |
 | WaitForOutput | WaitForOutput | InArgument | `bool` | No | `True` | When `True`, the activity waits for the script to complete before proceeding. When `False`, the script runs asynchronously and `TimeoutMS` is ignored. |
 

@@ -22,8 +22,8 @@ Sends an email notification via the Orchestrator API.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `Recipients` | Recipients | `InArgument<IEnumerable<string>>` | — | The list of primary recipient email addresses (To). Required. |
-| `Cc` | Cc | `InArgument<IEnumerable<string>>` | — | The list of carbon-copy recipient email addresses. Optional. |
+| `Recipients` | Recipients | `InArgument<IEnumerable<string>>` | — | The list of primary recipient email addresses (To). Required. Together with `Cc`, supports up to 20 addresses in total. |
+| `Cc` | Cc | `InArgument<IEnumerable<string>>` | — | The list of carbon-copy recipient email addresses. Optional. Together with `Recipients`, supports up to 20 addresses in total. |
 
 ## XAML Example
 
@@ -40,4 +40,5 @@ Sends an email notification via the Orchestrator API.
 - Email is delivered via the **Orchestrator Notification Service**. The Orchestrator instance must have email notifications configured (SMTP or SendGrid) for this activity to deliver messages.
 - Unlike a direct SMTP send, this activity does not require credentials in the workflow — authentication is handled entirely by Orchestrator.
 - `Recipients` is required and must contain at least one valid email address.
+- The total number of addresses across `Recipients` and `Cc` combined cannot exceed 20. The activity raises an error when 21 or more are provided, unless `ContinueOnError` is true.
 - This activity does not support coded workflows (`codedWorkflowSupport` is false).

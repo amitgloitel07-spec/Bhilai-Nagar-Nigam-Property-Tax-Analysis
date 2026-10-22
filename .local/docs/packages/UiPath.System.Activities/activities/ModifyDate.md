@@ -19,7 +19,7 @@ Applies one or more date modification operations to a source date, then returns 
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `FormatAsText` | Format output as Text | `bool` | `false` | When `true`, writes the result to `OutText`; otherwise writes to `OutDate`. |
+| `FormatAsText` | Format output as text | `bool` | `false` | When `true`, writes the result to `OutText`; otherwise writes to `OutDate`. |
 | `PredefinedDateFormat` | Date format | `DateFormat` | `DotNetShortDate` | Predefined format used when `FormatAsText` is `true` and `UseCustomDateFormat` is `false`. |
 | `UseCustomDateFormat` | Use custom date format | `bool` | `false` | When `true`, uses `CustomDateFormat` instead of `PredefinedDateFormat`. |
 | `CustomDateFormat` | Custom date format | `InArgument<string>` | - | .NET date/time format string used when `UseCustomDateFormat` is `true`. |
@@ -29,7 +29,7 @@ Applies one or more date modification operations to a source date, then returns 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
 | `OutDate` | Save result as DateTime | `OutArgument` | `DateTime` | The modified date when `FormatAsText` is `false`. |
-| `OutText` | Save result as Text | `OutArgument` | `string` | The formatted modified date when `FormatAsText` is `true`. |
+| `OutText` | Save result as text | `OutArgument` | `string` | The formatted modified date when `FormatAsText` is `true`. |
 
 ### Body
 

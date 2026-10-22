@@ -1,4 +1,4 @@
-# Invoke Com Method
+# Invoke COM Method
 
 `UiPath.Core.Activities.InvokeComMethod`
 
@@ -17,7 +17,7 @@ Invokes a method of a specified COM object.
 | MethodName | Method name | InArgument | `string` | Yes | — | The name of the method to invoke on the COM object. |
 | CLSID | CLSID | InArgument | `string` | No | — | The class identifier (CLSID) of the COM object to instantiate. Use either `CLSID` or `ProgID` to identify the target object. |
 | ProgID | ProgID | InArgument | `string` | No | — | The programmatic identifier (ProgID) of the COM object type. Use either `ProgID` or `CLSID`. |
-| ContinueOnError | Continue On Error | InArgument | `bool` | No | — | When `True`, execution continues to the next activity even if this activity throws an error. |
+| ContinueOnError | Continue on error | InArgument | `bool` | No | — | When `True`, execution continues to the next activity even if this activity throws an error. |
 
 ### Configuration
 

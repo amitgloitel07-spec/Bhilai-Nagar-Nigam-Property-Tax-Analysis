@@ -13,14 +13,14 @@ Sets the status of a transaction item to Failed or Successful.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `TransactionItem` | Transaction Item | InArgument | `QueueItem` | Yes | — | The transaction item whose status is to be updated. Must be In Progress. |
+| `TransactionItem` | Transaction item | InArgument | `QueueItem` | Yes | — | The transaction item whose status is to be updated. Must be In Progress. |
 | `Status` | Status | InArgument | `ProcessingStatus` | No | Successful | The new status to assign to the transaction item. |
 | `Details` | Details | InArgument | `string` | No | null | Additional details about the failure. Visible in the Orchestrator queue item details. Only relevant when `Status` is Failed. |
 | `ErrorType` | ErrorType | InArgument | `ErrorType` | No | Business | The category of failure. Only relevant when `Status` is Failed. |
 | `Reason` | Reason | InArgument | `string` | No | — | The reason for the failure. Becomes required when `Status` is set to Failed. |
-| `AssociatedFilePath` | AssociatedFilePath | InArgument | `string` | No | null | Path to a file to attach to the failed transaction in Orchestrator. |
+| `AssociatedFilePath` | Associated file path | InArgument | `string` | No | null | Path to a file to attach to the failed transaction in Orchestrator. |
 | `TimeoutMS` | Timeout (milliseconds) | InArgument | `int` | No | — | The maximum time in milliseconds to wait before throwing an error. |
-| `ContinueOnError` | Continue On Error | InArgument | `bool` | No | false | When true, execution continues even if the activity throws an error. |
+| `ContinueOnError` | Continue on error | InArgument | `bool` | No | false | When true, execution continues even if the activity throws an error. |
 
 ### Configuration
 
@@ -79,4 +79,5 @@ Sets the status of a transaction item to Failed or Successful.
 - The `TransactionItem` must have status **In Progress**, typically obtained from **Get Transaction Item**, **Add Transaction Item**, or **Wait Queue Item**.
 - Choosing `ErrorType.Application` causes Orchestrator to re-queue the item for retry (subject to the queue's maximum retry count configuration).
 - Choosing `ErrorType.Business` marks the item as permanently failed with no automatic retry.
-- `FolderPath` is an advanced/hidden property that overrides the Orchestrator folder context.
+- The Orchestrator folder comes from `TransactionItem`. A `FolderPath` left over from older XAML no longer selects the folder, but its expression is still evaluated before the activity runs — remove it.
+- Writes an Info-level `Transaction Ended` robot log line on every execution. Turn it off per project via **Project Settings → System → Queues → Log transaction messages** (key `UiPath.System.Activities.Queues.LogTransactionMessages`, default on). Anything that reads this log line, such as dashboards or alerts, will no longer see it.

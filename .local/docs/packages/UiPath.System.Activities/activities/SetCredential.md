@@ -13,10 +13,10 @@ Updates the value of an indicated credential asset, that is already available in
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `CredentialName` | Credential Asset Name | InArgument | `string` | Yes | — | The name of the Orchestrator credential asset to update. |
+| `CredentialName` | Credential name | InArgument | `string` | Yes | — | The name of the Orchestrator credential asset to update. |
 | `UserName` | Username | InArgument | `string` | Yes | — | The new username value to store in the credential asset. |
 | `Password` | Password | InArgument | `string` | Yes (Normal password) | — | The new plaintext password value. Use this or `SecurePassword`, not both. |
-| `SecurePassword` | Secure Password | InArgument | `SecureString` | Yes (Secure password) | — | The new password as a `SecureString`. Use this or `Password`, not both. |
+| `SecurePassword` | Secure password | InArgument | `SecureString` | Yes (Secure password) | — | The new password as a `SecureString`. Use this or `Password`, not both. |
 
 ## Valid Configurations
 

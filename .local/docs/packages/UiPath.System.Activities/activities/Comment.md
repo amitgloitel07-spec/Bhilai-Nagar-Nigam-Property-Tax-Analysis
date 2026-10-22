@@ -13,7 +13,7 @@ Adds a comment into the workflow.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `Text` | Text | `string` | — | The comment text displayed on the activity in the designer canvas. |
+| `Text` | Comment | `string` | — | The comment text displayed on the activity in the designer canvas. |
 
 ## XAML Example
 

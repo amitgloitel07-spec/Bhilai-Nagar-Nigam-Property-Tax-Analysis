@@ -14,11 +14,13 @@ Uploads a local file to the Orchestrator storage, in a certain bucket and at a c
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `StorageBucketName` | Storage bucket name | InArgument | `string` | Yes (inherited) | — | The name of the Orchestrator storage bucket. Inherited from the storage activity base class — declared on the activity element, not as a child binding. |
-| `FolderPath` | Folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
-| `FileResource` | File Resource | InArgument | `IResource` | Yes (File overload) | — | A file resource object representing the local file to upload. Use this or `Path`, not both. |
-| `Path` | Path | InArgument | `string` | Yes (Path overload) | — | The local file system path of the file to upload. Use this or `FileResource`, not both. |
-| `Destination` | Destination | InArgument | `string` | No | — | The target path within the storage bucket. A value ending in `/` or `\` (e.g., `reports/2024/`) is a directory prefix the file name is appended to; a value without a trailing separator is used as the full upload path unless `FileName` is also set, in which case it is treated as a directory. Leave empty to upload to the bucket root. |
-| `FileName` | File Name | InArgument | `string` | No | — | The name to use for the file in the storage bucket. If omitted, the name is inferred at runtime from `FileResource` or `Path`. |
+| `FolderPath` | Orchestrator folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
+| `FileResource` | File | InArgument | `IResource` | Yes (File overload) | — | A file resource object representing the local file to upload. Use this or `Path`, not both. |
+| `Path` | File path | InArgument | `string` | Yes (Path overload) | — | The local file system path of the file to upload. Use this or `FileResource`, not both. |
+| `Destination` | Destination path | InArgument | `string` | No | — | The target path within the storage bucket. A value ending in `/` or `\` (e.g., `reports/2024/`) is a directory prefix the file name is appended to; a value without a trailing separator is used as the full upload path unless `FileName` is also set, in which case it is treated as a directory. Leave empty to upload to the bucket root. |
+| `FileName` | Uploaded file name | InArgument | `string` | No | — | The name to use for the file in the storage bucket. If omitted, the name is inferred at runtime from `FileResource` or `Path`. |
+| `TimeoutMS` | Timeout (milliseconds) | InArgument | `int` | No | — | The time to wait for Orchestrator to respond, or for the file transfer to make progress, before an error is thrown. It does not limit the total transfer time, so large files over slow connections still complete. |
+| `ContinueOnError` | Continue on error | InArgument | `bool` | No | false | When true, execution continues even if the activity throws an error. |
 
 ## Valid Configurations
 
@@ -68,3 +70,8 @@ Uploads a local file to the Orchestrator storage, in a certain bucket and at a c
   - `Destination` without a trailing separator: used verbatim as the full upload path when `FileName` is empty, or treated as a directory that `FileName` is appended to.
 - Legacy workflows where `Destination` includes the file name keep working unchanged: the value is used as the full upload path at runtime; the XAML is not rewritten.
 - If a file with the same name already exists at the destination path in the bucket, it is overwritten.
+- The file is uploaded with a MIME type (for example `application/pdf`), so downloads return the right type:
+  - The extension of the file name in the bucket decides the type.
+  - If that name has no known extension, the type the `FileResource` reports is used, and otherwise the extension of the local file (from `Path` or the resolved `FileResource`).
+  - If neither gives a type, no type is sent and the storage provider applies its default (usually `application/octet-stream`).
+  - Buckets that Orchestrator stores on its own file system, and MinIO buckets, ignore the uploaded type; the type a download returns is decided by Orchestrator.

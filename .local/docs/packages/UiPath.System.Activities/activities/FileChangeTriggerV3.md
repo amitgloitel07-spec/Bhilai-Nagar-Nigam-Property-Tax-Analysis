@@ -14,20 +14,20 @@ Triggers when a file system change matching the configured path, filter, and cha
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `Path` | Path | `InArgument` | `string` | Yes | - | File or folder path to monitor. Environment variables are expanded at runtime. |
-| `FileNameFilter` | File Name Filter | `InArgument` | `string` | No | Empty | File name filter passed to the file watcher. If `Path` is a file and this is empty, the file name is inferred from `Path`. |
+| `FileNameFilter` | File name filter | `InArgument` | `string` | No | Empty | File name filter passed to the file watcher. If `Path` is a file and this is empty, the file name is inferred from `Path`. |
 
 ### Event
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `NotifyFilters` | NotifyFilters | `InArgument` | `NotifyFilters` | Yes | `FileName` | File system attributes that raise events. |
-| `ChangeType` | ChangeType | `InArgument` | `WatcherChangeTypes` | Yes | `Changed` | Type of file system change to monitor. |
+| `NotifyFilters` | Notify filters | `InArgument` | `NotifyFilters` | Yes | `FileName` | File system attributes that raise events. |
+| `ChangeType` | Change type | `InArgument` | `WatcherChangeTypes` | Yes | `Changed` | Type of file system change to monitor. |
 
 ### Options
 
 | Name | Display Name | Kind | Type | Default | Description |
 |------|-------------|------|------|---------|-------------|
-| `IncludeSubdirectories` | IncludeSubdirectories | `InArgument` | `bool` | `false` | When `true`, monitors subfolders recursively. |
+| `IncludeSubdirectories` | Include subdirectories | `InArgument` | `bool` | `false` | When `true`, monitors subfolders recursively. |
 
 ### Output
 
@@ -54,3 +54,6 @@ Triggers when a file system change matching the configured path, filter, and cha
 - This activity is Windows-only.
 - `NotifyFilters` and `ChangeType` cannot be zero; validation fails for empty flag values.
 - Use this activity inside a trigger scope or a trigger-enabled workflow surface.
+- Changes that happen while the trigger is starting are queued and delivered once it is listening, so the first change after the trigger starts is not lost.
+- If delivering an event fails, the trigger keeps firing for later changes. Only the first such failure is traced in full.
+- Stopping the trigger, for example when its scope completes or is cancelled, waits at most about 4 seconds for the file watchers to shut down. If the watched location is an unresponsive network share, shutdown finishes in the background and a warning is traced.

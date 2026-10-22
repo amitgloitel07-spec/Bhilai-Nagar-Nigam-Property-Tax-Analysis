@@ -13,8 +13,8 @@ Creates a scope with limited execution time. It throws a `System.TimeoutExceptio
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| ThrowExceptionAfter | Throw Exception After | InArgument | `TimeSpan` | Yes | — | The duration after which the scope throws a `System.TimeoutException` if the body has not completed. |
-| TimeoutMessage | Timeout Message | InArgument | `string` | No | — | The message included in the thrown `TimeoutException` when the time limit is exceeded. |
+| ThrowExceptionAfter | Throw exception after | InArgument | `TimeSpan` | Yes | — | The duration after which the scope throws a `System.TimeoutException` if the body has not completed. |
+| TimeoutMessage | Timeout message | InArgument | `string` | No | — | The message included in the thrown `TimeoutException` when the time limit is exceeded. |
 
 ### Configuration
 

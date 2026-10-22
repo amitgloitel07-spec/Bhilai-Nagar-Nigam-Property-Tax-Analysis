@@ -13,7 +13,7 @@ Repeats a set of activities a specified number of times. Add the activities to r
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `NumberOfTimes` | Number Of Times | `InArgument` | `int` | Yes | — | The total number of times to repeat the body activities. |
+| `NumberOfTimes` | Number of times | `InArgument` | `int` | Yes | — | The total number of times to repeat the body activities. |
 | `StartAt` | Start at | `InArgument` | `int` | No | `1` | The starting value of the iteration counter variable. |
 
 ## XAML Example

@@ -37,6 +37,27 @@ Activities for reading, writing, and manipulating Excel workbooks, CSV files, ch
 | [Get Sheets Workbook](activities/GetSheets.md) | Gets the list of sheet names |
 | [Insert Chart Workbook](activities/InsertChart.md) | Inserts a chart into a workbook |
 | [Update Chart Workbook](activities/UpdateChart.md) | Updates an existing chart with modifications |
+| [Insert Rows Workbook](activities/InsertRows.md) | Inserts one or more rows at a specified position |
+| [Delete Rows Workbook](activities/DeleteRows.md) | Deletes specific, visible, hidden, or duplicate rows |
+| [Insert Columns Workbook](activities/InsertColumns.md) | Inserts one or more columns before or after a reference column |
+| [Delete Columns Workbook](activities/DeleteColumns.md) | Deletes one or more consecutive columns |
+| [Insert Sheet Workbook](activities/InsertSheet.md) | Inserts a new sheet, optionally at a specific position |
+| [Rename Sheet Workbook](activities/RenameSheet.md) | Renames an existing sheet |
+| [Delete Sheet Workbook](activities/DeleteSheet.md) | Deletes an existing sheet |
+| [Duplicate Sheet Workbook](activities/DuplicateSheet.md) | Duplicates an existing sheet under a new name |
+| [Fill Range Workbook](activities/FillRange.md) | Fills a range with a single value or formula |
+| [Clear Range Workbook](activities/ClearRange.md) | Clears the contents and optionally the formatting of a range |
+| [Format Range Workbook](activities/FormatRange.md) | Applies number, date, time, alignment, and font settings to a range |
+| [Sort Range Workbook](activities/SortRange.md) | Sorts a range by one or more columns |
+| [Remove Duplicates Workbook](activities/RemoveDuplicates.md) | Removes duplicate rows from a range |
+| [Find First or Last Data Row Workbook](activities/FindFirstLastDataRow.md) | Finds the first row containing data, and the last populated row (or first empty row), in a column of a range |
+| [Auto Fit Workbook](activities/AutoFit.md) | Autofits columns and/or rows of a range to their contents |
+| [Protect Sheet Workbook](activities/ProtectSheet.md) | Protects a sheet, optionally allowing specific actions |
+| [Unprotect Sheet Workbook](activities/UnprotectSheet.md) | Removes protection from a sheet |
+| [Lookup Workbook](activities/Lookup.md) | Approximate-match lookup in a sorted vector/range |
+| [VLookup Workbook](activities/VLookup.md) | Looks up a value in the first column of a table range |
+| [Match Function Workbook](activities/MatchFunction.md) | Returns the relative position of a value within a range |
+| [Filter Range Workbook](activities/FilterRange.md) | Filters a range by the values of a column (basic or advanced filter), or clears its filters |
 
 ### Windows — Scopes
 

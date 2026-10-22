@@ -11,29 +11,31 @@ Schedule a recurrent time to start a job.
 
 ### Configuration
 
+> In the designer these labels are **contextual**: the same field is reused across frequencies, so `DailyRepeat`, `HourlyRepeat`, `MonthlyRepeat`, and `MinuteByMinuteRepeat` all display **Trigger every**, and the `*StartingTime` fields display **At what time**. Which rows appear depends on the selected `Frequency` — see [Valid Configurations](#valid-configurations).
+
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
 | `Frequency` | Frequency | `TimeFrequency` | — | The scheduling frequency mode. Determines which other scheduling properties are shown. |
-| `TimeZone` | Time Zone | `string` | — | The time zone used to interpret scheduling times. Supports IANA and Windows time zone identifiers. |
-| `CronExpression` | Cron Expression | `string` | `"0 0 12 ? * MON-FRI *"` | A Quartz-style cron expression. Visible only when `Frequency` is `CronExpression`. |
-| `DailyRepeat` | Daily Repeat | `int?` | — | Repeat interval in days. Visible only when `Frequency` is `Daily`. |
-| `DailyStartingTime` | Daily Starting Time | `DateTime?` | — | The time of day to start when using the Daily frequency. Visible only when `Frequency` is `Daily`. |
-| `HourlyRepeat` | Hourly Repeat | `int?` | — | Repeat interval in hours. Visible only when `Frequency` is `Hourly`. |
-| `HourlyStartingMinutes` | Hourly Starting Minutes | `int?` | — | Minutes past the hour at which to start when using the Hourly frequency. Visible only when `Frequency` is `Hourly`. |
-| `MinuteByMinuteRepeat` | Minute By Minute Repeat | `int?` | — | Repeat interval in minutes. Visible only when `Frequency` is `MinuteByMinute`. |
-| `WeeklyDaysToRunOn` | Weekly Days To Run On | `List<DayOfWeek>` | — | Days of the week on which to trigger. Visible when `Frequency` is `Weekly`. |
-| `WeeklyStartingTime` | Weekly Starting Time | `DateTime?` | — | The time of day to start when using the Weekly frequency. Visible only when `Frequency` is `Weekly`. |
-| `MonthlyRepeat` | Monthly Repeat | `int?` | — | Repeat interval in months. Visible only when `Frequency` is `Monthly`. |
-| `MonthDaySelection` | Month Day Selection | `MonthDaySelectionType` | — | Controls whether to trigger on specific calendar days or on a weekday-of-month pattern. Visible only when `Frequency` is `Monthly`. |
-| `MonthlyDaysToRunOn` | Monthly Days To Run On | `List<DayOfWeek>` | — | Days of the week to use with the monthly weekday pattern. |
-| `DaysOfMonthToRunOn` | Days of the month | `List<string>` | — | Specific calendar day numbers of the month to trigger on. |
-| `MonthlyStartingTime` | Monthly Starting Time | `DateTime?` | — | The time of day to start when using the Monthly frequency. Visible only when `Frequency` is `Monthly`. |
+| `TimeZone` | Timezone | `string` | — | The time zone used to interpret scheduling times. Supports IANA and Windows time zone identifiers. |
+| `CronExpression` | Quartz Cron expression | `string` | `"0 0 12 ? * MON-FRI *"` | A Quartz-style cron expression. Visible only when `Frequency` is `CronExpression`. |
+| `DailyRepeat` | Trigger every | `int?` | — | Repeat interval in days. Visible only when `Frequency` is `Daily`. |
+| `DailyStartingTime` | At what time | `DateTime?` | — | The time of day to start when using the Daily frequency. Visible only when `Frequency` is `Daily`. |
+| `HourlyRepeat` | Trigger every | `int?` | — | Repeat interval in hours. Visible only when `Frequency` is `Hourly`. |
+| `HourlyStartingMinutes` | Starting at minute | `int?` | — | Minutes past the hour at which to start when using the Hourly frequency. Visible only when `Frequency` is `Hourly`. |
+| `MinuteByMinuteRepeat` | Trigger every | `int?` | — | Repeat interval in minutes. Visible only when `Frequency` is `MinuteByMinute`. |
+| `WeeklyDaysToRunOn` | On the following day(s) of the week | `List<DayOfWeek>` | — | Days of the week on which to trigger. Visible when `Frequency` is `Weekly`. |
+| `WeeklyStartingTime` | At what time | `DateTime?` | — | The time of day to start when using the Weekly frequency. Visible only when `Frequency` is `Weekly`. |
+| `MonthlyRepeat` | Trigger every | `int?` | — | Repeat interval in months. Visible only when `Frequency` is `Monthly`. |
+| `MonthDaySelection` | On | `MonthDaySelectionType` | — | Controls whether to trigger on specific calendar days or on a weekday-of-month pattern. Visible only when `Frequency` is `Monthly`. |
+| `MonthlyDaysToRunOn` | On the following day(s) of the week | `List<DayOfWeek>` | — | Days of the week to use with the monthly weekday pattern. |
+| `DaysOfMonthToRunOn` | On the following day(s) of the month | `List<string>` | — | Specific calendar day numbers of the month to trigger on. |
+| `MonthlyStartingTime` | At what time | `DateTime?` | — | The time of day to start when using the Monthly frequency. Visible only when `Frequency` is `Monthly`. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `CurrentJobInfo` | Runtime information about the triggered job, including Process name, Workflow name, User Name, User Email, and Timestamp. |
+| `Result` | Job data | OutArgument | `CurrentJobInfo` | Runtime information about the triggered job, including Process name, Workflow name, User Name, User Email, and Timestamp. |
 
 ## Valid Configurations
 
@@ -86,7 +88,7 @@ Set `Frequency` to `CronExpression`. Configure:
 | `Weekly` | Trigger on specified days of the week |
 | `Monthly` | Trigger on specified days of the month |
 | `MinuteByMinute` | Trigger every N minutes |
-| `CronExpression` | Trigger according to a Quartz cron expression |
+| `CronExpression` | Cron Expression |
 
 **`MonthDaySelectionType`**
 

@@ -26,7 +26,7 @@ Format the source DateTime variable in a text (string).
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `String` | The date formatted as a text string according to the specified format and culture. |
+| `Result` | DateTime as text | OutArgument | `String` | The date formatted as a text string according to the specified format and culture. |
 
 ## XAML Example
 

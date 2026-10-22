@@ -13,7 +13,7 @@ Provides runtime job info such as process name and version, workflow name, robot
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Get Current Job Info | `OutArgument` | `CurrentJobInfo` | An object containing runtime information about the current job, including process name, process version, workflow name, robot name, and execution mode. |
+| `Result` | Job data | `OutArgument` | `CurrentJobInfo` | An object containing runtime information about the current job, including process name, process version, workflow name, robot name, and execution mode. |
 
 ## XAML Example
 

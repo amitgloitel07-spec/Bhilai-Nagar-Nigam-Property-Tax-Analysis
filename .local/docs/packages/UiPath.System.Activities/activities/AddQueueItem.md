@@ -18,13 +18,13 @@ Adds a new item in the queue. The status of the item will be New.
 | `DueDate` | Deadline | InArgument | `DateTime` | No | null | The latest date and time by which the item should be processed. |
 | `Priority` | Priority | InArgument | `QueueItemPriority` | No | `Normal` | The priority of the queue item. Accepts a literal `QueueItemPriority` value or a bound expression. |
 | `Reference` | Reference | InArgument | `string` | No | null | An external reference tag for the queue item. |
-| `ItemInformationCollection` | Item Information Collection | InArgument | `Dictionary<string, object>` | No | null | A variable dictionary containing the item's specific data. Used when item data is bound at runtime. |
+| `ItemInformationCollection` | Item collection | InArgument | `Dictionary<string, object>` | No | null | A variable dictionary containing the item's specific data. Used when item data is bound at runtime. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `ItemInformation` | Item Information | `Dictionary<string, InArgument>` | — | The inline key-value collection of specific data for the queue item. Keys can be auto-populated from the Orchestrator queue schema. |
+| `ItemInformation` | Item information | `Dictionary<string, InArgument>` | — | The inline key-value collection of specific data for the queue item. Keys can be auto-populated from the Orchestrator queue schema. |
 
 ## Valid Configurations
 

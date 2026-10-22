@@ -13,14 +13,14 @@ Executes contained activities while the condition is True.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Condition` | Condition | `InArgument` | `bool` | No | — | The Boolean condition evaluated before each iteration. The loop continues while this is `True`. |
-| `MaxIterations` | Max Iterations | `InArgument` | `int` | No | — | Maximum number of iterations. A value of `0` means unlimited. |
+| `Condition` | Condition | `Activity` | `bool` | Yes | — | The Boolean condition evaluated before each iteration. The loop continues while this is `True`. Set directly inside `<ui:InterruptibleWhile.Condition>` — `Condition` is an `Activity<bool>`, so no `<InArgument>` wrapper. |
+| `MaxIterations` | Max iterations | `InArgument` | `int` | No | — | Maximum number of iterations. A value of `0` means unlimited. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `CurrentIndex` | Current Index | `OutArgument` | `int` | The zero-based index of the current iteration. |
+| `CurrentIndex` | Index | `OutArgument` | `int` | The zero-based index of the current iteration. |
 
 ## XAML Example
 
@@ -29,9 +29,7 @@ Executes contained activities while the condition is True.
     xmlns:ui="clr-namespace:UiPath.Core.Activities;assembly=UiPath.System.Activities"
     DisplayName="While">
   <ui:InterruptibleWhile.Condition>
-    <InArgument x:TypeArguments="x:Boolean">
-      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="counter &lt; 10" />
-    </InArgument>
+    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="counter &lt; 10" />
   </ui:InterruptibleWhile.Condition>
   <ui:InterruptibleWhile.Body>
     <Sequence DisplayName="Body">

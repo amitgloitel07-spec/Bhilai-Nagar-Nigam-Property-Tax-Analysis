@@ -14,8 +14,8 @@ Lists the content of a certain directory in an Orchestrator storage bucket.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `StorageBucketName` | Storage bucket name | InArgument | `string` | Yes (inherited) | — | The name of the Orchestrator storage bucket. Inherited from the storage activity base class — declared on the activity element, not as a child binding. |
-| `FolderPath` | Folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
-| `Directory` | Directory | InArgument | `string` | Yes | `"\\"` | The path of the directory within the storage bucket to list (e.g., `reports/2024`). Defaults to the bucket root. |
+| `FolderPath` | Orchestrator folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
+| `Directory` | Directory | InArgument | `string` | Yes | `"\\"` | The path of the directory within the storage bucket to list (e.g., `reports/2024`). Pre-filled with `"\\"`, the bucket root. |
 | `Filter` | Filter | InArgument | `string` | No | — | An optional filter expression to narrow down results by file name or pattern. |
 | `Recursive` | Recursive | InArgument | `bool` | No | `true` | When `True`, lists files in all subdirectories recursively. When `False`, lists only the immediate directory contents. |
 
@@ -51,6 +51,6 @@ Lists the content of a certain directory in an Orchestrator storage bucket.
 
 - Requires an active Orchestrator connection with access to storage buckets.
 - `StorageBucketName` is **required** (inherited from the storage activity base class). `FolderPath` is optional — when empty, the robot's current Orchestrator folder is used.
-- `Directory` defaults to `"\\"` which represents the root of the bucket.
+- `Directory` is **required** and comes pre-filled with `"\\"`, which represents the root of the bucket — so a newly added activity lists the bucket root without further configuration. The pre-filled value is persisted to the `.xaml`, as every other non-null activity default is. A `Directory` expression that evaluates to `null` or an empty string is treated as the bucket root; whitespace is passed through unchanged.
 - The activity output `Result` is `IEnumerable<StorageFileInfo>`. Iterate it with **For Each** to access each entry's `FileFullPath`.
 - `Recursive` defaults to `True`; set it to `False` to list only the top-level entries in the specified directory.

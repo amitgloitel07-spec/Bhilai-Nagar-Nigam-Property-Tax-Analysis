@@ -14,8 +14,8 @@ Saves an input String into a file in the Orchestrator storage, in a certain buck
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `StorageBucketName` | Storage bucket name | InArgument | `string` | Yes (inherited) | — | The name of the Orchestrator storage bucket. Inherited from the storage activity base class — declared on the activity element, not as a child binding. |
-| `FolderPath` | Folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
-| `Path` | Path | InArgument | `string` | Yes | — | The destination file path within the storage bucket (e.g., `data/output.txt`). |
+| `FolderPath` | Orchestrator folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
+| `Path` | File path | InArgument | `string` | Yes | — | The destination file path within the storage bucket (e.g., `data/output.txt`). |
 | `Text` | Text | InArgument | `string` | Yes | — | The string content to write into the storage file. |
 | `Encoding` | Encoding | InArgument | `string` | No | `null` | The character encoding to use when writing the text (e.g., `"utf-8"`, `"utf-16"`). Defaults to UTF-8 when not specified. Can be set as a project-level default. |
 

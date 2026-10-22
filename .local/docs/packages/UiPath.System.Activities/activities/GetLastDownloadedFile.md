@@ -15,8 +15,8 @@ Detects a file download from any application and waits for the download to compl
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `DownloadFolder` | Downloads folder | `InArgument` | `string` | Yes | `GetDownloadsFolder()` | Path of the folder to monitor for new downloads. Defaults to the system Downloads folder. |
-| `Timeout` | Timeout | `InArgument` | `int` | No | — | Maximum time in milliseconds to wait for a download to complete before raising an error. |
-| `IgnoreFiles` | Ignore file extensions | `InArgument` | `string` | No | — | Comma-separated list of file extensions to ignore while waiting for the download to complete, entered **without** the leading dot (e.g. `crdownload, tmp`). By default, browser partial-download files are ignored (`crdownload`, `partial`, `part`, `opdownload`). Providing a value replaces these defaults, so include them if you want them kept. |
+| `Timeout` | Timeout (seconds) | `InArgument` | `int` | No | — | Maximum time in seconds to wait for a download to complete before raising an error. |
+| `IgnoreFiles` | Ignore files | `InArgument` | `string` | No | — | Comma-separated list of file extensions to ignore while waiting for the download to complete, entered **without** the leading dot (e.g. `crdownload, tmp`). By default, browser partial-download files are ignored (`crdownload`, `partial`, `part`, `opdownload`). Providing a value replaces these defaults, so include them if you want them kept. |
 
 ### Configuration
 
@@ -28,8 +28,8 @@ Detects a file download from any application and waits for the download to compl
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `File` | Downloaded file | `OutArgument` | `FileInfo` | `FileInfo` object for the downloaded file. |
-| `FileResource` | File Resource | `OutArgument` | `ILocalResource` | `ILocalResource` reference to the downloaded file. |
+| `File` | File | `OutArgument` | `FileInfo` | `FileInfo` object for the downloaded file. |
+| `FileResource` | File resource | `OutArgument` | `ILocalResource` | `ILocalResource` reference to the downloaded file. |
 
 ## XAML Example
 

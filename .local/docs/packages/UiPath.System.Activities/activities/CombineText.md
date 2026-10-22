@@ -20,7 +20,7 @@ Combines text from a given collection, with the provided separator.
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `String` | The single string produced by joining all values in the collection with the separator. |
+| `Result` | Combined text | OutArgument | `String` | The single string produced by joining all values in the collection with the separator. |
 
 ## Valid Configurations
 

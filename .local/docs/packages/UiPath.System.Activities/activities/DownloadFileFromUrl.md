@@ -18,17 +18,17 @@ Use this activity to download any file from a given URL.
 
 ### Configuration
 
-| Name | Display Name | Type | Default | Description |
-|------|-------------|------|---------|-------------|
+| Name | Display Name | Kind | Type | Required | Default | Description |
+|------|-------------|------|------|----------|---------|-------------|
 | `FileName` | Save file as | `InArgument` | `string` | No | — | Custom file name to use when saving. Leave empty to use the original file name from the URL. |
 | `Timeout` | Timeout (seconds) | `InArgument` | `int?` | No | `600` | Duration in seconds to wait for the server to begin the download response before raising an error. Default is 600 seconds. |
-| `UserAgentHeader` | User Agent | `InArgument` | `string` | No | — | Value for the HTTP `User-Agent` request header, used to identify the requesting party to the server. |
+| `UserAgentHeader` | User agent | `InArgument` | `string` | No | — | Value for the HTTP `User-Agent` request header, used to identify the requesting party to the server. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `ResponseAttachment` | Downloaded File | `OutArgument` | `ILocalResource` | Reference to the downloaded file saved on disk. |
+| `ResponseAttachment` | Downloaded file | `OutArgument` | `ILocalResource` | Reference to the downloaded file saved on disk. |
 
 ## XAML Example
 

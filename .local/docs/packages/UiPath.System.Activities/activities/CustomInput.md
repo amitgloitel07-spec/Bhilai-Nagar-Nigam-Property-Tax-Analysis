@@ -21,7 +21,7 @@ Displays a custom HTML or web-based input form and returns the submitted result 
 |------|-------------|------|------|---------|-------------|
 | `Width` | Width | `InArgument` | `int` | `800` when omitted or <= 0 | Dialog width in pixels. |
 | `Height` | Height | `InArgument` | `int` | `600` when omitted or <= 0 | Dialog height in pixels. |
-| `TopMost` | TopMost | `InArgument` | `bool` | `true` | Keeps the custom input window above other windows. |
+| `TopMost` | Topmost | `InArgument` | `bool` | `true` | Keeps the custom input window above other windows. |
 
 ### Output
 

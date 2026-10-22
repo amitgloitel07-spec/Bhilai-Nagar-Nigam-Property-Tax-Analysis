@@ -13,8 +13,8 @@ Adds a DataRow to a specified DataTable.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| ArrayRow | Array Row | InArgument | Object[] | Yes* | — | An array of values whose elements map positionally to each column of the DataTable. Mutually exclusive with **Data Row**. |
-| DataRow | Data Row | InArgument | DataRow | Yes* | — | An existing DataRow object to add to the DataTable. Mutually exclusive with **Array Row**. |
+| ArrayRow | Array row | InArgument | Object[] | Yes* | — | An array of values whose elements map positionally to each column of the DataTable. Mutually exclusive with **Data row**. In XAML the type argument is `s:Object[]` (`xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib"`); `x:Object[]` fails to load with `Cannot create unknown type '…InArgument({http://schemas.microsoft.com/winfx/2006/xaml}Object[])'`. |
+| DataRow | Data row | InArgument | DataRow | Yes* | — | An existing DataRow object to add to the DataTable. Mutually exclusive with **Array row**. |
 
 ### Input/Output
 
@@ -22,7 +22,7 @@ Adds a DataRow to a specified DataTable.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InOutArgument | DataTable | Yes | — | The DataTable to which the row will be added. The variable is updated in place. |
+| DataTable | Data table | InOutArgument | DataTable | Yes | — | The DataTable to which the row will be added. The variable is updated in place. |
 
 \* Exactly one of `ArrayRow` or `DataRow` must be provided (overload groups).
 
@@ -38,12 +38,13 @@ Adds a DataRow to a specified DataTable.
 ```xml
 <!-- Using ArrayRow -->
 <ui:AddDataRow DisplayName="Add Data Row"
-               xmlns:ui="clr-namespace:UiPath.Core.Activities;assembly=UiPath.System.Activities">
+               xmlns:ui="clr-namespace:UiPath.Core.Activities;assembly=UiPath.System.Activities"
+               xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib">
   <ui:AddDataRow.DataTable>
     <InOutArgument x:TypeArguments="sd:DataTable">[myDataTable]</InOutArgument>
   </ui:AddDataRow.DataTable>
   <ui:AddDataRow.ArrayRow>
-    <InArgument x:TypeArguments="x:Object[]">[New Object() {"Alice", 30, "HR"}]</InArgument>
+    <InArgument x:TypeArguments="s:Object[]">[New Object() {"Alice", 30, "HR"}]</InArgument>
   </ui:AddDataRow.ArrayRow>
 </ui:AddDataRow>
 

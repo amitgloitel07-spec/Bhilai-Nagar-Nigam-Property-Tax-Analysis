@@ -1,4 +1,4 @@
-# Extract/Unzip Files
+# Extract Files
 
 `UiPath.Activities.System.Compression.Workflow.ExtractFiles`
 
@@ -13,8 +13,8 @@ Extracts all contents of a zipped (compressed) file.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `FileToExtract` | File to extract | `InArgument` | `string` | Yes* | — | Full path of the ZIP file to extract. Overload group: `FileToExtract`. |
-| `File` | File | `InArgument` | `IResource` | Yes* | — | Resource reference to the ZIP file to extract. Overload group: `File`. |
+| `FileToExtract` | File to extract (local path) | `InArgument` | `string` | Yes* | — | Full path of the ZIP file to extract. Overload group: `FileToExtract`. |
+| `File` | File to extract | `InArgument` | `IResource` | Yes* | — | Resource reference to the ZIP file to extract. Overload group: `File`. |
 | `DestinationFolder` | Destination folder | `InArgument` | `string` | No | — | Path of the folder where contents are extracted. If empty, the folder containing the ZIP file is used. |
 | `ConflictResolution` | If file already exists | `InArgument` | `FileConflictBehavior` | No | `FileConflictBehavior.Replace` | Behaviour when an extracted file already exists at the destination: `Replace`, `Fail`, or `Rename`. |
 | `Password` | Password | `InArgument` | `string` | No | — | Password required to extract a password-protected archive. |
@@ -31,7 +31,7 @@ Extracts all contents of a zipped (compressed) file.
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Content` | Extracted Files | `OutArgument` | `ILocalResource[]` | Array of references to all extracted files. |
+| `Content` | Extracted files | `OutArgument` | `ILocalResource[]` | Array of references to all extracted files. |
 | `DestinationFolderInfo` | Extracted contents folder | `OutArgument` | `DirectoryInfo` | Reference to the folder containing the extracted content. |
 
 ## Valid Configurations
@@ -47,7 +47,7 @@ Two mutually exclusive modes determine how the archive file is specified:
 
 ```xml
 <ui2:ExtractFiles
-    DisplayName="Extract/Unzip Files"
+    DisplayName="Extract Files"
     FileToExtract="C:\downloads\archive.zip"
     DestinationFolder="C:\output"
     ExtractToADedicatedFolder="True"

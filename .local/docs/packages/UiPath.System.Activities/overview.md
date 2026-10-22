@@ -7,6 +7,9 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 ## Documentation
 
 - [XAML Activities Reference](activities/) — Per-activity documentation for XAML workflows
+- [Coded Workflow API Reference](coded/coded-api.md) — Service methods for coded workflows, and which activities have no service equivalent
+- The XAML examples are **VB.NET-project XAML**. The `[...]` shorthand is always a VB.NET expression, whatever the project language: CoreWF turns it into `VisualBasicValue`/`VisualBasicReference`, so C# inside the brackets is parsed as VB. A C# project writes each expression as an element in the argument instead — `CSharpValue` for a value, `CSharpReference` for an assignment target — with C# syntax and `<`/`>` escaped as `&lt;`/`&gt;`: `<InArgument x:TypeArguments="scg:List(x:String)"><CSharpValue x:TypeArguments="scg:List(x:String)">new List&lt;string&gt;()</CSharpValue></InArgument>`. Note also that a XAML `xmlns:` prefix resolves types for the markup only — it is not an import for the expression compiler, which needs the namespace in the project's own Imports.
+- The **core workflow activities** — Sequence, Assign, If, Switch, Try Catch, Catch, Throw, Rethrow, Terminate Workflow, Delay, Write Line, Clear Collection and Invoke Method — are Workflow Foundation types rather than UiPath activities. In XAML they are written **unprefixed** in the default namespace `http://schemas.microsoft.com/netfx/2009/xaml/activities`, never with the `ui:` prefix used by this package's `UiPath.Core.Activities` activities. The package metadata carries a few further hidden `System.Activities.Statements.*` collection twins, which are likewise unprefixed. Activities in other CLR namespaces need their own prefix — for example `usc:` for `UiPath.Activities.System.Collections`.
 
 ## Activities
 
@@ -23,10 +26,20 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Multiple Assign](activities/MultipleAssign.md) | `MultipleAssign.md` | Assigns values to multiple variables in sequence. |
 | [Invoke Workflow File](activities/InvokeWorkflow.md) | `InvokeWorkflow.md` | Invokes another XAML workflow file with optional arguments. |
 | [Invoke Process](activities/InvokeProcess.md) | `InvokeProcess.md` | Invokes another UiPath process (Orchestrator process or package), waits for it to finish, and collects its output arguments. **Not** a Windows executable launcher. |
-| [Run Parallel Process](activities/BeginProcess.md) | `BeginProcess.md` | Starts an Orchestrator process in the background without waiting for it to complete. |
+| [Run Parallel Process](activities/BeginProcess.md) | `BeginProcess.md` | Starts another UiPath process (Orchestrator process or package) in the background on the same robot, without waiting for it to complete. Attended jobs only. |
 | [Evaluate Business Rule](activities/EvaluateBusinessRule.md) | `EvaluateBusinessRule.md` | Evaluates a DMN business rule file against input data. |
 | [Get Current Job Info](activities/GetCurrentJobInfo.md) | `GetCurrentJobInfo.md` | Returns information about the currently running Orchestrator job. |
 | [Comment](activities/Comment.md) | `Comment.md` | Design-time annotation; has no effect at runtime. |
+| [Sequence](activities/Sequence.md) | `Sequence.md` | Executes child activities in order; the default container, and the required wrapper wherever a slot holds one activity but several are needed. |
+| [Assign](activities/Assign.md) | `Assign.md` | Evaluates an expression and stores the result in a variable or argument. |
+| [If](activities/If.md) | `If.md` | Evaluates a Boolean condition and executes one of two branches. |
+| [Switch](activities/Switch.md) | `Switch.md` | Executes the single case whose key matches an expression's value, or a default when none match. |
+| [Try Catch](activities/TryCatch.md) | `TryCatch.md` | Executes a body of activities and handles any exception it throws with a matching handler. |
+| [Catch](activities/Catch.md) | `Catch.md` | A single typed exception handler belonging to a Try Catch. **Hidden from the activity panel** — created by the Try Catch designer, never added directly. |
+| [Throw](activities/Throw.md) | `Throw.md` | Raises an exception, propagating it to the nearest matching handler. |
+| [Rethrow](activities/Rethrow.md) | `Rethrow.md` | Re-raises the exception currently being handled, preserving its original stack trace. Valid only inside a Catch. |
+| [Terminate Workflow](activities/TerminateWorkflow.md) | `TerminateWorkflow.md` | Ends the entire workflow immediately with a reason or exception. Not catchable. |
+| [Delay](activities/Delay.md) | `Delay.md` | Pauses execution of the current branch for a specified amount of time. |
 
 ### Workflow Control
 
@@ -56,12 +69,13 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Append Items to Collection](activities/AppendItemToCollection.md) | `AppendItemToCollection.md` | Appends one or more items to the end of a collection. |
 | [Build Collection](activities/BuildCollection.md) | `BuildCollection.md` | Creates a new collection from a set of provided items. |
 | [Collection to DataTable](activities/CollectionToDataTable.md) | `CollectionToDataTable.md` | Converts a collection to a DataTable. |
-| [Exists In Collection](activities/ExistsInCollection.md) | `ExistsInCollection.md` | Checks whether an item exists in a collection; returns its index. |
+| [Exists in Collection](activities/ExistsInCollection.md) | `ExistsInCollection.md` | Checks whether an item exists in a collection; returns its index. |
 | [Filter Collection](activities/FilterCollection.md) | `FilterCollection.md` | Filters a collection by a predicate, keeping or removing matching items. |
 | [Merge Collections](activities/MergeCollections.md) | `MergeCollections.md` | Combines two collections into one. |
-| [Remove From Collection](activities/RemoveFromCollection.md) | `RemoveFromCollection.md` | Removes an item, the item at an index, or all matching items from a collection. |
+| [Remove from Collection](activities/RemoveFromCollection.md) | `RemoveFromCollection.md` | Removes an item, the item at an index, or all matching items from a collection. |
 | [Read List Item](activities/ReadListItem.md) | `ReadListItem.md` | Reads the item at a specified index from a list. |
 | [Update List Item](activities/UpdateListItem.md) | `UpdateListItem.md` | Updates the item at a specified index in a list. |
+| [Clear Collection](activities/ClearCollection.md) | `ClearCollection.md` | Clears a specified collection of all items. **Hidden from the activity panel since 22.10.3 — superseded by the newer collection activities.** |
 
 ---
 
@@ -82,7 +96,7 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Filter Data Table](activities/FilterDataTable.md) | `FilterDataTable.md` | Filters a DataTable rows by one or more conditions. |
 | [Join Data Tables](activities/JoinDataTables.md) | `JoinDataTables.md` | Joins two DataTables using Inner, Left, or Full join logic. |
 | [Lookup Data Table](activities/LookupDataTable.md) | `LookupDataTable.md` | Looks up a value in a DataTable and returns the cell value and row index. |
-| [Generate Data Table From Text](activities/GenerateDataTable.md) | `GenerateDataTable.md` | Parses delimited or fixed-width text into a DataTable. |
+| [Generate Data Table from Text](activities/GenerateDataTable.md) | `GenerateDataTable.md` | Parses delimited or fixed-width text into a DataTable. |
 | [Output Data Table as Text](activities/OutputDataTable.md) | `OutputDataTable.md` | Converts a DataTable to a formatted text string. |
 | [Get Row Item](activities/GetRowItem.md) | `GetRowItem.md` | Reads the value of a cell in a DataRow by column name or index. |
 | [Update Row Item](activities/UpdateRowItem.md) | `UpdateRowItem.md` | Sets the value of a cell in a DataRow by column name or index. |
@@ -97,7 +111,7 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Split Text](activities/SplitText.md) | `SplitText.md` | Splits a string by a delimiter into a collection of substrings. |
 | [Find and Replace](activities/FindAndReplace.md) | `FindAndReplace.md` | Finds and replaces all occurrences of a substring. |
 | [Change Case](activities/ChangeCase.md) | `ChangeCase.md` | Changes the case of a string (upper, lower, title, sentence). |
-| [Text to Left/Right](activities/TextToLeftRight.md) | `TextToLeftRight.md` | Extracts the text to the left or right of a delimiter. |
+| [Text to Left and Right](activities/TextToLeftRight.md) | `TextToLeftRight.md` | Extracts the text to the left or right of a delimiter. |
 | [Extract Text](activities/ExtractText.md) | `ExtractText.md` | Extracts text between anchors, from URLs, emails, or HTML. |
 | [Is Text Matching](activities/IsMatch.md) | `IsMatch.md` | Tests whether a string matches a regular expression pattern. |
 | [Find Matching Patterns](activities/Matches.md) | `Matches.md` | Finds all regex matches within a string. |
@@ -133,13 +147,13 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Get Folder Info](activities/GetFolderInfoX.md) | `GetFolderInfoX.md` | Creates a DirectoryInfo object for a specified folder path. **Windows only.** |
 | [For Each Folder in Folder](activities/ForEachFolderX.md) | `ForEachFolderX.md` | Iterates through folders in a parent folder. **Windows only.** |
 | [Get Local File or Folder](activities/PathExists.md) | `PathExists.md` | Opens a browse dialog to select a file or folder path. |
-| [Select File](activities/SelectFile.md) | `SelectFile.md` | Opens a file picker dialog and returns the selected file path. **Windows only.** |
-| [Select Folder](activities/SelectFolder.md) | `SelectFolder.md` | Opens a folder picker dialog and returns the selected folder path. **Windows only.** |
+| [Browse for File](activities/SelectFile.md) | `SelectFile.md` | Opens a file picker dialog and returns the selected file path. **Windows only.** |
+| [Browse for Folder](activities/SelectFolder.md) | `SelectFolder.md` | Opens a folder picker dialog and returns the selected folder path. **Windows only.** |
 | [Read Text File](activities/ReadTextFile.md) | `ReadTextFile.md` | Reads the entire content of a text file into a string. |
 | [Write Text File](activities/WriteTextFile.md) | `WriteTextFile.md` | Writes text to a file, overwriting or creating it. |
 | [Append Line](activities/AppendLine.md) | `AppendLine.md` | Appends a line of text to a file. |
-| [Compress/Zip Files](activities/CompressFiles.md) | `CompressFiles.md` | Compresses files or folders into a ZIP or GZip archive. |
-| [Extract/Unzip Files](activities/ExtractFiles.md) | `ExtractFiles.md` | Extracts files from a ZIP or GZip archive. |
+| [Compress Files](activities/CompressFiles.md) | `CompressFiles.md` | Compresses files or folders into a ZIP or GZip archive. |
+| [Extract Files](activities/ExtractFiles.md) | `ExtractFiles.md` | Extracts files from a ZIP or GZip archive. |
 | [Download File from URL](activities/DownloadFileFromUrl.md) | `DownloadFileFromUrl.md` | Downloads a file from a URL to a local path. |
 | [Wait for Download](activities/GetLastDownloadedFile.md) | `GetLastDownloadedFile.md` | Waits for a file download to complete and returns the file path. **Windows only.** |
 
@@ -152,7 +166,7 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Message Box](activities/MessageBox.md) | `MessageBox.md` | Displays a dialog box with a message and configurable buttons. **Windows only.** |
 | [Input Dialog](activities/InputDialog.md) | `InputDialog.md` | Prompts the user for text, password input, or a selection. **Windows only.** |
 | [Custom Input](activities/CustomInput.md) | `CustomInput.md` | Displays a custom HTML or web-based input form. **Windows only.** |
-| [Get Username/Password](activities/GetUsernamePasswordX.md) | `GetUsernamePasswordX.md` | Displays a credential dialog and returns the entered username and password. **Windows only.** |
+| [Get Username and Password](activities/GetUsernamePasswordX.md) | `GetUsernamePasswordX.md` | Displays a credential dialog and returns the entered username and password. **Windows only.** |
 | [Get Environment Variable](activities/GetEnvironmentVariable.md) | `GetEnvironmentVariable.md` | Reads the value of an environment variable. |
 | [Set Environment Variable](activities/SetEnvironmentVariable.md) | `SetEnvironmentVariable.md` | Sets the value of an environment variable. |
 | [Get Environment Folder](activities/GetEnvironmentFolder.md) | `GetEnvironmentFolder.md` | Returns the path of a special system folder (Desktop, Temp, etc.). |
@@ -161,8 +175,9 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Kill Process](activities/KillProcess.md) | `KillProcess.md` | Terminates a running process by name or process object. |
 | [Invoke VBScript](activities/InvokeVBScript.md) | `InvokeVBScript.md` | Executes a VBScript file or inline script. **Windows only.** |
 | [Invoke PowerShell](activities/InvokePowerShell.md) | `InvokePowerShell.md` | Runs a PowerShell command or script and returns pipeline output. **Windows only.** |
-| [Invoke Com Method](activities/InvokeComMethod.md) | `InvokeComMethod.md` | Invokes a method on a COM object. **Windows only.** |
+| [Invoke COM Method](activities/InvokeComMethod.md) | `InvokeComMethod.md` | Invokes a method on a COM object. **Windows only.** |
 | [Invoke Code](activities/InvokeCode.md) | `InvokeCode.md` | Executes inline C# or VB.NET code within the workflow. |
+| [Invoke Method](activities/InvokeMethod.md) | `InvokeMethod.md` | Calls a public .NET method by name through reflection. **Hidden from the activity panel** — use Invoke Code or a coded workflow instead. |
 | [Change Type](activities/ChangeType.md) | `ChangeType.md` | Converts a value to a specified type `T`. |
 
 ### Timers
@@ -180,6 +195,7 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | Activity | File | Description |
 |----------|------|-------------|
 | [Log Message](activities/LogMessage.md) | `LogMessage.md` | Logs a message at a specified log level. |
+| [Write Line](activities/WriteLine.md) | `WriteLine.md` | Writes a line of text to the workflow's text writer, reaching the job log at Trace level. Prefer Log Message when the level matters. |
 | [Add Log Fields](activities/AddLogFields.md) | `AddLogFields.md` | Adds structured fields to all subsequent log entries. |
 | [Remove Log Fields](activities/RemoveLogFields.md) | `RemoveLogFields.md` | Removes previously added structured log fields. |
 | [Report Status](activities/ReportStatus.md) | `ReportStatus.md` | Sends a status message to Orchestrator for the current job. |
@@ -231,7 +247,7 @@ Core general-purpose activities for every UiPath workflow. Covers file and folde
 | [Start Job](activities/StartJob.md) | `StartJob.md` | Starts an Orchestrator job (process execution) and returns job IDs. |
 | [Stop Job](activities/StopJob.md) | `StopJob.md` | Stops one or more running Orchestrator jobs. |
 | [Get Jobs](activities/GetJobs.md) | `GetJobs.md` | Retrieves a filtered list of Orchestrator jobs. |
-| [Run Job](activities/RunJob.md) | `RunJob.md` | Starts a job and suspends the workflow until it completes (requires persistence). |
+| [Run Job](activities/RunJob.md) | `RunJob.md` | Starts an Orchestrator job, optionally on a specific machine and account, then either returns at once, waits for it to complete, or suspends the workflow until it completes (the suspend mode requires persistence). Returns the job's output arguments in the waiting modes. |
 | [Should Stop](activities/ShouldStop.md) | `ShouldStop.md` | Checks whether a Stop command has been issued for the current job. |
 
 ### Orchestrator — Alerts & API

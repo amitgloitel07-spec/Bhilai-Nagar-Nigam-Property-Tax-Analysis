@@ -15,7 +15,7 @@ Stops or kills a job on Orchestrator.
 |------|-------------|------|------|----------|---------|-------------|
 | `Job` | Job | InArgument | `OrchestratorJob` | Yes | — | The Orchestrator job to stop. Typically obtained from **Get Jobs**. |
 | `Strategy` | Strategy | InArgument | `StopStrategy` | No | — | Controls how the job is stopped: gracefully or forcibly. |
-| `FolderPath` | Folder Path | InArgument | `string` | No | — | The Orchestrator folder path to use. Overrides the robot's default folder. |
+| `FolderPath` | Folder path | InArgument | `string` | No | — | The Orchestrator folder path to use. Overrides the robot's default folder. |
 
 ### Enum Reference
 

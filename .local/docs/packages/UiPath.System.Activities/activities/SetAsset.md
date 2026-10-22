@@ -13,9 +13,9 @@ Updates the value of an indicated asset, that is already available in Orchestrat
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `AssetName` | Asset Name | InArgument | `string` | Yes | — | The name of the Orchestrator asset to update. |
+| `AssetName` | Asset name | InArgument | `string` | Yes | — | The name of the Orchestrator asset to update. |
 | `Value` | Value | InArgument | `object` | Exactly one of `Value`/`JsonValue` | — | The new value to assign to the asset. Must be compatible with the asset's type configured in Orchestrator (text, integer, boolean, or JSON). For a JSON asset, provide either a `String` holding JSON text or an already-typed variable (e.g. `JObject`/`JToken`). |
-| `JsonValue` | JSON Content | InArgument | `string` | Exactly one of `Value`/`JsonValue` | — | The new value of the asset, in JSON format. Either type the JSON directly in the code editor, or provide a String variable that holds it. Only meaningful for JSON-typed assets. |
+| `JsonValue` | JSON content | InArgument | `string` | Exactly one of `Value`/`JsonValue` | — | The new value of the asset, in JSON format. Either type the JSON directly in the code editor, or provide a String variable that holds it. Only meaningful for JSON-typed assets. |
 
 ## XAML Example
 

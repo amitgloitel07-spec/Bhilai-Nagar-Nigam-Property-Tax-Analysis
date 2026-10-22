@@ -2,7 +2,7 @@
 
 `UiPath.Core.Activities.GetRobotCredential`
 
-Gets a specified credential asset by using a provided Asset Name. If the credential asset is not global, it must be assigned to the local robot in order to be retrieved.
+Gets a specified credential asset by using a provided asset name. If the credential asset is not global, it must be assigned to the local robot in order to be retrieved.
 
 **Package:** `UiPath.System.Activities`
 **Category:** Assets
@@ -13,7 +13,7 @@ Gets a specified credential asset by using a provided Asset Name. If the credent
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `AssetName` | Asset Name | InArgument | `string` | No | — | The name of the Orchestrator credential asset to retrieve. |
+| `AssetName` | Credential asset name | InArgument | `string` | No | — | The name of the Orchestrator credential asset to retrieve. |
 
 ### Output
 

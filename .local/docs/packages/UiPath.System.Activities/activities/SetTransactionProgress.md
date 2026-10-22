@@ -13,9 +13,8 @@ Helps you create custom progress statuses for your In Progress transactions.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `TransactionItem` | Transaction Item | InArgument | `QueueItem` | Yes | — | The transaction item whose progress is to be updated. Must be In Progress. |
+| `TransactionItem` | Transaction item | InArgument | `QueueItem` | Yes | — | The transaction item whose progress is to be updated. Must be In Progress. |
 | `Progress` | Progress | InArgument | `string` | Yes | `""` | A free-text string describing the current processing stage. Visible in the Orchestrator queue item details. |
-| `FolderPath` | Folder Path | InArgument | `string` | No | — | The Orchestrator folder path to use. Overrides the robot's default folder. |
 
 ## XAML Example
 
@@ -32,3 +31,4 @@ Helps you create custom progress statuses for your In Progress transactions.
 - The `TransactionItem` must have status **In Progress**.
 - This activity does not change the transaction's status — it only updates the progress string visible in Orchestrator. Use it to provide operational visibility into long-running transactions.
 - There is no limit imposed by this activity on the number of times progress can be updated for a single transaction.
+- The Orchestrator folder comes from `TransactionItem`. A `FolderPath` left over from older XAML no longer selects the folder, but its expression is still evaluated before the activity runs — remove it.

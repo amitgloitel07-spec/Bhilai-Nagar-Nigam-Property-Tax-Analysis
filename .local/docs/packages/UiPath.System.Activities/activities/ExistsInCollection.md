@@ -1,4 +1,4 @@
-# Exists In Collection
+# Exists in Collection
 
 `UiPath.Activities.System.Collections.ExistsInCollection<T>`
 
@@ -21,13 +21,13 @@ Checks if the given Item exists in the collection.
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
 | `Exists` | Exists | `OutArgument` | `bool` | `True` if the item is found in the collection; `False` otherwise. |
-| `Index` | Index | `OutArgument` | `int` | The zero-based index of the first occurrence of the item, or `-1` if the item is not found. |
+| `Index` | Index if item exists | `OutArgument` | `int` | The zero-based index of the first occurrence of the item, or `-1` if the item is not found. |
 
 ## XAML Example
 
 ```xml
 <usc:ExistsInCollection x:TypeArguments="x:String"
-    DisplayName="Exists In Collection"
+    DisplayName="Exists in Collection"
     Collection="[myList]"
     Item="target"
     Exists="[itemExists]"

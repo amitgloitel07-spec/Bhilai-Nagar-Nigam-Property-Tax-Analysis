@@ -13,11 +13,11 @@ Moves a specified file to another location.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | Move File | `InArgument` | `string` | Yes* | — | Full path of the source file. Overload group: `Path`. |
-| `PathResource` | Input resource | `InArgument` | `IResource` | Yes* | — | Resource reference to the source file. Overload group: `PathResource`. |
-| `Destination` | Destination | `InArgument` | `string` | No | — | Destination path or folder for the moved file. |
-| `DestinationResource` | Destination resource | `InArgument` | `IResource` | No | — | Resource reference to the destination. |
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
+| `Path` | From (local path) | `InArgument` | `string` | Yes* | — | Full path of the source file. Overload group: `Path`. |
+| `PathResource` | From | `InArgument` | `IResource` | Yes* | — | Resource reference to the source file. Overload group: `PathResource`. |
+| `Destination` | To (local path) | `InArgument` | `string` | No | — | Destination path or folder for the moved file. |
+| `DestinationResource` | To | `InArgument` | `IResource` | No | — | Resource reference to the destination. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
 
 ### Configuration
 

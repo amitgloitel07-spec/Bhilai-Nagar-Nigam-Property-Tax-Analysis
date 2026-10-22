@@ -13,19 +13,19 @@ Select the desired letter case to convert the text to.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Source` | Source | InArgument | `String` | Yes | — | The text whose case is to be changed. |
+| `Source` | Source text | InArgument | `String` | Yes | — | The text whose case is to be changed. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `ChangeCaseOptions` | Desired letter case | `ChangeCaseOptions` | — | The target case transformation to apply. Required. |
+| `ChangeCaseOptions` | Case | `ChangeCaseOptions` | — | The target case transformation to apply. Required. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `String` | The text after the case transformation has been applied. |
+| `Result` | Updated text | OutArgument | `String` | The text after the case transformation has been applied. |
 
 ### Enum Reference
 

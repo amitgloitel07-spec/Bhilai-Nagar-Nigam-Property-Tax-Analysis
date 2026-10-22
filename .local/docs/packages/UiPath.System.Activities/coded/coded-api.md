@@ -36,7 +36,7 @@ UiPath.Activities.System.Jobs.Coded
 > - `using System.Linq;` — for LINQ operators such as `.Count()` / `.Where()` over the `IEnumerable<T>` returned by `ExtractTextOccurrences`, `ExtractEmails`, `ExtractUrls`, etc.
 > - `using System.Security;` — for `SecureString` (credential methods)
 > - `using System.Text.RegularExpressions;` — for `RegexOptions` (the `Replace` overload that takes match options)
-> - `using UiPath.Core.Activities;` — for `PathType` (used by `GetResourceForLocalPath`) and `LogLevel`
+> - `using UiPath.Core.Activities;` — for `PathType` (used by `GetResourceForLocalPath`), `LogLevel` and `ErrorType` (used by `SetTransactionStatus`)
 > - `using UiPath.Platform.ResourceHandling;` — for `IResource`, `ILocalResource` (file operation return types)
 
 ## Service Overview
@@ -57,6 +57,48 @@ The `system` service provides direct method calls — no handles, no `using` blo
 
 ---
 
+## Core Activities in Coded Workflows
+
+The Workflow Foundation **core activities** are XAML control-flow constructs. None of them is on
+`ISystemService`, because in a coded workflow their job is done by C# language syntax. Do not look for
+`system.Assign(...)`, `system.If(...)` or `system.Delay(...)`; there are no such service methods. The
+`"codedWorkflowSupport"` flag is a separate matter and does not cover the set: only `ClearCollection` and
+`InvokeMethod` appear in this package's metadata at all, both carrying `"codedWorkflowSupport": false`. The
+other eleven have no metadata entry to carry a flag, which is also why the property-coverage tooling cannot
+see them.
+
+Two of them do have a first-class equivalent, inherited from `CodedWorkflowBase` rather than reached through
+the `system` accessor: **Delay** → `Delay(...)` / `DelayAsync(...)`, and **Write Line** → `Log(...)`. Use those
+in preference to the raw framework calls. Everything else in the table below is plain C#.
+
+| XAML activity | In a coded workflow |
+|---------------|---------------------|
+| [Sequence](../activities/Sequence.md) | Consecutive statements; a scoped block is `{ }` |
+| [Assign](../activities/Assign.md) | `=` assignment |
+| [If](../activities/If.md) | `if` / `else` |
+| [Switch](../activities/Switch.md) | `switch` statement or switch expression |
+| [Delay](../activities/Delay.md) | Inherited `Delay(TimeSpan\|int)`, or `await DelayAsync(TimeSpan\|int)` in an async workflow |
+| [Throw](../activities/Throw.md) | `throw new SomeException(...)` |
+| [Rethrow](../activities/Rethrow.md) | a bare `throw;` inside a `catch` block |
+| [Try Catch](../activities/TryCatch.md) | `try` / `catch` / `finally` |
+| [Catch](../activities/Catch.md) | a `catch (TException ex)` clause |
+| [Terminate Workflow](../activities/TerminateWorkflow.md) | No exact equivalent — an exception that escapes the workflow method faults the job, but stays catchable on the way out |
+| [Write Line](../activities/WriteLine.md) | `Log(...)` to choose the level; `Console.WriteLine(...)` also reaches the log, at Trace |
+| [Clear Collection](../activities/ClearCollection.md) | `collection.Clear()` |
+| [Invoke Method](../activities/InvokeMethod.md) | Call the method directly — checked by the compiler, where the activity resolves by reflection at validation time against declared types |
+
+Two consequences worth noting when porting XAML to C#:
+
+- The XAML restrictions that force extra nesting disappear. `If.Then` and `TryCatch.Try` each hold a single
+  activity, so XAML needs a `Sequence` wrapper; a C# block does not. Likewise `Switch` in XAML matches on
+  equality only, while C# `switch` supports relational and pattern matching.
+- `Log(...)` is declared on `CodedWorkflowBase` and writes a job-log entry at `LogLevel.Info`, or at the level you pass as its second argument. That parameter is `UiPath.CodedWorkflows.LogLevel`, not the `UiPath.Core.Activities.LogLevel` that `InvokeProcess` takes, so qualify it when both namespaces are imported.
+  `Console.WriteLine(...)` also reaches the job log on Windows, because the robot redirects `Console.Out`
+  to the same sink — but always at Trace, so it is invisible unless the robot logs at Verbose or Trace.
+  The choice is about level, not about whether the line is captured.
+
+---
+
 ## Process Invocation
 
 ### `(OrchestratorJob JobData, string OutputJson) RunJob(string processName, string orchestratorFolderPath = null, object inputArguments = null, bool doNotWait = false, RunJobOptionalParameters runJobOptionalParameters = null)`
@@ -68,7 +110,7 @@ Runs a job in Orchestrator synchronously and returns the job data and output arg
 - `orchestratorFolderPath` (`string`) — Orchestrator folder path where the process resides (default: `null`)
 - `inputArguments` (`object`) — Input arguments for the process; can be an anonymous object or dictionary (default: `null`)
 - `doNotWait` (`bool`) — If `true`, fires the job without waiting for completion (default: `false`)
-- `runJobOptionalParameters` (`RunJobOptionalParameters`) — Additional options: timeout, error handling, job priority (default: `null`)
+- `runJobOptionalParameters` (`RunJobOptionalParameters`) — Additional options: timeout, error handling, job priority, and the entry point, machine and account the job runs on (default: `null`)
 
 **Returns:** `(OrchestratorJob JobData, string OutputJson)` — Tuple with the Orchestrator job entity and the process output arguments serialized as a JSON string.
 
@@ -826,69 +868,81 @@ Waits until an item becomes available in the queue, then returns it.
 ---
 
 ### `void DeleteQueueItems(IEnumerable<QueueItem> queueItems)`
-### `void DeleteQueueItems(IEnumerable<QueueItem> queueItems, string folderPath)`
-### `void DeleteQueueItems(IEnumerable<QueueItem> queueItems, string folderPath, int timeoutMS)`
+### `void DeleteQueueItems(IEnumerable<QueueItem> queueItems, int timeoutMS)`
+### `void DeleteQueueItems(IEnumerable<QueueItem> queueItems, string folderPath)` (obsolete)
+### `void DeleteQueueItems(IEnumerable<QueueItem> queueItems, string folderPath, int timeoutMS)` (obsolete)
 
-Deletes queue items from Orchestrator.
+Deletes queue items from Orchestrator. All items in `queueItems` must share the same Orchestrator folder — mixed folders throw before any item is deleted.
 
 **Parameters:**
-- `queueItems` (`IEnumerable<QueueItem>`) — Items to delete
-- `folderPath` (`string`) — Orchestrator folder
-- `timeoutMS` (`int`) — Timeout in milliseconds
+- `queueItems` (`IEnumerable<QueueItem>`) — Items to delete. They must be in the New state and all come from the same Orchestrator folder (for example, from a single `GetQueueItems` call).
+- `timeoutMS` (`int`) — Timeout in milliseconds. When omitted, the activity waits up to its default of 300000 milliseconds (5 minutes).
+
+**Obsolete overloads only:**
+- `folderPath` (`string`) — Obsolete and ignored. The Orchestrator folder comes from the items in `queueItems`, which must all belong to the same folder.
 
 **Returns:** `void`
 
 ---
 
 ### `void PostponeTransactionItem(QueueItem transactionItem, DateTime deferDate)`
-### `void PostponeTransactionItem(QueueItem transactionItem, DateTime deferDate, string folderPath)`
-### `void PostponeTransactionItem(QueueItem transactionItem, DateTime deferDate, string folderPath, DateTime dueDate, int timeoutMS)`
+### `void PostponeTransactionItem(QueueItem transactionItem, DateTime deferDate, DateTime dueDate, int timeoutMS)`
+### `void PostponeTransactionItem(QueueItem transactionItem, DateTime deferDate, string folderPath)` (obsolete)
+### `void PostponeTransactionItem(QueueItem transactionItem, DateTime deferDate, string folderPath, DateTime dueDate, int timeoutMS)` (obsolete)
 
 Postpones a transaction item to a future date.
 
 **Parameters (full overload):**
 - `transactionItem` (`QueueItem`) — The item to postpone
 - `deferDate` (`DateTime`) — Earliest date the item may be processed again
-- `folderPath` (`string`) — Orchestrator folder
 - `dueDate` (`DateTime`) — Latest date the item should be processed
 - `timeoutMS` (`int`) — Timeout in milliseconds
+
+**Obsolete overloads only:**
+- `folderPath` (`string`) — Obsolete and ignored. The Orchestrator folder is taken from `transactionItem` instead.
 
 **Returns:** `void`
 
 ---
 
 ### `void SetTransactionProgress(QueueItem transactionItem, string progress)`
-### `void SetTransactionProgress(QueueItem transactionItem, string progress, string folderPath)`
-### `void SetTransactionProgress(QueueItem transactionItem, string progress, string folderPath, int timeoutMS)`
+### `void SetTransactionProgress(QueueItem transactionItem, string progress, int timeoutMS)`
+### `void SetTransactionProgress(QueueItem transactionItem, string progress, string folderPath)` (obsolete)
+### `void SetTransactionProgress(QueueItem transactionItem, string progress, string folderPath, int timeoutMS)` (obsolete)
 
 Updates the progress text of a transaction item currently in progress.
 
 **Parameters:**
 - `transactionItem` (`QueueItem`) — The in-progress transaction item
 - `progress` (`string`) — Progress message to set
-- `folderPath` (`string`) — Orchestrator folder
 - `timeoutMS` (`int`) — Timeout in milliseconds
+
+**Obsolete overloads only:**
+- `folderPath` (`string`) — Obsolete and ignored. The Orchestrator folder is taken from `transactionItem` instead.
 
 **Returns:** `void`
 
 ---
 
 ### `void SetTransactionStatus(QueueItem transactionItem, ProcessingStatus status)`
-### `void SetTransactionStatus(QueueItem transactionItem, ProcessingStatus status, string folderPath)`
-### `void SetTransactionStatus(QueueItem transactionItem, ProcessingStatus status, string folderPath, Dictionary<string, object> analytics, Dictionary<string, object> output, string details, ErrorType errorType, string reason, int timeoutMS)`
+### `void SetTransactionStatus(QueueItem transactionItem, ProcessingStatus status, Dictionary<string, object> analytics, Dictionary<string, object> output, string details, ErrorType errorType, string reason, int timeoutMS)`
+### `void SetTransactionStatus(QueueItem transactionItem, ProcessingStatus status, string folderPath)` (obsolete)
+### `void SetTransactionStatus(QueueItem transactionItem, ProcessingStatus status, string folderPath, Dictionary<string, object> analytics, Dictionary<string, object> output, string details, ErrorType errorType, string reason, int timeoutMS)` (obsolete)
 
-Sets the final status of a transaction item (success, failure, or exception).
+Sets the final status of a transaction item. The two-argument overload can only mark the item `Successful`; to mark it `Failed`, use the full overload and supply a `reason`.
 
 **Parameters (full overload):**
 - `transactionItem` (`QueueItem`) — The transaction item to update
 - `status` (`ProcessingStatus`) — New status (e.g., Successful, Failed)
-- `folderPath` (`string`) — Orchestrator folder
 - `analytics` (`Dictionary<string, object>`) — Analytics data to attach
 - `output` (`Dictionary<string, object>`) — Output data to attach
 - `details` (`string`) — Status detail message
 - `errorType` (`ErrorType`) — Type of error (for failure statuses)
-- `reason` (`string`) — Failure reason
+- `reason` (`string`) — Failure reason. Required when `status` is `Failed`.
 - `timeoutMS` (`int`) — Timeout in milliseconds
+
+**Obsolete overloads only:**
+- `folderPath` (`string`) — Obsolete and ignored. The Orchestrator folder is taken from `transactionItem` instead.
 
 **Returns:** `void`
 
@@ -1009,14 +1063,16 @@ Downloads a file from an Orchestrator storage bucket to the local machine.
 
 ---
 
+### `IEnumerable<StorageFileInfo> ListStorageFiles(string storageBucketName)`
 ### `IEnumerable<StorageFileInfo> ListStorageFiles(string directory, string storageBucketName)`
 ### `IEnumerable<StorageFileInfo> ListStorageFiles(string directory, string storageBucketName, string folderPath)`
 ### `IEnumerable<StorageFileInfo> ListStorageFiles(string directory, string storageBucketName, string folderPath, bool recursive, string filter, int timeoutMS)`
 
-Lists files in a directory within an Orchestrator storage bucket.
+Lists files in a directory within an Orchestrator storage bucket. The single-parameter overload takes
+the bucket name and lists the bucket root.
 
 **Parameters (full overload):**
-- `directory` (`string`) — Directory path within the bucket (empty string for root)
+- `directory` (`string`) — Directory path within the bucket; `null` or empty means the bucket root
 - `storageBucketName` (`string`) — Name of the storage bucket
 - `folderPath` (`string`) — Orchestrator folder
 - `recursive` (`bool`) — Whether to list files in subdirectories
@@ -1130,6 +1186,12 @@ Additional optional parameters for `RunJob` and `RunJobAsync`. Namespace: `UiPat
 | `ContinueOnError` | `bool` | `false` | Whether to continue workflow execution if the job fails |
 | `FailWhenJobFails` | `bool` | `false` | Whether to mark this workflow as failed if the job fails |
 | `Priority` | `JobPriorityV2` | `Inherited` | The priority the job is started with. `Inherited` uses the priority configured on the target process. Requires `using UiPath.Activities.System.Jobs;` — the enum lives outside the auto-imported `.Jobs.Coded` namespace. |
+| `EntryPointPath` | `string` | `null` | Entry point of the process to start, for example `"Main.xaml"`. `null` uses the process's configured entry point. |
+| `RuntimeType` | `JobRuntimeType` | `Default` | The runtime license the job runs on. `Default` lets Orchestrator choose. Orchestrator ignores it for agent, API, MCP server, function and Maestro processes. Requires `using UiPath.Activities.System.Jobs;`. |
+| `Machine` | `string` | `null` | Name of the machine to run the job on. It must be assigned to the folder of the process being started. `null` lets Orchestrator choose. |
+| `Account` | `string` | `null` | Name of the unattended robot to run the job as, as Orchestrator lists it in that folder (for example `"jane.doe@contoso.com-unattended"`), not the user's login. `null` lets Orchestrator choose. |
+
+`Machine` and `Account` are looked up in the folder of the process being started. A machine not assigned to that folder, or one the account may not run on, fails before the job is created. See **Machine and Account at run time** in `docs/activities/RunJob.md` for the permissions involved and the exact errors.
 
 ---
 
@@ -1153,11 +1215,13 @@ Additional optional parameters for `RunJob` and `RunJobAsync`. Namespace: `UiPat
 
 **`QueueItemPriority`**: `High`, `Normal`, `Low`
 
+**`JobRuntimeType`**: `Default` (0, Orchestrator chooses), `Unattended`, `NonProduction`, `TestAutomation`, `AutomationCloud`, `AutomationCloudTestAutomation`, `Serverless`, `ServerlessTestAutomation` — namespace `UiPath.Activities.System.Jobs`, **not** auto-imported
+
 **`JobPriorityV2`**: `Inherited` (0, use the target process's configured priority), `Lowest` (5), `VeryLow` (15), `Low` (25), `MediumLow` (35), `Medium` (45), `MediumHigh` (55), `High` (65), `VeryHigh` (75), `Highest` (85), `Critical` (95) — namespace `UiPath.Activities.System.Jobs`, **not** auto-imported
 
 **`ProcessingStatus`**: `Successful`, `Failed`
 
-**`ErrorType`**: `Business`, `Application`
+**`ErrorType`**: `Business`, `Application` — namespace `UiPath.Core.Activities`, **not** auto-imported
 
 **`FileConflictBehavior`**: `Replace`, `Fail`, `Rename`
 
@@ -1270,6 +1334,8 @@ public void Execute()
 ### Queue-Based Transaction Processing
 
 ```csharp
+using UiPath.Core.Activities;   // ErrorType
+
 [Workflow]
 public void Execute()
 {
@@ -1292,12 +1358,12 @@ public void Execute()
         system.SetTransactionStatus(
             item,
             ProcessingStatus.Failed,
-            folderPath: "Finance",
-            analytics: null,
-            output: null,
+            analytics: new Dictionary<string, object>(),
+            output: new Dictionary<string, object>(),
             details: ex.Message,
             errorType: ErrorType.Application,
-            reason: "Invoice processing error"
+            reason: "Invoice processing error",
+            timeoutMS: 30000
         );
     }
 }

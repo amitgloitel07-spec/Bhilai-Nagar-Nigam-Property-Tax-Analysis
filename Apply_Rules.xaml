@@ -1,5 +1,26 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Apply_Rules" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="out_R19_DuplicateGroupCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R18_DuplicateGroupCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R16_OthersNullCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R16_PrincipalMainRoadCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R16_MainRoadCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R15_PropertyTaxPaidUserChargeNotPaidCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R15_PropertyTaxAndUserChargePaidCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R14_NotAppliedCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R14_AppliedCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R13_UnpaidCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R13_PaidCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R11_DuplicateOwnerRecordCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R11_DuplicateOwnerGroupCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R08_SuspiciousAddressCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R08_PlaceholderAddressCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R08_MissingAddressCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_R08_ValidAddressCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_MissingMobileCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_PlaceHolderMobileCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_InvalidMobileCount" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_ValidMobileCount" Type="OutArgument(x:Int32)" />
     <x:Property Name="out_dt_R23_PropertyTypeCount" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_dt_R22_Top50UserCharge" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_dt_R22_Top50PropertyTax" Type="OutArgument(sd:DataTable)" />
@@ -134,15 +155,16 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Linq.AsyncEnumerable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Apply_Rules" sap:VirtualizedContainerService.HintSize="1200.6666666666665,13240" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Apply_Rules" sap:VirtualizedContainerService.HintSize="1200.6666666666665,7669.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Apply_Rules-Main sequence" sap:VirtualizedContainerService.HintSize="684,10018" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Apply_Rules-Main sequence" sap:VirtualizedContainerService.HintSize="684,7646.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dt_R03_WardDemand" />
         <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(sd:DataRow))" Default="[New Dictionary(Of String, List(Of DataRow))]" Name="R21_CollectionPropertyLookup" />
@@ -182,7 +204,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:BuildDataTable DataTable="[dt_AuditFindings]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Rule_ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Findings&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Severity&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Score&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:BuildDataTable DataTable="[dt_AuditFindings]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Rule_ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Findings&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Severity&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Score&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
         <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_ConfigRules]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,898" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
@@ -247,8 +269,8 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:BuildDataTable DataTable="[dt_R01_ValidMobileNoWard]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ValidMobileCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:BuildDataTable DataTable="[dt_R01_ValidMobileDetails]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;MobileNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;MobileNo_x0020_Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:BuildDataTable DataTable="[dt_R01_ValidMobileNoWard]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ValidMobileCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:BuildDataTable DataTable="[dt_R01_ValidMobileDetails]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;MobileNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;MobileNo_x0020_Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
         <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,4988" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
@@ -330,7 +352,7 @@
                           <InArgument x:TypeArguments="x:Int32">[MissingMobileCount+1]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xD;&#xA;    &quot;R01&quot;,&#xD;&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xD;&#xA;    &quot;Mobile Number is Missing&quot;,&#xD;&#xA;    R01_Severity,&#xD;&#xA;    R01_Score&#xD;&#xA;&#x9;}]" DataTable="[dt_AuditFindings]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="488,214" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    &quot;R01&quot;,&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xA;    &quot;Mobile Number is Missing&quot;,&#xA;    R01_Severity,&#xA;    R01_Score&#xA;&#x9;}]" DataTable="[dt_AuditFindings]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="488,214" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
@@ -398,7 +420,7 @@
                                       <InArgument x:TypeArguments="x:Int32">[InvalidMobileCount+1]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xD;&#xA;    &quot;R01&quot;,&#xD;&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xD;&#xA;    &quot;Invalid Mobile Number&quot;,&#xD;&#xA;    R01_Severity,&#xD;&#xA;    R01_Score&#xD;&#xA;}]" DataTable="[dt_AuditFindings]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    &quot;R01&quot;,&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xA;    &quot;Invalid Mobile Number&quot;,&#xA;    R01_Severity,&#xA;    R01_Score&#xA;}]" DataTable="[dt_AuditFindings]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                                 </Sequence>
                               </If.Then>
                               <If.Else>
@@ -483,7 +505,7 @@
                           </Sequence>
                         </If.Else>
                       </If>
-                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xD;&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;MobileNo&quot;).ToString.Trim,&#xD;&#xA;    MobileNoStatus&#xD;&#xA;}]" DataTable="[dt_R01_ValidMobileDetails]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,214" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;MobileNo&quot;).ToString.Trim,&#xA;    MobileNoStatus&#xA;}]" DataTable="[dt_R01_ValidMobileDetails]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,214" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -500,7 +522,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xD;&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xD;&#xA;    CurrentRowMobileNo(&quot;MobileNo&quot;).ToString.Trim,&#xD;&#xA;    MobileNoStatus&#xD;&#xA;}]" DataTable="[dt_R01_ValidMobileDetails]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,214" sap2010:WorkflowViewState.IdRef="AddDataRow_68" />
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    CurrentRowMobileNo(&quot;PropertyNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;OwnerName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;GuaridanName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardNo&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;WardName&quot;).ToString.Trim,&#xA;    CurrentRowMobileNo(&quot;MobileNo&quot;).ToString.Trim,&#xA;    MobileNoStatus&#xA;}]" DataTable="[dt_R01_ValidMobileDetails]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,214" sap2010:WorkflowViewState.IdRef="AddDataRow_68" />
                     </Sequence>
                   </If.Else>
                 </If>
@@ -572,13 +594,45 @@
         </ui:ForEachRow>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;R01 Total Valid Mobile from Ward Summary = &quot; + r01TotalValidMobile.ToString]" />
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;R01 Invalid Mobile Count = &quot; + InvalidMobileCount.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;R01 Mobile Summary | Valid=&quot; + ValidMobileCount.ToString +&#xD;&#xA;&quot; | Invalid=&quot; + InvalidMobileCount.ToString +&#xD;&#xA;&quot; | Placeholder=&quot; + PlaceHolderMobileCount.ToString +&#xD;&#xA;&quot; | Missing=&quot; + MissingMobileCount.ToString]" />
-        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_284">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;R01 Mobile Summary | Valid=&quot; + ValidMobileCount.ToString +&#xA;&quot; | Invalid=&quot; + InvalidMobileCount.ToString +&#xA;&quot; | Placeholder=&quot; + PlaceHolderMobileCount.ToString +&#xA;&quot; | Missing=&quot; + MissingMobileCount.ToString]" />
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_284">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R01_ValidMobileDetails]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="sd:DataTable">[dt_R01_ValidMobileDetails]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_314">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_ValidMobileCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[ValidMobileCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_315">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_InvalidMobileCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[InvalidMobileCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_316">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_PlaceHolderMobileCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[PlaceHolderMobileCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_317">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_MissingMobileCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[MissingMobileCount]</InArgument>
           </Assign.Value>
         </Assign>
       </Sequence>
@@ -1428,8 +1482,8 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:BuildDataTable DataTable="[dt_R05_ResidentialCollection]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ResidentialDemand&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ResidentialCollection&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ResidentialCollectionPercentage&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table - Residential Demand" sap:VirtualizedContainerService.HintSize="488,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_19">
+        <ui:BuildDataTable DataTable="[dt_R05_ResidentialCollection]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ResidentialDemand&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ResidentialCollection&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ResidentialCollectionPercentage&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table - Residential Demand" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_19">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -1518,8 +1572,8 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;R05 Residential Demand Ward Groups = &quot; +WardResidentialDemandLookup.Count.ToString]" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_CollectionData]" DisplayName="For Each Row in Data Table - Residential Collection" sap:VirtualizedContainerService.HintSize="488,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_20">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;R05 Residential Demand Ward Groups = &quot; +WardResidentialDemandLookup.Count.ToString]" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_CollectionData]" DisplayName="For Each Row in Data Table - Residential Collection" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_20">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -1608,8 +1662,8 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;R05 Residential Collection Ward Groups = &quot; +WardResidentialCollectionLookup.Count.ToString]" />
-        <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))" CurrentIndex="{x:Null}" DisplayName="For Each CurrentWardDemandEntry" sap:VirtualizedContainerService.HintSize="488,1740.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[WardResidentialDemandLookup]">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;R05 Residential Collection Ward Groups = &quot; +WardResidentialCollectionLookup.Count.ToString]" />
+        <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))" CurrentIndex="{x:Null}" DisplayName="For Each CurrentWardDemandEntry" sap:VirtualizedContainerService.HintSize="616,1740.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[WardResidentialDemandLookup]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))">
               <ActivityAction.Argument>
@@ -1797,8 +1851,8 @@ If(
             </ActivityAction>
           </ui:ForEach.Body>
         </ui:ForEach>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;R05 Summary: &quot; + String.Join(&quot; | &quot;, dt_R05_ResidentialCollection.AsEnumerable().Select(Function(r) &quot;Ward &quot; &amp; r(&quot;WardNo&quot;).ToString() &amp; &quot; - Demand=&quot; &amp; Convert.ToDouble(r(&quot;ResidentialDemand&quot;)).ToString(&quot;N2&quot;) &amp; &quot; - Collection=&quot; &amp; Convert.ToDouble(r(&quot;ResidentialCollection&quot;)).ToString(&quot;N2&quot;) &amp; &quot; - %=&quot; &amp; Convert.ToDouble(r(&quot;ResidentialCollectionPercentage&quot;)).ToString(&quot;N2&quot;)).ToArray())]" />
-        <Assign sap:VirtualizedContainerService.HintSize="488,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_288">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;R05 Summary: &quot; + String.Join(&quot; | &quot;, dt_R05_ResidentialCollection.AsEnumerable().Select(Function(r) &quot;Ward &quot; &amp; r(&quot;WardNo&quot;).ToString() &amp; &quot; - Demand=&quot; &amp; Convert.ToDouble(r(&quot;ResidentialDemand&quot;)).ToString(&quot;N2&quot;) &amp; &quot; - Collection=&quot; &amp; Convert.ToDouble(r(&quot;ResidentialCollection&quot;)).ToString(&quot;N2&quot;) &amp; &quot; - %=&quot; &amp; Convert.ToDouble(r(&quot;ResidentialCollectionPercentage&quot;)).ToString(&quot;N2&quot;)).ToArray())]" />
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_288">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R05_ResidentialCollection]</OutArgument>
           </Assign.To>
@@ -2110,6 +2164,10 @@ If(
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="650,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info" Message="[&quot;---------------------------------------------------------------------------------------------------------&quot;]" />
       <Sequence DisplayName="R08 — Incorrect / Incomplete Address" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_107">
         <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R08_SuspiciousAddressCount" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R08_PlaceholderAddressCount" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R08_MissingAddressCount" />
+          <Variable x:TypeArguments="x:Int32" Name="R08_ValidAddressCount" />
           <Variable x:TypeArguments="x:Boolean" Name="HasLocalityIndicator" />
           <Variable x:TypeArguments="x:String" Name="AddressUpper" />
           <Variable x:TypeArguments="x:String" Name="NormalizedAddress" />
@@ -2127,14 +2185,14 @@ If(
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:BuildDataTable DataTable="[dt_R08_IncompleteAddress]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="668,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_10" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Finding&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="668,4498" sap2010:WorkflowViewState.IdRef="ForEachRow_23">
+        <ui:BuildDataTable DataTable="[dt_R08_IncompleteAddress]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_10" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Finding&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_23">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRowAddress" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="666,4285.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_108">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="666,4815.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_108">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2148,37 +2206,53 @@ If(
                     <InArgument x:TypeArguments="x:String">[If(CurrentRowAddress.IsNull("PropertyAddress") OrElse String.IsNullOrWhiteSpace(CurrentRowAddress("PropertyAddress").ToString.Trim) OrElse CurrentRowAddress("PropertyAddress").ToString.Trim.Equals("NULL", StringComparison.OrdinalIgnoreCase),"",CurrentRowAddress("PropertyAddress").ToString.Trim)]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <If Condition="[in_PlaceholderValue.AsEnumerable().Any(Function(r)r(&quot;Category&quot;).ToString.Trim.Equals(&quot;Address&quot;, StringComparison.OrdinalIgnoreCase) AndAlso r(&quot;Value&quot;).ToString.Trim.Equals(NormalizedAddress, StringComparison.OrdinalIgnoreCase))]" sap:VirtualizedContainerService.HintSize="632,4048.6666666666665" sap2010:WorkflowViewState.IdRef="If_29">
+                <If Condition="[in_PlaceholderValue.AsEnumerable().Any(Function(r)r(&quot;Category&quot;).ToString.Trim.Equals(&quot;Address&quot;, StringComparison.OrdinalIgnoreCase) AndAlso r(&quot;Value&quot;).ToString.Trim.Equals(NormalizedAddress, StringComparison.OrdinalIgnoreCase))]" sap:VirtualizedContainerService.HintSize="632,4578.666666666667" sap2010:WorkflowViewState.IdRef="If_29">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="630,274" sap2010:WorkflowViewState.IdRef="Sequence_109">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="630,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_109">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="596,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_318">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[R08_PlaceholderAddressCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[R08_PlaceholderAddressCount + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
                       <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    CurrentRowAddress(&quot;PropertyNo&quot;).ToString,&#xA;    CurrentRowAddress(&quot;OwnerName&quot;).ToString,&#xA;    CurrentRowAddress(&quot;WardNo&quot;).ToString,&#xA;    CurrentRowAddress(&quot;WardName&quot;).ToString,&#xA;    NormalizedAddress,&#xA;    &quot;Placeholder address&quot;&#xA;}]" DataTable="[dt_R08_IncompleteAddress]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="596,214" sap2010:WorkflowViewState.IdRef="AddDataRow_15" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="630,3644" sap2010:WorkflowViewState.IdRef="Sequence_110">
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="630,3997.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_110">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[String.IsNullOrWhiteSpace(NormalizedAddress)]" sap:VirtualizedContainerService.HintSize="596,3584" sap2010:WorkflowViewState.IdRef="If_30">
+                      <If Condition="[String.IsNullOrWhiteSpace(NormalizedAddress)]" sap:VirtualizedContainerService.HintSize="596,3937.3333333333335" sap2010:WorkflowViewState.IdRef="If_30">
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="594,274" sap2010:WorkflowViewState.IdRef="Sequence_111">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="594,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_111">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="560,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_320">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[R08_MissingAddressCount]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[R08_MissingAddressCount + 1]</InArgument>
+                              </Assign.Value>
+                            </Assign>
                             <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    CurrentRowAddress(&quot;PropertyNo&quot;).ToString,&#xA;    CurrentRowAddress(&quot;OwnerName&quot;).ToString,&#xA;    CurrentRowAddress(&quot;WardNo&quot;).ToString,&#xA;    CurrentRowAddress(&quot;WardName&quot;).ToString,&#xA;    NormalizedAddress,&#xA;    &quot;Missing / blank address&quot;&#xA;}]" DataTable="[dt_R08_IncompleteAddress]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="560,214" sap2010:WorkflowViewState.IdRef="AddDataRow_16" />
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="594,3179.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_112">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="594,3356" sap2010:WorkflowViewState.IdRef="Sequence_112">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2216,7 +2290,7 @@ If(
                                 <InArgument x:TypeArguments="x:Int32">[AddressUpper.Length]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <If Condition="[AddressLength&lt;5]" sap:VirtualizedContainerService.HintSize="560,2412.6666666666665" sap2010:WorkflowViewState.IdRef="If_31">
+                            <If Condition="[AddressLength&lt;10]" sap:VirtualizedContainerService.HintSize="560,2589.3333333333335" sap2010:WorkflowViewState.IdRef="If_31">
                               <If.Then>
                                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="558,274" sap2010:WorkflowViewState.IdRef="Sequence_113">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -2228,7 +2302,7 @@ If(
                                 </Sequence>
                               </If.Then>
                               <If.Else>
-                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="558,2008" sap2010:WorkflowViewState.IdRef="Sequence_114">
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="558,2184.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_114">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2248,7 +2322,7 @@ If(
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </Assign>
-                                  <If Condition="[Not HasAddressIndicator AndAlso Not HasNumber]" sap:VirtualizedContainerService.HintSize="524,1771.3333333333333" sap2010:WorkflowViewState.IdRef="If_32">
+                                  <If Condition="[Not HasAddressIndicator AndAlso Not HasNumber]" sap:VirtualizedContainerService.HintSize="524,1948" sap2010:WorkflowViewState.IdRef="If_32">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2265,7 +2339,7 @@ If(
                                       </Sequence>
                                     </If.Then>
                                     <If.Else>
-                                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="522,1550" sap2010:WorkflowViewState.IdRef="Sequence_116">
+                                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="522,1726.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_116">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2279,7 +2353,7 @@ If(
                                             <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.IsMatch(AddressUpper, "^(HOME|HOUSE|RESIDENCE|SHOP|OFFICE|BUILDING|FLAT|ROOM|PROPERTY)$")]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        <If Condition="[IsGenericAddress]" sap:VirtualizedContainerService.HintSize="488,1313.3333333333333" sap2010:WorkflowViewState.IdRef="If_33">
+                                        <If Condition="[IsGenericAddress]" sap:VirtualizedContainerService.HintSize="488,1490" sap2010:WorkflowViewState.IdRef="If_33">
                                           <If.Then>
                                             <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,274" sap2010:WorkflowViewState.IdRef="Sequence_117">
                                               <sap:WorkflowViewStateService.ViewState>
@@ -2291,7 +2365,7 @@ If(
                                             </Sequence>
                                           </If.Then>
                                           <If.Else>
-                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,908.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_118">
+                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,1085.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_118">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2313,14 +2387,22 @@ If(
                                                   <InArgument x:TypeArguments="x:Boolean">[System.Text.RegularExpressions.Regex.IsMatch(AddressUpper,"\b(TEST|DUMMY|CANCELLED|CANCELED|NO\s+ADDRESS|NOT\s+AVAILABLE|N\/A)\b")]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
-                                              <If Condition="[HasSuspiciousAddressWord]" sap:VirtualizedContainerService.HintSize="452,495.3333333333333" sap2010:WorkflowViewState.IdRef="If_35">
+                                              <If Condition="[HasSuspiciousAddressWord]" sap:VirtualizedContainerService.HintSize="452,672" sap2010:WorkflowViewState.IdRef="If_35">
                                                 <If.Then>
-                                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,274" sap2010:WorkflowViewState.IdRef="Sequence_121">
+                                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_121">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
+                                                    <Assign sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_321">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:Int32">[R08_SuspiciousAddressCount]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:Int32">[R08_SuspiciousAddressCount+1]</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
                                                     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&#xA;    CurrentRowAddress(&quot;PropertyNo&quot;).ToString,&#xA;    CurrentRowAddress(&quot;OwnerName&quot;).ToString,&#xA;    CurrentRowAddress(&quot;WardNo&quot;).ToString,&#xA;    CurrentRowAddress(&quot;WardName&quot;).ToString,&#xA;    NormalizedAddress,&#xA;    &quot;Suspicious address wording&quot;&#xA;}]" DataTable="[dt_R08_IncompleteAddress]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_21" />
                                                   </Sequence>
                                                 </If.Then>
@@ -2354,21 +2436,61 @@ If(
           </ui:ForEachRow.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="668,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Info" Message="[&quot;R08 Current Findings Count = &quot; + dt_R08_IncompleteAddress.Rows.Count.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="668,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;R08 Sample Findings: &quot; + String.Join(&quot; | &quot;, dt_R08_IncompleteAddress.AsEnumerable().Take(10).Select(Function(r) r(&quot;PropertyNo&quot;).ToString() + &quot; -&gt; &quot; + r(&quot;PropertyAddress&quot;).ToString() + &quot; -&gt; &quot; + r(&quot;Finding&quot;).ToString()).ToArray())]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="668,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info" Message="[&quot;R08 Finding Breakdown: &quot; +&#xA;String.Join(&#xA;    &quot; | &quot;,&#xA;    dt_R08_IncompleteAddress.AsEnumerable().&#xA;        GroupBy(Function(r) r(&quot;Finding&quot;).ToString).&#xA;        Select(Function(g) g.Key + &quot; = &quot; + g.Count.ToString)&#xA;)]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="668,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;R08 Final Validation: Total Findings = &quot; +&#xA;dt_R08_IncompleteAddress.Rows.Count.ToString +&#xA;&quot; | Missing/Blank = &quot; +&#xA;dt_R08_IncompleteAddress.AsEnumerable().&#xA;    Count(Function(r) r(&quot;Finding&quot;).ToString = &quot;Missing / blank address&quot;).ToString +&#xA;&quot; | Placeholder = &quot; +&#xA;dt_R08_IncompleteAddress.AsEnumerable().&#xA;    Count(Function(r) r(&quot;Finding&quot;).ToString = &quot;Placeholder address&quot;).ToString +&#xA;&quot; | Suspicious = &quot; +&#xA;dt_R08_IncompleteAddress.AsEnumerable().&#xA;    Count(Function(r) r(&quot;Finding&quot;).ToString = &quot;Suspicious address wording&quot;).ToString]" />
-        <Assign sap:VirtualizedContainerService.HintSize="668,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_293">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Info" Message="[&quot;R08 Current Findings Count = &quot; + dt_R08_IncompleteAddress.Rows.Count.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;R08 Sample Findings: &quot; + String.Join(&quot; | &quot;, dt_R08_IncompleteAddress.AsEnumerable().Take(10).Select(Function(r) r(&quot;PropertyNo&quot;).ToString() + &quot; -&gt; &quot; + r(&quot;PropertyAddress&quot;).ToString() + &quot; -&gt; &quot; + r(&quot;Finding&quot;).ToString()).ToArray())]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info" Message="[&quot;R08 Finding Breakdown: &quot; +&#xA;String.Join(&#xA;    &quot; | &quot;,&#xA;    dt_R08_IncompleteAddress.AsEnumerable().&#xA;        GroupBy(Function(r) r(&quot;Finding&quot;).ToString).&#xA;        Select(Function(g) g.Key + &quot; = &quot; + g.Count.ToString)&#xA;)]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;R08 Final Validation: Total Findings = &quot; +&#xA;dt_R08_IncompleteAddress.Rows.Count.ToString +&#xA;&quot; | Missing/Blank = &quot; +&#xA;dt_R08_IncompleteAddress.AsEnumerable().&#xA;    Count(Function(r) r(&quot;Finding&quot;).ToString = &quot;Missing / blank address&quot;).ToString +&#xA;&quot; | Placeholder = &quot; +&#xA;dt_R08_IncompleteAddress.AsEnumerable().&#xA;    Count(Function(r) r(&quot;Finding&quot;).ToString = &quot;Placeholder address&quot;).ToString +&#xA;&quot; | Suspicious = &quot; +&#xA;dt_R08_IncompleteAddress.AsEnumerable().&#xA;    Count(Function(r) r(&quot;Finding&quot;).ToString = &quot;Suspicious address wording&quot;).ToString]" />
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_322">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[R08_ValidAddressCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[in_DemandData.Rows.Count - (R08_MissingAddressCount + R08_PlaceholderAddressCount + R08_SuspiciousAddressCount)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_293">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R08_IncompleteAddress]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="sd:DataTable">[dt_R08_IncompleteAddress]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_323">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R08_ValidAddressCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R08_ValidAddressCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_324">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R08_MissingAddressCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R08_MissingAddressCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_325">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R08_PlaceholderAddressCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R08_PlaceholderAddressCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_326">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R08_SuspiciousAddressCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R08_SuspiciousAddressCount]</InArgument>
           </Assign.Value>
         </Assign>
       </Sequence>
@@ -2972,6 +3094,8 @@ If(
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="650,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_82" Level="Info" Message="[&quot;---------------------------------------------------------------------------------------------------------&quot;]" />
       <Sequence DisplayName="R11 — Same Owner Name" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_177">
         <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R11_DuplicateOwnerRecordCount" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R11_DuplicateOwnerGroupCount" />
           <Variable x:TypeArguments="sd:DataTable" Name="dt_R11_SameOwnerDetails" />
           <Variable x:TypeArguments="x:String" Name="OwnerKey" />
           <Variable x:TypeArguments="scg:Dictionary(x:String, scg:List(sd:DataRow))" Default="[New Dictionary (Of String, List(Of DataRow))]" Name="OwnerLookup" />
@@ -2984,7 +3108,7 @@ If(
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:BuildDataTable DataTable="[dt_R11_SameOwner]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="524,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_18" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;PropertyCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyNos&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_31">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_31">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -3069,8 +3193,8 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_83" Level="Info" Message="[&quot;R11 Owner Lookup Groups = &quot; + OwnerLookup.Count.ToString]" />
-        <ui:BuildDataTable DataTable="[dt_R11_SameOwnerDetails]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="524,57.333333333333336" sap2010:WorkflowViewState.IdRef="BuildDataTable_19" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_83" Level="Info" Message="[&quot;R11 Owner Lookup Groups = &quot; + OwnerLookup.Count.ToString]" />
+        <ui:BuildDataTable DataTable="[dt_R11_SameOwnerDetails]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="BuildDataTable_19" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -3078,27 +3202,35 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:BuildDataTable>
-        <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))" CurrentIndex="{x:Null}" DisplayName="For Each CurrentOwnerEntry" sap:VirtualizedContainerService.HintSize="524,1150.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_17" Values="[OwnerLookup]">
+        <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))" CurrentIndex="{x:Null}" DisplayName="For Each CurrentOwnerEntry" sap:VirtualizedContainerService.HintSize="616,1327.3333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_17" Values="[OwnerLookup]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, scg:List(sd:DataRow))" Name="CurrentOwnerEntry" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,990" sap2010:WorkflowViewState.IdRef="Sequence_183">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,1166.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_183">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[CurrentOwnerEntry.Value.Count &gt; 1]" sap:VirtualizedContainerService.HintSize="488,930" sap2010:WorkflowViewState.IdRef="If_58">
+                <If Condition="[CurrentOwnerEntry.Value.Count &gt; 1]" sap:VirtualizedContainerService.HintSize="488,1106.6666666666667" sap2010:WorkflowViewState.IdRef="If_58">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,708.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_184">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,885.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_184">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    CurrentOwnerEntry.Key,&#xA;    CurrentOwnerEntry.Value.Count,&#xA;    String.Join(&#xA;        &quot;, &quot;,&#xA;        CurrentOwnerEntry.Value.Select(&#xA;            Function(r) r(&quot;PropertyNo&quot;).ToString.Trim&#xA;        )&#xA;    )&#xA;}]" DataTable="[dt_R11_SameOwner]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_32" />
+                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_327">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[R11_DuplicateOwnerGroupCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[dt_R11_SameOwner.Rows.Count]</InArgument>
+                        </Assign.Value>
+                      </Assign>
                       <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each currentDataRow" sap:VirtualizedContainerService.HintSize="452,425.3333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_20" Values="[CurrentOwnerEntry.Value]">
                         <ui:ForEach.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
@@ -3138,9 +3270,23 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEach>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_84" Level="Info" Message="[&quot;R11 Same Owner Groups = &quot; + dt_R11_SameOwner.Rows.Count.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_85" Level="Info" Message="[&quot;R11 Same Owner Details Rows = &quot; + dt_R11_SameOwnerDetails.Rows.Count.ToString]" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R11_SameOwnerDetails.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,440" sap2010:WorkflowViewState.IdRef="ForEachRow_33">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_331">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[R11_DuplicateOwnerRecordCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[dt_R11_SameOwnerDetails.Rows.Count]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_84" Level="Info" Message="[&quot;R11 Same Owner Groups = &quot; + dt_R11_SameOwner.Rows.Count.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_85" Level="Info" Message="[&quot;R11 Same Owner Details Rows = &quot; + dt_R11_SameOwnerDetails.Rows.Count.ToString]" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R11_SameOwnerDetails.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_33">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -3157,12 +3303,28 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <Assign sap:VirtualizedContainerService.HintSize="524,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_296">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_296">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R11_SameOwnerDetails]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="sd:DataTable">[dt_R11_SameOwnerDetails]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_329">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R11_DuplicateOwnerGroupCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R11_DuplicateOwnerGroupCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_330">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R11_DuplicateOwnerRecordCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R11_DuplicateOwnerRecordCount]</InArgument>
           </Assign.Value>
         </Assign>
       </Sequence>
@@ -3618,7 +3780,7 @@ If(
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:BuildDataTable DataTable="[dt_R13_PaidUnpaid]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="524,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_22" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;TotalDemand&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;TotalCollection&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PaymentStatus&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_CollectionData]" DisplayName="For Each Row in Data Table - Collection" sap:VirtualizedContainerService.HintSize="524,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_40">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_CollectionData]" DisplayName="For Each Row in Data Table - Collection" sap:VirtualizedContainerService.HintSize="616,1139.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_40">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -3703,12 +3865,12 @@ If(
           </ui:ForEachRow.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table - Demand" sap:VirtualizedContainerService.HintSize="524,3634" sap2010:WorkflowViewState.IdRef="ForEachRow_39">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table - Demand" sap:VirtualizedContainerService.HintSize="616,3634" sap2010:WorkflowViewState.IdRef="ForEachRow_39">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -3986,14 +4148,30 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_111" Level="Info" Message="[&quot;R13 Collection Lookup Groups = &quot; +&#xA;CollectionPropertyLookup.Count.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_112" Level="Info" Message="[&quot;R13 Classified Count = &quot; + R13_ClassifiedCount.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_116" Level="Info" Message="[&quot;R13 Missing PropertyNo Count = &quot; +&#xA;R13_MissingPropertyNoCount.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_113" Level="Info" Message="[&quot;R13 Paid Count = &quot; + R13_PaidCount.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_114" Level="Info" Message="[&quot;R13 Unpaid Count = &quot; + R13_UnpaidCount.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_115" Level="Info" Message="[&quot;R13 Paid + Unpaid = &quot; +&#xA;(R13_PaidCount + R13_UnpaidCount).ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_117" Level="Info" Message="[&quot;R13 Final Reconciliation = &quot; +&#xA;(R13_PaidCount + R13_UnpaidCount + R13_MissingPropertyNoCount).ToString +&#xA;&quot; / &quot; +&#xA;in_DemandData.Rows.Count.ToString]" />
-        <Assign sap:VirtualizedContainerService.HintSize="524,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_298">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_332">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R13_PaidCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R13_PaidCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_333">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R13_UnpaidCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R13_UnpaidCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_111" Level="Info" Message="[&quot;R13 Collection Lookup Groups = &quot; +&#xA;CollectionPropertyLookup.Count.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_112" Level="Info" Message="[&quot;R13 Classified Count = &quot; + R13_ClassifiedCount.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_116" Level="Info" Message="[&quot;R13 Missing PropertyNo Count = &quot; +&#xA;R13_MissingPropertyNoCount.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_113" Level="Info" Message="[&quot;R13 Paid Count = &quot; + R13_PaidCount.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_114" Level="Info" Message="[&quot;R13 Unpaid Count = &quot; + R13_UnpaidCount.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_115" Level="Info" Message="[&quot;R13 Paid + Unpaid = &quot; +&#xA;(R13_PaidCount + R13_UnpaidCount).ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_117" Level="Info" Message="[&quot;R13 Final Reconciliation = &quot; +&#xA;(R13_PaidCount + R13_UnpaidCount + R13_MissingPropertyNoCount).ToString +&#xA;&quot; / &quot; +&#xA;in_DemandData.Rows.Count.ToString]" />
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_298">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R13_PaidUnpaid]</OutArgument>
           </Assign.To>
@@ -4005,6 +4183,7 @@ If(
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="650,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_118" Level="Info" Message="[&quot;---------------------------------------------------------------------------------------------------------&quot;]" />
       <Sequence DisplayName="R14 — User Charge Not Applied " sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_244">
         <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R14_AppliedCount" />
           <Variable x:TypeArguments="x:Int32" Default="0" Name="R14_PreviewCount" />
           <Variable x:TypeArguments="x:Int32" Default="0" Name="R14_TotalProcessed" />
           <Variable x:TypeArguments="x:Int32" Default="0" Name="R14_NotAppliedCount" />
@@ -4021,13 +4200,13 @@ If(
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:BuildDataTable DataTable="[dt_R14_UserChargeNotApplied]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_23" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ArrUserTotalAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CurrUserTotalAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Finding&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,1828" sap2010:WorkflowViewState.IdRef="ForEachRow_41">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,1964.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_41">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRowR14Demand" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1615.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_245">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1752" sap2010:WorkflowViewState.IdRef="Sequence_245">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4095,7 +4274,7 @@ If(
 )]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <If Condition="[R14_TotalUserCharge=0]" sap:VirtualizedContainerService.HintSize="452,672" sap2010:WorkflowViewState.IdRef="If_76">
+                <If Condition="[R14_TotalUserCharge=0]" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="If_76">
                   <If.Then>
                     <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_246">
                       <sap:WorkflowViewStateService.ViewState>
@@ -4115,12 +4294,20 @@ If(
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_247">
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_247">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_334">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[R14_AppliedCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[R14_AppliedCount + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
                     </Sequence>
                   </If.Else>
                 </If>
@@ -4134,7 +4321,23 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_120" Level="Info" Message="[&quot;R14 Total Processed = &quot; + R14_TotalProcessed.ToString]">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_335">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R14_AppliedCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R14_AppliedCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_336">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R14_NotAppliedCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R14_NotAppliedCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_120" Level="Info" Message="[&quot;R14 Total Processed = &quot; + R14_TotalProcessed.ToString]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4142,7 +4345,7 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:LogMessage>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_119" Level="Info" Message="[&quot;R14 User Charge Not Applied Count = &quot; +R14_NotAppliedCount.ToString]">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_119" Level="Info" Message="[&quot;R14 User Charge Not Applied Count = &quot; +R14_NotAppliedCount.ToString]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4150,7 +4353,7 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:LogMessage>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R14_UserChargeNotApplied]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,898" sap2010:WorkflowViewState.IdRef="ForEachRow_42">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R14_UserChargeNotApplied]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,898" sap2010:WorkflowViewState.IdRef="ForEachRow_42">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -4201,7 +4404,7 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <Assign sap:VirtualizedContainerService.HintSize="488,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_299">
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_299">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R14_UserChargeNotApplied]</OutArgument>
           </Assign.To>
@@ -4233,6 +4436,8 @@ If(
           <Variable x:TypeArguments="x:Double" Default="0" Name="R15_TotalPropertyTaxCollection" />
           <Variable x:TypeArguments="x:Double" Default="0" Name="R15_ArrearUserChargeCollection" />
           <Variable x:TypeArguments="x:Double" Default="0" Name="R15_TotalUserChargeCollection" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R15_PropertyTaxAndUserChargePaidCount" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R15_PropertyTaxPaidUserChargeNotPaidCount" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -4325,19 +4530,19 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table - Demand" sap:VirtualizedContainerService.HintSize="616,4430.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_43">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table - Demand" sap:VirtualizedContainerService.HintSize="616,4960" sap2010:WorkflowViewState.IdRef="ForEachRow_43">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRowR15Demand" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,4218" sap2010:WorkflowViewState.IdRef="Sequence_252">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,4747.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_252">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_220">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_220">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[R15_TotalProcessed]</OutArgument>
                   </Assign.To>
@@ -4345,7 +4550,7 @@ If(
                     <InArgument x:TypeArguments="x:Int32">[R15_TotalProcessed+1]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_204">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_204">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[R15_ArrearPropertyTaxDemand]</OutArgument>
                   </Assign.To>
@@ -4359,7 +4564,7 @@ If(
 )]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_205">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_205">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[R15_CurrentPropertyTaxDemand]</OutArgument>
                   </Assign.To>
@@ -4373,7 +4578,7 @@ If(
 )]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_206">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_206">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[R15_TotalPropertyTaxDemand]</OutArgument>
                   </Assign.To>
@@ -4381,7 +4586,7 @@ If(
                     <InArgument x:TypeArguments="x:Double">[R15_ArrearPropertyTaxDemand+R15_CurrentPropertyTaxDemand]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_207">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_207">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[R15_ArrearUserChargeDemand]</OutArgument>
                   </Assign.To>
@@ -4395,7 +4600,7 @@ If(
 )]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_208">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_208">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[R15_CurrentUserChargeDemand]</OutArgument>
                   </Assign.To>
@@ -4409,7 +4614,7 @@ If(
 )]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_209">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_209">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[R15_TotalUserChargeDemand]</OutArgument>
                   </Assign.To>
@@ -4417,7 +4622,7 @@ If(
                     <InArgument x:TypeArguments="x:Double">[R15_ArrearUserChargeDemand+R15_CurrentUserChargeDemand]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_210">
+                <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_210">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[R15_PropertyNo]</OutArgument>
                   </Assign.To>
@@ -4431,15 +4636,15 @@ If(
 )]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <If Condition="[Not String.IsNullOrWhiteSpace(R15_PropertyNo) AndAlso&#xA;R15CollectionPropertyLookup.ContainsKey(R15_PropertyNo)]" sap:VirtualizedContainerService.HintSize="488,2744.6666666666665" sap2010:WorkflowViewState.IdRef="If_78">
+                <If Condition="[Not String.IsNullOrWhiteSpace(R15_PropertyNo) AndAlso&#xA;R15CollectionPropertyLookup.ContainsKey(R15_PropertyNo)]" sap:VirtualizedContainerService.HintSize="524,3274" sap2010:WorkflowViewState.IdRef="If_78">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,1968.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_253">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="522,2498" sap2010:WorkflowViewState.IdRef="Sequence_253">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_221">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_221">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[R15_MatchedCount]</OutArgument>
                         </Assign.To>
@@ -4447,7 +4652,7 @@ If(
                           <InArgument x:TypeArguments="x:Int32">[R15_MatchedCount+1]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_213">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_213">
                         <Assign.To>
                           <OutArgument x:TypeArguments="scg:List(sd:DataRow)">[R15_CollectionRowList]</OutArgument>
                         </Assign.To>
@@ -4455,7 +4660,7 @@ If(
                           <InArgument x:TypeArguments="scg:List(sd:DataRow)">[R15CollectionPropertyLookup(R15_PropertyNo)]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_214">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_214">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Double">[R15_ArrearPropertyTaxCollection]</OutArgument>
                         </Assign.To>
@@ -4504,7 +4709,7 @@ If(
 )]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_215">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_215">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Double">[R15_CurrentPropertyTaxCollection]</OutArgument>
                         </Assign.To>
@@ -4553,7 +4758,7 @@ If(
 )]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_216">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_216">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Double">[R15_TotalPropertyTaxCollection]</OutArgument>
                         </Assign.To>
@@ -4561,7 +4766,7 @@ If(
                           <InArgument x:TypeArguments="x:Double">[R15_ArrearPropertyTaxCollection + R15_CurrentPropertyTaxCollection]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_217">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_217">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Double">[R15_ArrearUserChargeCollection]</OutArgument>
                         </Assign.To>
@@ -4575,7 +4780,7 @@ If(
 )]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_218">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_218">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Double">[R15_CurrentUserChargeCollection]</OutArgument>
                         </Assign.To>
@@ -4589,7 +4794,7 @@ If(
 )]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_219">
+                      <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_219">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Double">[R15_TotalUserChargeCollection]</OutArgument>
                         </Assign.To>
@@ -4597,37 +4802,73 @@ If(
                           <InArgument x:TypeArguments="x:Double">[R15_ArrearUserChargeCollection + R15_CurrentUserChargeCollection]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <If Condition="[R15_TotalPropertyTaxCollection &gt;= R15_TotalPropertyTaxDemand AndAlso&#xA;R15_TotalUserChargeCollection &lt; R15_TotalUserChargeDemand]" sap:VirtualizedContainerService.HintSize="452,495.3333333333333" sap2010:WorkflowViewState.IdRef="If_81">
+                      <If Condition="[R15_TotalPropertyTaxCollection &gt;= R15_TotalPropertyTaxDemand AndAlso&#xA;R15_TotalUserChargeCollection &lt; R15_TotalUserChargeDemand]" sap:VirtualizedContainerService.HintSize="488,1024.6666666666667" sap2010:WorkflowViewState.IdRef="If_81">
                         <If.Then>
-                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,274" sap2010:WorkflowViewState.IdRef="Sequence_260">
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_260">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    R15_PropertyNo,&#xA;    CurrentRowR15Demand(&quot;OwnerName&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;GuaridanName&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;WardNo&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;WardName&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;PropertyAddress&quot;).ToString,&#xA;    R15_TotalPropertyTaxDemand,&#xA;    R15_TotalPropertyTaxCollection,&#xA;    R15_TotalUserChargeDemand,&#xA;    R15_TotalUserChargeCollection,&#xA;    &quot;Property Tax Paid + User Charge Not Paid&quot;&#xA;}]" DataTable="[dt_R15_UserChargeNotPaid]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_47" />
+                            <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_339">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[R15_PropertyTaxPaidUserChargeNotPaidCount]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[R15_PropertyTaxPaidUserChargeNotPaidCount + 1]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    R15_PropertyNo,&#xA;    CurrentRowR15Demand(&quot;OwnerName&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;GuaridanName&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;WardNo&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;WardName&quot;).ToString,&#xA;    CurrentRowR15Demand(&quot;PropertyAddress&quot;).ToString,&#xA;    R15_TotalPropertyTaxDemand,&#xA;    R15_TotalPropertyTaxCollection,&#xA;    R15_TotalUserChargeDemand,&#xA;    R15_TotalUserChargeCollection,&#xA;    &quot;Property Tax Paid + User Charge Not Paid&quot;&#xA;}]" DataTable="[dt_R15_UserChargeNotPaid]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="452,214" sap2010:WorkflowViewState.IdRef="AddDataRow_47" />
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_261">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,443.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_261">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[R15_TotalPropertyTaxCollection &gt;= R15_TotalPropertyTaxDemand AndAlso&#xA;R15_TotalUserChargeCollection &gt;= R15_TotalUserChargeDemand]" sap:VirtualizedContainerService.HintSize="452,383.3333333333333" sap2010:WorkflowViewState.IdRef="If_113">
+                              <If.Then>
+                                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_381">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_337">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[R15_PropertyTaxAndUserChargePaidCount]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[R15_PropertyTaxAndUserChargePaidCount + 1]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_382">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </If.Else>
+                            </If>
                           </Sequence>
                         </If.Else>
                       </If>
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,645.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_254">
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="522,645.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_254">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[String.IsNullOrWhiteSpace(R15_PropertyNo)]" sap:VirtualizedContainerService.HintSize="452,585.3333333333334" sap2010:WorkflowViewState.IdRef="If_82">
+                      <If Condition="[String.IsNullOrWhiteSpace(R15_PropertyNo)]" sap:VirtualizedContainerService.HintSize="488,585.3333333333334" sap2010:WorkflowViewState.IdRef="If_82">
                         <If.Then>
                           <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_263">
                             <sap:WorkflowViewStateService.ViewState>
@@ -4677,7 +4918,7 @@ If(
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_125" Level="Info" Message="[&quot;R15 Reconciliation | Total Processed = &quot; +&#xA;R15_TotalProcessed.ToString +&#xA;&quot; | Matched = &quot; +&#xA;R15_MatchedCount.ToString +&#xA;&quot; | Missing PropertyNo = &quot; +&#xA;R15_MissingPropertyNoCount.ToString +&#xA;&quot; | Unmatched PropertyNo = &quot; +&#xA;R15_UnmatchedPropertyNoCount.ToString +&#xA;&quot; | R15 Findings = &quot; +&#xA;dt_R15_UserChargeNotPaid.Rows.Count.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_123" Level="Info" Message="[&quot;R15 User Charge Not Paid Count = &quot; + dt_R15_UserChargeNotPaid.Rows.Count.ToString]">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_123" Level="Info" Message="[&quot;R15 User Charge Not Paid Count = &quot; + dt_R15_UserChargeNotPaid.Rows.Count.ToString]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4685,7 +4926,7 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:LogMessage>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R15_UserChargeNotPaid.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,440" sap2010:WorkflowViewState.IdRef="ForEachRow_45">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R15_UserChargeNotPaid.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_45">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -4702,7 +4943,7 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R15_UserChargeNotPaid]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,721.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_46">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R15_UserChargeNotPaid]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,721.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_46">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -4739,7 +4980,7 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <Assign sap:VirtualizedContainerService.HintSize="524,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_300">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_300">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R15_UserChargeNotPaid]</OutArgument>
           </Assign.To>
@@ -4747,10 +4988,29 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R15_UserChargeNotPaid]</InArgument>
           </Assign.Value>
         </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_338">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R15_PropertyTaxAndUserChargePaidCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R15_PropertyTaxAndUserChargePaidCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_340">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R15_PropertyTaxPaidUserChargeNotPaidCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R15_PropertyTaxPaidUserChargeNotPaidCount]</InArgument>
+          </Assign.Value>
+        </Assign>
       </Sequence>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="650,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_127" Level="Info" Message="[&quot;---------------------------------------------------------------------------------------------------------&quot;]" />
       <Sequence DisplayName="R16 — Main Road Property Count" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_268">
         <Sequence.Variables>
+          <Variable x:TypeArguments="x:Int32" Default="[0]" Name="R16_OthersNullCount" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R16_PrincipalMainRoadCount" />
+          <Variable x:TypeArguments="x:Int32" Default="0" Name="R16_MainRoadCount" />
           <Variable x:TypeArguments="sd:DataTable" Name="dt_R16_PrincipalMainRoadProperties" />
           <Variable x:TypeArguments="sd:DataTable" Name="dt_R16_MainRoadProperties" />
         </Sequence.Variables>
@@ -4762,32 +5022,40 @@ If(
         </sap:WorkflowViewStateService.ViewState>
         <ui:BuildDataTable DataTable="[dt_R16_MainRoadProperties]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_26" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;RoadType&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
         <ui:BuildDataTable DataTable="[dt_R16_PrincipalMainRoadProperties]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_27" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;RoadType&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,825.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_47">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,1802.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_47">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRowR16Demand" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,612.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_269">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1590" sap2010:WorkflowViewState.IdRef="Sequence_269">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[Not CurrentRowR16Demand.IsNull(&quot;RooadType&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(CurrentRowR16Demand(&quot;RooadType&quot;).ToString) AndAlso&#xA;CurrentRowR16Demand(&quot;RooadType&quot;).ToString.Trim.Equals(&#xA;    &quot;MAIN ROAD (MORE THAN 20 FT. AND LESS THAN 40 FT.)&quot;,&#xA;    StringComparison.OrdinalIgnoreCase&#xA;)]" sap:VirtualizedContainerService.HintSize="452,57.333333333333336" sap2010:WorkflowViewState.IdRef="If_84">
+                <If Condition="[Not CurrentRowR16Demand.IsNull(&quot;RooadType&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(CurrentRowR16Demand(&quot;RooadType&quot;).ToString) AndAlso&#xA;CurrentRowR16Demand(&quot;RooadType&quot;).ToString.Trim.Equals(&#xA;    &quot;MAIN ROAD (MORE THAN 20 FT. AND LESS THAN 40 FT.)&quot;,&#xA;    StringComparison.OrdinalIgnoreCase&#xA;)]" sap:VirtualizedContainerService.HintSize="452,681.3333333333334" sap2010:WorkflowViewState.IdRef="If_84">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,274" sap2010:WorkflowViewState.IdRef="Sequence_270">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_270">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_341">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[R16_MainRoadCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[R16_MainRoadCount + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
                       <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;PropertyNo&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;PropertyNo&quot;).ToString.Trim&#xA;    ),&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;OwnerName&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;OwnerName&quot;).ToString.Trim&#xA;    ),&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;WardNo&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;WardNo&quot;).ToString.Trim&#xA;    ),&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;WardName&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;WardName&quot;).ToString.Trim&#xA;    ),&#xA;    CurrentRowR16Demand(&quot;RooadType&quot;).ToString.Trim,&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;PropertyAddress&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;PropertyAddress&quot;).ToString.Trim&#xA;    )&#xA;}]" DataTable="[dt_R16_MainRoadProperties]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_48" />
                     </Sequence>
                   </If.Then>
@@ -4801,14 +5069,22 @@ If(
                     </Sequence>
                   </If.Else>
                 </If>
-                <If Condition="[Not CurrentRowR16Demand.IsNull(&quot;RooadType&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(CurrentRowR16Demand(&quot;RooadType&quot;).ToString) AndAlso&#xA;CurrentRowR16Demand(&quot;RooadType&quot;).ToString.Trim.Equals(&#xA;    &quot;PRINCIPAL MAIN ROAD (MORE THAN 40 FT.)&quot;,&#xA;    StringComparison.OrdinalIgnoreCase&#xA;)]" sap:VirtualizedContainerService.HintSize="452,495.3333333333333" sap2010:WorkflowViewState.IdRef="If_85">
+                <If Condition="[Not CurrentRowR16Demand.IsNull(&quot;RooadType&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(CurrentRowR16Demand(&quot;RooadType&quot;).ToString) AndAlso&#xA;CurrentRowR16Demand(&quot;RooadType&quot;).ToString.Trim.Equals(&#xA;    &quot;PRINCIPAL MAIN ROAD (MORE THAN 40 FT.)&quot;,&#xA;    StringComparison.OrdinalIgnoreCase&#xA;)]" sap:VirtualizedContainerService.HintSize="452,681.3333333333334" sap2010:WorkflowViewState.IdRef="If_85">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,274" sap2010:WorkflowViewState.IdRef="Sequence_273">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_273">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_342">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[R16_PrincipalMainRoadCount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[R16_PrincipalMainRoadCount + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
                       <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;PropertyNo&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;PropertyNo&quot;).ToString.Trim&#xA;    ),&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;OwnerName&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;OwnerName&quot;).ToString.Trim&#xA;    ),&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;WardNo&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;WardNo&quot;).ToString.Trim&#xA;    ),&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;WardName&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;WardName&quot;).ToString.Trim&#xA;    ),&#xA;    CurrentRowR16Demand(&quot;RooadType&quot;).ToString.Trim,&#xA;    If(&#xA;        CurrentRowR16Demand.IsNull(&quot;PropertyAddress&quot;),&#xA;        &quot;&quot;,&#xA;        CurrentRowR16Demand(&quot;PropertyAddress&quot;).ToString.Trim&#xA;    )&#xA;}]" DataTable="[dt_R16_PrincipalMainRoadProperties]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_49" />
                     </Sequence>
                   </If.Then>
@@ -4822,12 +5098,35 @@ If(
                     </Sequence>
                   </If.Else>
                 </If>
+                <Assign sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_343">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[R16_OthersNullCount]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32" xml:space="preserve">[R16_OthersNullCount + If(
+    CurrentRowR16Demand.IsNull("RooadType") OrElse
+    String.IsNullOrWhiteSpace(CurrentRowR16Demand("RooadType").ToString) OrElse
+    (
+        Not CurrentRowR16Demand("RooadType").ToString.Trim.Equals(
+            "MAIN ROAD (MORE THAN 20 FT. AND LESS THAN 40 FT.)",
+            StringComparison.OrdinalIgnoreCase
+        ) AndAlso
+        Not CurrentRowR16Demand("RooadType").ToString.Trim.Equals(
+            "PRINCIPAL MAIN ROAD (MORE THAN 40 FT.)",
+            StringComparison.OrdinalIgnoreCase
+        )
+    ),
+    1,
+    0
+)]</InArgument>
+                  </Assign.Value>
+                </Assign>
               </Sequence>
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_131" Level="Info" Message="[&quot;R16 RoadType Reconciliation | Total = &quot; +&#xA;in_DemandData.Rows.Count.ToString +&#xA;&quot; | Main Road = &quot; +&#xA;dt_R16_MainRoadProperties.Rows.Count.ToString +&#xA;&quot; | Principal Main Road = &quot; +&#xA;dt_R16_PrincipalMainRoadProperties.Rows.Count.ToString +&#xA;&quot; | Other/NULL = &quot; +&#xA;(&#xA;    in_DemandData.Rows.Count -&#xA;    dt_R16_MainRoadProperties.Rows.Count -&#xA;    dt_R16_PrincipalMainRoadProperties.Rows.Count&#xA;).ToString]" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R16_MainRoadProperties.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,440" sap2010:WorkflowViewState.IdRef="ForEachRow_49">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_131" Level="Info" Message="[&quot;R16 RoadType Reconciliation | Total = &quot; +&#xA;in_DemandData.Rows.Count.ToString +&#xA;&quot; | Main Road = &quot; +&#xA;dt_R16_MainRoadProperties.Rows.Count.ToString +&#xA;&quot; | Principal Main Road = &quot; +&#xA;dt_R16_PrincipalMainRoadProperties.Rows.Count.ToString +&#xA;&quot; | Other/NULL = &quot; +&#xA;(&#xA;    in_DemandData.Rows.Count -&#xA;    dt_R16_MainRoadProperties.Rows.Count -&#xA;    dt_R16_PrincipalMainRoadProperties.Rows.Count&#xA;).ToString]" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R16_MainRoadProperties.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_49">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -4844,7 +5143,7 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R16_PrincipalMainRoadProperties.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,440" sap2010:WorkflowViewState.IdRef="ForEachRow_50">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R16_PrincipalMainRoadProperties.AsEnumerable().Take(5).CopyToDataTable()]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_50">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -4861,7 +5160,7 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_301">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_301">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R16_MainRoadProperties]</OutArgument>
           </Assign.To>
@@ -4869,7 +5168,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R16_MainRoadProperties]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign sap:VirtualizedContainerService.HintSize="488,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_302">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_302">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R16_PrincipalMainRoadProperties]</OutArgument>
           </Assign.To>
@@ -4877,9 +5176,33 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R16_PrincipalMainRoadProperties]</InArgument>
           </Assign.Value>
         </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_344">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R16_MainRoadCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R16_MainRoadCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_345">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R16_PrincipalMainRoadCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R16_PrincipalMainRoadCount]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_346">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R16_OthersNullCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R16_OthersNullCount]</InArgument>
+          </Assign.Value>
+        </Assign>
       </Sequence>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="650,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_134" Level="Info" Message="[&quot;---------------------------------------------------------------------------------------------------------&quot;]" />
-      <Sequence DisplayName="R17 — Self vs Rented/Tenanted Properties" sap:VirtualizedContainerService.HintSize="650,4819.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_277">
+      <Sequence DisplayName="R17 — Self vs Rented/Tenanted Properties" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_277">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="dt_R17_TenatedPreview" />
           <Variable x:TypeArguments="x:Int32" Default="0" Name="R17_MissingOccupancyCount" />
@@ -4891,32 +5214,32 @@ If(
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:BuildDataTable DataTable="[dt_R17_OccupancyTypeAnalysis]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_28" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;OccupancyType&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;PropertyCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,1179.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_51">
+        <ui:BuildDataTable DataTable="[dt_R17_OccupancyTypeAnalysis]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_28" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;OccupancyType&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;PropertyCount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,1092" sap2010:WorkflowViewState.IdRef="ForEachRow_51">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRowR17Demand" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,966.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_278">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,879.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_278">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[Not CurrentRowR17Demand.IsNull(&quot;Normalized_OccupancyType&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(CurrentRowR17Demand(&quot;Normalized_OccupancyType&quot;).ToString) AndAlso&#xA;CurrentRowR17Demand(&quot;Normalized_OccupancyType&quot;).ToString.Trim.Equals(&#xA;    &quot;SELF&quot;,&#xA;    StringComparison.OrdinalIgnoreCase&#xA;)]" sap:VirtualizedContainerService.HintSize="452,458" sap2010:WorkflowViewState.IdRef="If_86">
+                <If Condition="[Not CurrentRowR17Demand.IsNull(&quot;Normalized_OccupancyType&quot;) AndAlso&#xA;Not String.IsNullOrWhiteSpace(CurrentRowR17Demand(&quot;Normalized_OccupancyType&quot;).ToString) AndAlso&#xA;CurrentRowR17Demand(&quot;Normalized_OccupancyType&quot;).ToString.Trim.Equals(&#xA;    &quot;SELF&quot;,&#xA;    StringComparison.OrdinalIgnoreCase&#xA;)]" sap:VirtualizedContainerService.HintSize="452,370.6666666666667" sap2010:WorkflowViewState.IdRef="If_86">
                   <If.Then>
-                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_279">
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,140" sap2010:WorkflowViewState.IdRef="Sequence_279">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_224">
+                      <Assign sap:VirtualizedContainerService.HintSize="416,80" sap2010:WorkflowViewState.IdRef="Assign_224">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[R17_SelfCount]</OutArgument>
                         </Assign.To>
@@ -4975,7 +5298,7 @@ If(
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
         <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    &quot;Self&quot;,&#xA;    R17_SelfCount&#xA;}]" DataTable="[dt_R17_OccupancyTypeAnalysis]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_51" />
-        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xD;&#xA;    &quot;Tenanted&quot;,&#xD;&#xA;    R17_TenantedCount&#xD;&#xA;}]" DataTable="[dt_R17_OccupancyTypeAnalysis]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_52" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    &quot;Tenanted&quot;,&#xA;    R17_TenantedCount&#xA;}]" DataTable="[dt_R17_OccupancyTypeAnalysis]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_52" />
         <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,1208.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_52">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
@@ -5181,7 +5504,7 @@ If(
                           <InArgument x:TypeArguments="x:Int32">[R18_DuplicateGroupCount+1]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xA;    CurrentPropertyEntry.Key,&#xA;    CurrentPropertyEntry.Value.Count,&#xA;    String.Join(&quot; | &quot;,&#xA;        CurrentPropertyEntry.Value.Select(&#xA;            Function(r) r(&quot;OwnerName&quot;).ToString.Trim&#xA;        )&#xA;    ),&#xA;    String.Join(&quot; | &quot;,&#xA;        CurrentPropertyEntry.Value.Select(&#xA;            Function(r) r(&quot;WardNo&quot;).ToString.Trim&#xA;        )&#xA;    ),&#xA;    String.Join(&quot; | &quot;,&#xA;        CurrentPropertyEntry.Value.Select(&#xA;            Function(r) r(&quot;WardName&quot;).ToString.Trim&#xA;        )&#xA;    ),&#xA;    String.Join(&quot; | &quot;,&#xA;        CurrentPropertyEntry.Value.Select(&#xA;            Function(r) r(&quot;PropertyAddress&quot;).ToString.Trim&#xA;        )&#xA;    )&#xA;}]" DataTable="[dt_R18_DuplicateProperty]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_54" />
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&#xD;&#xA;    CurrentPropertyEntry.Key,&#xD;&#xA;    CurrentPropertyEntry.Value.Count,&#xD;&#xA;    String.Join(&quot; | &quot;,&#xD;&#xA;        CurrentPropertyEntry.Value.Select(&#xD;&#xA;            Function(r) r(&quot;OwnerName&quot;).ToString.Trim&#xD;&#xA;        )&#xD;&#xA;    ),&#xD;&#xA;    String.Join(&quot; | &quot;,&#xD;&#xA;        CurrentPropertyEntry.Value.Select(&#xD;&#xA;            Function(r) r(&quot;WardNo&quot;).ToString.Trim&#xD;&#xA;        )&#xD;&#xA;    ),&#xD;&#xA;    String.Join(&quot; | &quot;,&#xD;&#xA;        CurrentPropertyEntry.Value.Select(&#xD;&#xA;            Function(r) r(&quot;WardName&quot;).ToString.Trim&#xD;&#xA;        )&#xD;&#xA;    ),&#xD;&#xA;    String.Join(&quot; | &quot;,&#xD;&#xA;        CurrentPropertyEntry.Value.Select(&#xD;&#xA;            Function(r) r(&quot;PropertyAddress&quot;).ToString.Trim&#xD;&#xA;        )&#xD;&#xA;    )&#xD;&#xA;}]" DataTable="[dt_R18_DuplicateProperty]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,214" sap2010:WorkflowViewState.IdRef="AddDataRow_54" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
@@ -5205,7 +5528,7 @@ If(
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEach>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_141" Level="Info" Message="[&quot;R18 Duplicate PropertyNo Groups = &quot; + R18_DuplicateGroupCount.ToString]" />
-        <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_230">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_230">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[dt_R18_DuplicatePreview]</OutArgument>
           </Assign.To>
@@ -5213,7 +5536,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R18_DuplicateProperty.AsEnumerable().Take(5).CopyToDataTable()]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R18_DuplicatePreview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachRow_56">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R18_DuplicatePreview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_56">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5231,13 +5554,13 @@ If(
           </ui:ForEachRow.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:BuildDataTable DataTable="[dt_R18_MissingProperty]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_30" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,768" sap2010:WorkflowViewState.IdRef="ForEachRow_57">
+        <ui:BuildDataTable DataTable="[dt_R18_MissingProperty]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_30" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,768" sap2010:WorkflowViewState.IdRef="ForEachRow_57">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5274,8 +5597,8 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_143" Level="Info" Message="[&quot;R18 Missing / Blank PropertyNo Count = &quot; +dt_R18_MissingProperty.Rows.Count.ToString]" />
-        <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_231">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_143" Level="Info" Message="[&quot;R18 Missing / Blank PropertyNo Count = &quot; +dt_R18_MissingProperty.Rows.Count.ToString]" />
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_231">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[dt_R18_MissingPreview]</OutArgument>
           </Assign.To>
@@ -5283,7 +5606,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R18_MissingProperty.AsEnumerable().Take(5).CopyToDataTable()]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R18_MissingPreview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,440" sap2010:WorkflowViewState.IdRef="ForEachRow_58">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R18_MissingPreview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_58">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5300,7 +5623,7 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,721.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_59">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,721.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_59">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5350,8 +5673,8 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:BuildDataTable DataTable="[dt_R18_TPropertyNo]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_31" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,768" sap2010:WorkflowViewState.IdRef="ForEachRow_60">
+        <ui:BuildDataTable DataTable="[dt_R18_TPropertyNo]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_31" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;PropertyNo&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;OwnerName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;GuardianName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardNo&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WardName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PropertyAddress&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_DemandData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,768" sap2010:WorkflowViewState.IdRef="ForEachRow_60">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5394,7 +5717,7 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ForEachRow>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_145" Level="Info" Message="[&quot;R18 PropertyNo Starting With T/t = &quot; +R18_TPropertyNoCount.ToString]">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_145" Level="Info" Message="[&quot;R18 PropertyNo Starting With T/t = &quot; +R18_TPropertyNoCount.ToString]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -5402,7 +5725,7 @@ If(
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:LogMessage>
-        <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_234">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_234">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[dt_R18_TPropertyNoPreview]</OutArgument>
           </Assign.To>
@@ -5410,7 +5733,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R18_TPropertyNo.AsEnumerable().Take(5).CopyToDataTable()]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R18_TPropertyNoPreview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,440" sap2010:WorkflowViewState.IdRef="ForEachRow_61">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R18_TPropertyNoPreview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_61">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5427,7 +5750,7 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_304">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_304">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R18_DuplicateProperty]</OutArgument>
           </Assign.To>
@@ -5435,7 +5758,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R18_DuplicateProperty]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_305">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_305">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R18_MissingProperty]</OutArgument>
           </Assign.To>
@@ -5443,7 +5766,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R18_MissingProperty]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign sap:VirtualizedContainerService.HintSize="488,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_306">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_306">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R18_TPropertyNo]</OutArgument>
           </Assign.To>
@@ -5451,9 +5774,17 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R18_TPropertyNo]</InArgument>
           </Assign.Value>
         </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_348">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R18_DuplicateGroupCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R18_DuplicateGroupCount]</InArgument>
+          </Assign.Value>
+        </Assign>
       </Sequence>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="650,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_148" Level="Info" Message="[&quot;---------------------------------------------------------------------------------------------------------&quot;]" />
-      <Sequence DisplayName="R19 — Duplicate Owner + Guardian" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_313">
+      <Sequence DisplayName="R19 — Duplicate Owner + Guardian" sap:VirtualizedContainerService.HintSize="650,2570" sap2010:WorkflowViewState.IdRef="Sequence_313">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="dt_R19_Preview" />
           <Variable x:TypeArguments="x:Int32" Default="0" Name="R19_DuplicateGroupCount" />
@@ -5461,7 +5792,7 @@ If(
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -5527,9 +5858,9 @@ If(
             </ActivityAction>
           </ui:ForEach.Body>
         </ui:ForEach>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_149" Level="Info" Message="[&quot;R19 Duplicate Owner + Guardian Groups = &quot; +R19_DuplicateGroupCount.ToString]" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_150" Level="Info" Message="[&quot;R19 Duplicate Owner + Guardian Detail Rows = &quot; +dt_R19_DuplicateOwnerGuardian.Rows.Count.ToString]" />
-        <Assign sap:VirtualizedContainerService.HintSize="524,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_236">
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_149" Level="Info" Message="[&quot;R19 Duplicate Owner + Guardian Groups = &quot; +R19_DuplicateGroupCount.ToString]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_150" Level="Info" Message="[&quot;R19 Duplicate Owner + Guardian Detail Rows = &quot; +dt_R19_DuplicateOwnerGuardian.Rows.Count.ToString]" />
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_236">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[dt_R19_Preview]</OutArgument>
           </Assign.To>
@@ -5537,7 +5868,7 @@ If(
             <InArgument x:TypeArguments="sd:DataTable">[dt_R19_DuplicateOwnerGuardian.AsEnumerable().Take(5).CopyToDatatable()]</InArgument>
           </Assign.Value>
         </Assign>
-        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R19_Preview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="524,440" sap2010:WorkflowViewState.IdRef="ForEachRow_62">
+        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_R19_Preview]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="616,440" sap2010:WorkflowViewState.IdRef="ForEachRow_62">
           <ui:ForEachRow.Body>
             <ActivityAction x:TypeArguments="sd:DataRow">
               <ActivityAction.Argument>
@@ -5554,12 +5885,20 @@ If(
             </ActivityAction>
           </ui:ForEachRow.Body>
         </ui:ForEachRow>
-        <Assign sap:VirtualizedContainerService.HintSize="524,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_307">
+        <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_307">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataTable">[out_dt_R19_DuplicateOwnerGuardian]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="sd:DataTable">[dt_R19_DuplicateOwnerGuardian]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="616,167.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_349">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[out_R19_DuplicateGroupCount]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[R19_DuplicateGroupCount]</InArgument>
           </Assign.Value>
         </Assign>
       </Sequence>

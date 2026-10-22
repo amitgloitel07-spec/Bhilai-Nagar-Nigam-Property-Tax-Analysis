@@ -13,11 +13,11 @@ Copies a specified file to another location.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | From | `InArgument` | `string` | Yes* | — | Full path of the source file to copy. Mutually exclusive with `PathResource`. |
+| `Path` | From (local path) | `InArgument` | `string` | Yes* | — | Full path of the source file to copy. Mutually exclusive with `PathResource`. |
 | `PathResource` | From | `InArgument` | `IResource` | Yes* | — | Resource reference to the source file. Mutually exclusive with `Path`. |
-| `Destination` | To | `InArgument` | `string` | Yes* | — | Destination path or folder for the copied file. Mutually exclusive with `DestinationResource`. |
+| `Destination` | To (local path) | `InArgument` | `string` | Yes* | — | Destination path or folder for the copied file. Mutually exclusive with `DestinationResource`. |
 | `DestinationResource` | To | `InArgument` | `IResource` | Yes* | — | Resource reference to the destination. Mutually exclusive with `Destination`. |
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
 
 ### Configuration
 

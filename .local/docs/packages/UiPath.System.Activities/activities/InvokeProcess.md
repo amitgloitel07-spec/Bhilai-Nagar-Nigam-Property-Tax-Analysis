@@ -15,8 +15,8 @@ Invokes another **UiPath process** (an Orchestrator process or a published packa
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `ProcessName` | Process Name / Package Name | `InArgument` | `string` | Yes | — | The name of the Orchestrator process (when invoking by process name) or the package name (when invoking by package name). The display name changes based on the `Invoke Process By` selection. |
-| `FolderPath` | Folder Path | `InArgument` | `string` | No | — | The Orchestrator folder path used to locate the process. In solution scope, this field becomes read-only when a process is selected by literal name. |
+| `ProcessName` | Process name | `InArgument` | `string` | Yes | — | The name of the Orchestrator process (when invoking by process name) or the package name (when invoking by package name). The display name changes based on the `Invoke Process By` selection. |
+| `FolderPath` | Orchestrator folder path | `InArgument` | `string` | No | — | The Orchestrator folder path used to locate the process. In solution scope, this field becomes read-only when a process is selected by literal name. |
 | `EntryPointPath` | Entry point | `InArgument` | `string` | No | — | The entry point `.xaml` path within the package. Only visible when **Invoke Process By** is set to `ByPackageName`. |
 
 ### Configuration
@@ -24,14 +24,14 @@ Invokes another **UiPath process** (an Orchestrator process or a published packa
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
 | `UsePackage` | Use package | `bool` | `True` | Determines whether the process is looked up by package name (and entry point) or by Orchestrator process name. |
-| `TargetSession` | Target Session | `InvokeProcessTargetSession` | `Current` | The session in which the process executes. |
+| `TargetSession` | Target session | `InvokeProcessTargetSession` | `Current` | The session in which the process executes. |
 | `Elevated` | Elevated | `bool` | `False` | When `True`, the (always isolated) child executor runs at MediumPlus integrity. Requires the robot to set the `UIPATH_MEDIUMPLUS_INVOKE` machine environment variable; otherwise the flag is silently ignored. Windows only; available for all target sessions. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `OutputArguments` | Output Arguments | `OutArgument` | `Dictionary<string, object>` | A dictionary containing the output arguments returned by the invoked process after it completes. |
+| `OutputArguments` | Output arguments | `OutArgument` | `Dictionary<string, object>` | A dictionary containing the output arguments returned by the invoked process after it completes. |
 
 ## Valid Configurations
 

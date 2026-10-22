@@ -13,8 +13,8 @@ Performs HTTP requests to the Orchestrator API by authenticating under the robot
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `JSONPayload` | Relative Endpoint | InArgument | `string` | Conditional | — | The JSON request body. Required when `Method` is POST, PUT, or PATCH. Can also be configured as a project setting under `OrchestratorHTTPRequest / RelativeEndpoint`. |
-| `RelativeEndpoint` | Relative Endpoint | InArgument | `string` | No | — | The relative URL path of the Orchestrator API endpoint to call (e.g. `/odata/Queues`). |
+| `JSONPayload` | JSON payload | InArgument | `string` | Conditional | — | The JSON request body. Required when `Method` is POST, PUT, or PATCH. Can also be configured as a project setting under `OrchestratorHTTPRequest / RelativeEndpoint`. |
+| `RelativeEndpoint` | Relative endpoint | InArgument | `string` | No | — | The relative URL path of the Orchestrator API endpoint to call (e.g. `/odata/Queues`). |
 
 ### Configuration
 
@@ -27,8 +27,8 @@ Performs HTTP requests to the Orchestrator API by authenticating under the robot
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `string` | The raw response body returned by the Orchestrator API as a JSON string. |
-| `StatusCode` | StatusCode | OutArgument | `int` | The HTTP status code of the response (e.g. 200, 201, 400, 404). |
+| `Result` | JSON response | OutArgument | `string` | The raw response body returned by the Orchestrator API as a JSON string. |
+| `StatusCode` | Status code | OutArgument | `int` | The HTTP status code of the response (e.g. 200, 201, 400, 404). |
 | `ResponseHeaders` | Headers | OutArgument | `Dictionary<string, string>` | The HTTP response headers returned by the Orchestrator API. |
 
 ## Valid Configurations

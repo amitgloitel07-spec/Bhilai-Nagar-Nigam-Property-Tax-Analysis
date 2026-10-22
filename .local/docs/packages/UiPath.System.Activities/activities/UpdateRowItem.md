@@ -15,8 +15,8 @@ Assigns the specified value into the indicated column of a DataTable row.
 |------|-------------|------|------|----------|---------|-------------|
 | Row | Row | InArgument | DataRow | Yes | — | The DataRow whose cell value will be updated. The row is modified in place within its parent DataTable. |
 | Value | Value | InArgument | Object | Yes | — | The new value to write into the cell. |
-| ColumnName | Column Name | InArgument | String | No* | — | The name of the column to update. |
-| ColumnIndex | Column Number | InArgument | Int32 | No* | — | The zero-based index of the column to update. |
+| ColumnName | Column name | InArgument | String | No* | — | The name of the column to update. |
+| ColumnIndex | Column number | InArgument | Int32 | No* | — | The zero-based index of the column to update. |
 
 \* One of `ColumnName` or `ColumnIndex` must be provided to identify the target column.
 

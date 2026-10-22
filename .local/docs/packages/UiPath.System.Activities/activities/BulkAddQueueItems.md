@@ -14,8 +14,8 @@ Adds a collection of items from a Data Table to a queue. The status of the items
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `QueueName` | Queue name | InArgument | `string` | Yes | — | The name of the queue to add items to. |
-| `QueueItemsDataTable` | Data Table | InArgument | `DataTable` | Yes | — | The DataTable whose rows are uploaded as queue items. Each column becomes a specific data field. |
-| `CommitType` | Commit Type | InArgument | `CommitTypeEnum` | No | `AllOrNothing` | Controls how failures during the bulk upload are handled. Accepts a literal value or a bound expression. |
+| `QueueItemsDataTable` | Data table | InArgument | `DataTable` | Yes | — | The DataTable whose rows are uploaded as queue items. Each column becomes a specific data field. |
+| `CommitType` | Commit type | InArgument | `CommitTypeEnum` | No | `AllOrNothing` | Controls how failures during the bulk upload are handled. Accepts a literal value or a bound expression. |
 
 ### Output
 

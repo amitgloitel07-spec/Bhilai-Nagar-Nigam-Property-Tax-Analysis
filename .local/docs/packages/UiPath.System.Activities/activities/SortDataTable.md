@@ -13,9 +13,9 @@ Sorts a DataTable by ascending or descending order, based on the values of a spe
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Ascending | InArgument | DataTable | Yes | — | The DataTable to sort. |
-| ColumnName | Name | InArgument | String | Yes* | — | The name of the column to sort by. Mutually exclusive with **Index** and **Column**. |
-| ColumnIndex | Index | InArgument | Int32? | Yes* | — | The zero-based index of the column to sort by. Mutually exclusive with **Name** and **Column**. |
+| DataTable | Data table | InArgument | DataTable | Yes | — | The DataTable to sort. |
+| ColumnName | Column name | InArgument | String | Yes* | — | The name of the column to sort by. Mutually exclusive with **Index** and **Column**. |
+| ColumnIndex | Column index | InArgument | Int32? | Yes* | — | The zero-based index of the column to sort by. Mutually exclusive with **Name** and **Column**. |
 | DataColumn | Column | InArgument | DataColumn | Yes* | — | A DataColumn object identifying the column to sort by. Mutually exclusive with **Name** and **Index**. |
 
 \* Exactly one of `ColumnName`, `ColumnIndex`, or `DataColumn` must be provided. Providing none or more than one is a validation error.
@@ -30,7 +30,7 @@ Sorts a DataTable by ascending or descending order, based on the values of a spe
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| OutputDataTable | Data Table | OutArgument | DataTable | A new DataTable containing the sorted rows. The original DataTable is not modified. |
+| OutputDataTable | Sorted data table | OutArgument | DataTable | A new DataTable containing the sorted rows. The original DataTable is not modified. |
 
 ## Valid Configurations
 

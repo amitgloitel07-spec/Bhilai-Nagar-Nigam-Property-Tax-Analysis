@@ -13,7 +13,7 @@ Gets the list of all running processes.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| ContinueOnError | Continue On Error | InArgument | `bool` | No | — | When `True`, execution continues to the next activity even if this activity throws an error. |
+| ContinueOnError | Continue on error | InArgument | `bool` | No | — | When `True`, execution continues to the next activity even if this activity throws an error. |
 
 ### Configuration
 

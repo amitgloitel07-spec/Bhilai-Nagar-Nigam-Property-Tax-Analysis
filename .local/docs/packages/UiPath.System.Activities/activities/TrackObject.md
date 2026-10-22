@@ -13,15 +13,15 @@ Adds a new object to the task. This object will appear as metadata information o
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `ObjectType` | Object Type | InArgument | `string` | Yes | — | The type label for the object being tracked (e.g., `"invoice"`, `"document"`, `"case"`). |
-| `ObjectId` | Object Id | InArgument | `string` | Yes | — | A unique identifier for the object being tracked (e.g., an invoice number or case ID). |
-| `ObjectInteraction` | Object Interaction | InArgument | `PTSObjectInteraction` | No | `null` | The type of interaction the current task has with the object (e.g., read, write, create). |
+| `ObjectType` | Object type | InArgument | `string` | Yes | — | The type label for the object being tracked (e.g., `"invoice"`, `"document"`, `"case"`). |
+| `ObjectId` | Object ID | InArgument | `string` | Yes | — | A unique identifier for the object being tracked (e.g., an invoice number or case ID). |
+| `ObjectInteraction` | Object interaction | InArgument | `PTSObjectInteraction` | No | `null` | The type of interaction the current task has with the object (e.g., read, write, create). |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `ObjectPropertiesV2` | Object Properties V2 | `InArgument<Dictionary<string, object>>` | — | A dictionary of additional key-value metadata properties to associate with the tracked object. |
+| `ObjectPropertiesV2` | Object properties | `InArgument<Dictionary<string, object>>` | — | A dictionary of additional key-value metadata properties to associate with the tracked object. |
 
 ## XAML Example
 

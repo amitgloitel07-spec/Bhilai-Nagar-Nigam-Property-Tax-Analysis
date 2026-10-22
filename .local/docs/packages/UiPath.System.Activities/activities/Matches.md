@@ -27,7 +27,7 @@ Searches an input string for all occurrences of a regular expression and returns
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `FirstMatch` | First Match | OutArgument | `String` | The value of the first successful match, or `null` if no match was found. |
+| `FirstMatch` | First match | OutArgument | `String` | The value of the first successful match, or `null` if no match was found. |
 | `Matches` | Matches | OutArgument | `IEnumerable<Match>` | A collection of all successful `System.Text.RegularExpressions.Match` objects found in the input. |
 
 ### Enum Reference

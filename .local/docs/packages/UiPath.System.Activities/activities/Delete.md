@@ -13,9 +13,9 @@ Deletes the file or folder in the specified location.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | Delete | `InArgument` | `string` | Yes* | — | Full path of the file or folder to delete. Overload group: `Path`. |
+| `Path` | File path | `InArgument` | `string` | Yes* | — | Full path of the file or folder to delete. Overload group: `Path`. |
 | `ResourceFile` | File | `InArgument` | `ILocalResource` | Yes* | — | Local resource reference to the file or folder to delete. Overload group: `ResourceFile`. |
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | No | — | When `true`, execution continues even if an error occurs. |
 
 ## Valid Configurations
 

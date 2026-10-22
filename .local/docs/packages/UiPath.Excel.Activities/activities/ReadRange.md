@@ -23,6 +23,7 @@ Reads the value of a range from a spreadsheet as a DataTable. If Range isn't spe
 |------|-------------|------|---------|-------------|
 | `AddHeaders` | Add headers | `bool` | `True` | Specifies if the first row of the range should be used as column names in the output DataTable |
 | `PreserveFormat` | Use display format | `bool` | `False` | Preserves the cell formatting when reading values |
+| `BlankCellsAsNull` | Blank cells as null | `bool` | `False` | Returns blank cells as `DBNull` instead of empty text, so they can be told apart from cells that contain empty text |
 | `Password` | Password | `InArgument<string>` | | The password of the workbook, if necessary |
 | `Workbook` | Workbook | `InArgument<Workbook>` | | Existing workbook object to use instead of a file path |
 
@@ -30,7 +31,7 @@ Reads the value of a range from a spreadsheet as a DataTable. If Range isn't spe
 
 | Name | Display Name | Type | Description |
 |------|-------------|------|-------------|
-| `DataTable` | DataTable | `DataTable` | The data read from the specified range as a DataTable |
+| `DataTable` | DataTable | `DataTable` | The data read from the specified range as a DataTable. Columns are typed `Object`; see Notes for how blank cells are returned |
 
 ## XAML Example
 
@@ -47,4 +48,6 @@ Reads the value of a range from a spreadsheet as a DataTable. If Range isn't spe
 ## Notes
 
 - Uses the file-based workbook engine (not Excel Interop). Works cross-platform.
+- By default a blank cell is returned as `""` (the same value as a cell holding empty text), columns are typed `Object`, and `row.IsNull(column)` is false for a blank cell. Enable `BlankCellsAsNull` to get `DBNull` for blank cells; cells with empty text stay `""`.
+- In `.xls` files, with default options, a formatted blank cell is returned as `DBNull` instead of `""`. With `BlankCellsAsNull` on, all blank cells in `.xls` and `.xlsx` files are `DBNull`.
 - `WorkbookPath` and `WorkbookPathResource` are mutually exclusive — set one or the other.

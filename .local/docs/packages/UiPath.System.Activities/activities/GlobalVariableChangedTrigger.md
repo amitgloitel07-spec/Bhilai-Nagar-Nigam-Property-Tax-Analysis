@@ -13,7 +13,7 @@ Triggers when the selected global variable is notified as changed.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `VariableName` | Variable Name | `InArgument` | `object` | Yes | - | Expression that references the global variable to subscribe to. |
+| `VariableName` | Select global variable | `InArgument` | `object` | Yes | - | Expression that references the global variable to subscribe to. |
 
 ### Output
 

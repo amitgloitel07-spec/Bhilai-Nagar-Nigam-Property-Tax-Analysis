@@ -13,13 +13,13 @@ Checks if the specified path exists. The path can represent a file path or a dir
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | Get Local File or Folder | `InArgument` | `string` | Yes | — | The file or folder path to check for existence. |
+| `Path` | Path | `InArgument` | `string` | Yes | — | The file or folder path to check for existence. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `PathType` | PathType | `PathType` | — | Constrains the check to a specific type: `File` or `Folder`. |
+| `PathType` | Path type | `PathType` | — | Constrains the check to a specific type: `File` or `Folder`. |
 
 ### Output
 

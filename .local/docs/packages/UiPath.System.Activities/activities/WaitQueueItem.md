@@ -15,8 +15,8 @@ Waits for an item in the queue to be available so that you can process it (start
 |------|-------------|------|------|----------|---------|-------------|
 | `QueueName` | Queue name | InArgument | `string` | Yes | — | The name of the queue to monitor for available items. |
 | `Reference` | Reference | InArgument | `string` | No | — | Filters the item to wait for by reference value. Used together with `FilterStrategy`. |
-| `FilterStrategy` | Filter Strategy | InArgument | `ReferenceFilterStrategy` | No | `StartsWith` | Determines how the `Reference` filter value is matched against queue item references. Accepts a literal value or a bound expression. |
-| `PollTimeMS` | PollTime (milliseconds) | InArgument | `int` | No | — | The interval in milliseconds between polling attempts while waiting for an item. |
+| `FilterStrategy` | Filter strategy | InArgument | `ReferenceFilterStrategy` | No | `StartsWith` | Determines how the `Reference` filter value is matched against queue item references. Accepts a literal value or a bound expression. |
+| `PollTimeMS` | Poll time (milliseconds) | InArgument | `int` | No | — | The interval in milliseconds between polling attempts while waiting for an item. |
 
 ### Output
 

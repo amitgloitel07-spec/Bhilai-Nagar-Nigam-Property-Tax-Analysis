@@ -1,5 +1,26 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Generate_Final_Report" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_R19_DuplicateGroupCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R18_DuplicateGroupCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R16_OthersNullCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R16_PrincipalMainRoadCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R16_MainRoadCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R15_PropertyTaxPaidUserChargeNotPaidCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R15_PropertyTaxAndUserChargePaidCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R14_NotAppliedCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R14_AppliedCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R13_UnpaidCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R13_PaidCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R11_DuplicateOwnerRecordCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R11_DuplicateOwnerGroupCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R08_SuspiciousAddressCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R08_PlaceholderAddressCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R08_MissingAddressCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_R08_ValidAddressCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_MissingMobileCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_PlaceHolderMobileCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_InvalidMobileCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_ValidMobileCount" Type="InArgument(x:Int32)" />
     <x:Property Name="in_dt_R23_PropertyTypeCount" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_dt_R22_Top50UserCharge" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_dt_R22_Top50PropertyTax" Type="InArgument(sd:DataTable)" />
@@ -132,56 +153,66 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Generate_Final_Report" sap:VirtualizedContainerService.HintSize="1200.6666666666665,6284" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Generate_Final_Report" sap:VirtualizedContainerService.HintSize="1200.6666666666665,7329.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Generate_Final_Report" sap:VirtualizedContainerService.HintSize="684,6261.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_189">
+    <Sequence DisplayName="Generate_Final_Report" sap:VirtualizedContainerService.HintSize="684,7306.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_189">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Sequence DisplayName="R01 - Mobile Number Analysis Report" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_190">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable()]" Name="dt_R01_Counts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_48">
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,2316.6666666666665" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_48">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_194">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,2208.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_194">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_70" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R01_MobileNo_Analysis.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,2148.6666666666665" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_70" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R01_MobileNo_Analysis.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_193">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1897.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_193">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_85" IgnoreEmptySource="False" Source="[in_dt_R01_ValidMobileDetails]" />
+                        <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Mobile No Status" DataTable="[dt_R01_Counts]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="416,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+                        <ui:AddDataColumn x:TypeArguments="x:Int32" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Counts" DataTable="[dt_R01_Counts]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="416,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Valid Mobile&quot;, in_ValidMobileCount}]" DataTable="[dt_R01_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_15" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Invalid Mobile&quot;, in_InvalidMobileCount}]" DataTable="[dt_R01_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_14" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Placeholder Mobile&quot;, in_PlaceHolderMobileCount}]" DataTable="[dt_R01_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_16" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Missing Mobile&quot;, in_MissingMobileCount}]" DataTable="[dt_R01_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_17" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_85" IgnoreEmptySource="False" Source="[in_dt_R01_ValidMobileDetails]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_114" IgnoreEmptySource="False" Source="[dt_R01_Counts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -191,7 +222,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -213,10 +244,10 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
-      <Sequence DisplayName="R02 - Property Usage Analysis Report" sap:VirtualizedContainerService.HintSize="650,863.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_191">
+      <Sequence DisplayName="R02 - Property Usage Analysis Report" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_191">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -663,43 +694,53 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R08 — Incorrect / Incomplete Address Report" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_213">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable()]" Name="dt_R08_Counts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_55">
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Address Status" DataTable="[dt_R08_Counts]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Count" DataTable="[dt_R08_Counts]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Valid Address&quot;, in_R08_ValidAddressCount}]" DataTable="[dt_R08_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_18" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Missing Address&quot;, in_R08_MissingAddressCount}]" DataTable="[dt_R08_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_19" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Placeholder Address&quot;, in_R08_PlaceholderAddressCount}]" DataTable="[dt_R08_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_20" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Suspicious Address&quot;, in_R08_SuspiciousAddressCount}]" DataTable="[dt_R08_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_21" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,976.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_55">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_212">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_212">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_77" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R08_IncompleteAddress.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_77" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R08_IncompleteAddress.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_211">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_211">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_92" IgnoreEmptySource="False" Source="[in_dt_R08_IncompleteAddress]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_92" IgnoreEmptySource="False" Source="[in_dt_R08_IncompleteAddress]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_115" IgnoreEmptySource="False" Source="[dt_R08_Counts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -709,7 +750,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -870,43 +911,50 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R11 — Same Owner Name Details" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_222">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[Nothing]" Name="dt_R11_Counts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_58">
+        <ui:BuildDataTable DataTable="[dt_R11_Counts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Duplicate Owner Groups&quot;, in_R11_DuplicateOwnerGroupCount}]" DataTable="[dt_R11_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_22" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Properties/Records Involved&quot;, in_R11_DuplicateOwnerRecordCount}]" DataTable="[dt_R11_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_23" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,976.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_58">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_221">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_221">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_80" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R11_SameOwner.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_80" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R11_SameOwner.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_220">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_220">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_95" IgnoreEmptySource="False" Source="[in_dt_R11_SameOwnerDetails]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_95" IgnoreEmptySource="False" Source="[in_dt_R11_SameOwnerDetails]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_116" IgnoreEmptySource="False" Source="[dt_R11_Counts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -916,7 +964,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1008,43 +1056,50 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R13 — Paid vs Unpaid Properties Report" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_228">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[Nothing]" Name="dt_R13_Counts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_60">
+        <ui:BuildDataTable DataTable="[dt_R13_Counts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_6" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Metric&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Paid Properties&quot;, in_R13_PaidCount}]" DataTable="[dt_R13_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_24" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Unpaid Properties&quot;, in_R13_UnpaidCount}]" DataTable="[dt_R13_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_25" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,976.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_60">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_227">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_227">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_82" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R13_PaidUnpaid.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_82" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R13_PaidUnpaid.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_226">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_226">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_97" IgnoreEmptySource="False" Source="[in_dt_R13_PaidUnpaid]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_97" IgnoreEmptySource="False" Source="[in_dt_R13_PaidUnpaid]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_117" IgnoreEmptySource="False" Source="[dt_R13_Counts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1054,15 +1109,15 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ueab:ExcelProcessScopeX>
-        <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="All" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="616,48" sap2010:WorkflowViewState.IdRef="KillProcess_68" ProcessName="Excel.exe">
+        <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="All" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="616,196" sap2010:WorkflowViewState.IdRef="KillProcess_68" ProcessName="Excel.exe">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1077,43 +1132,50 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R14 — User Charge Not Applied Report" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_231">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[Nothing]" Name="dt_R14_Counts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_61">
+        <ui:BuildDataTable DataTable="[dt_R14_Counts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_7" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;User Charge Applied&quot;, in_R14_AppliedCount}]" DataTable="[dt_R14_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_26" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object(){&quot;User Charge Not Applied&quot;, in_R14_NotAppliedCount}]" DataTable="[dt_R14_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_27" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,976.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_61">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_230">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_230">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_83" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R14_UserChargeNotApplied.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_83" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R14_UserChargeNotApplied.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_229">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_229">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_98" IgnoreEmptySource="False" Source="[in_dt_R14_UserChargeNotApplied]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_98" IgnoreEmptySource="False" Source="[in_dt_R14_UserChargeNotApplied]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_118" IgnoreEmptySource="False" Source="[dt_R14_Counts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1123,7 +1185,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1146,43 +1208,50 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R15 — Property Tax Paid but User Charge Not Paid" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_234">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[Nothing]" Name="dt_R15_Counts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_62">
+        <ui:BuildDataTable DataTable="[dt_R15_Counts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_8" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Property Tax Paid + User Charge Collected&quot;, in_R15_PropertyTaxAndUserChargePaidCount}]" DataTable="[dt_R15_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_28" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Property Tax Paid + User Charge Not Paid&quot;, in_R15_PropertyTaxPaidUserChargeNotPaidCount}]" DataTable="[dt_R15_Counts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_29" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,976.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_62">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_233">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_233">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_84" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R15_UserChargeNotCollected.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_84" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R15_UserChargeNotCollected.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_232">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_232">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_99" IgnoreEmptySource="False" Source="[in_dt_R15_UserChargeNotPaid]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_99" IgnoreEmptySource="False" Source="[in_dt_R15_UserChargeNotPaid]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_119" IgnoreEmptySource="False" Source="[dt_R15_Counts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1192,7 +1261,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1215,44 +1284,52 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R16 — Main Road Property Count Details" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_237">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[Nothing]" Name="dt_R16_RoadTypesCounts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_63">
+        <ui:BuildDataTable DataTable="[dt_R16_RoadTypesCounts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_9" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Road_x0020_Types&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Counts&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;MAIN ROAD&quot;, in_R16_MainRoadCount}]" DataTable="[dt_R16_RoadTypesCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_30" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;PRINCIPAL MAIN ROAD&quot;, in_R16_PrincipalMainRoadCount}]" DataTable="[dt_R16_RoadTypesCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_31" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Others/NULL&quot;, in_R16_OthersNullCount}]" DataTable="[dt_R16_RoadTypesCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_32" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,1230" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_63">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_236">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1122" sap2010:WorkflowViewState.IdRef="Sequence_236">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_85" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R16_RoadType.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,1062" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_85" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R16_RoadType.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_235">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,810.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_235">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_100" IgnoreEmptySource="False" Source="[in_dt_R16_MainRoadProperties]" />
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_101" IgnoreEmptySource="False" Source="[in_dt_R16_PrincipalMainRoadProperties]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_101" IgnoreEmptySource="False" Source="[in_dt_R16_PrincipalMainRoadProperties]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet3&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_120" IgnoreEmptySource="False" Source="[dt_R16_RoadTypesCounts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1262,7 +1339,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1354,31 +1431,38 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R18 — Duplicate/Missing/T Property ID Details" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_243">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="dt_R18_DuplicateCounts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_65">
+        <ui:BuildDataTable DataTable="[dt_R18_DuplicateCounts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_10" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Properties_x0020_Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Duplicate Property No Records&quot;, in_dt_R18_DuplicateProperty.Rows.Count}]" DataTable="[dt_R18_DuplicateCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_33" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Missing Property No Records&quot;, in_dt_R18_MissingProperty.Rows.Count}]" DataTable="[dt_R18_DuplicateCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_35" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Property No Records starting with letter T&quot;, in_dt_R18_TPropertyNo.Rows.Count}]" DataTable="[dt_R18_DuplicateCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_36" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,1483.3333333333333" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_65">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_242">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1375.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_242">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_87" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R18_DuplicateProperty.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,1315.3333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_87" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R18_DuplicateProperty.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,810.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_241">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1064" sap2010:WorkflowViewState.IdRef="Sequence_241">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1386,13 +1470,14 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_103" IgnoreEmptySource="False" Source="[in_dt_R18_DuplicateProperty]" />
                         <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_104" IgnoreEmptySource="False" Source="[in_dt_R18_MissingProperty]" />
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet3&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_105" IgnoreEmptySource="False" Source="[in_dt_R18_TPropertyNo]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet3&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_105" IgnoreEmptySource="False" Source="[in_dt_R18_TPropertyNo]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet4&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_121" IgnoreEmptySource="False" Source="[dt_R18_DuplicateCounts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1402,7 +1487,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1425,43 +1510,50 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R19 — Duplicate Owner + Guardian Details" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_246">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="dt_R19_DuplicateCounts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
+        <ui:BuildDataTable DataTable="[dt_R19_DuplicateCounts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_11" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;OwnerGuardian_x0020_Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Duplicate Owner/Guardian Groups&quot;, in_R19_DuplicateGroupCount}]" DataTable="[dt_R19_DuplicateCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_37" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Records Involved in Duplicates&quot;, in_dt_R19_DuplicateOwnerGuardian.Rows.Count}]" DataTable="[dt_R19_DuplicateCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_38" />
         <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_66">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_245">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_245">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_88" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R19_DuplicateOwnerGuardian.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_88" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R19_DuplicateOwnerGuardian.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_244">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_244">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_106" IgnoreEmptySource="False" Source="[in_dt_R19_DuplicateOwnerGuardian]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_106" IgnoreEmptySource="False" Source="[in_dt_R19_DuplicateOwnerGuardian]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_122" IgnoreEmptySource="False" Source="[dt_R19_DuplicateCounts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1494,43 +1586,49 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <Sequence DisplayName="R20 — Construction Area Greater Than Total Area Details" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_249">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="dt_R20_ExcessAreaCounts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_67">
+        <ui:BuildDataTable DataTable="[dt_R20_ExcessAreaCounts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_12" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Excess_x0020_Construction_x0020_Area_x0020_Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Excess Area Properties&quot;, in_dt_R20_ConstructionGreaterThanArea.Rows.Count}]" DataTable="[dt_R20_ExcessAreaCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_39" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,976.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_67">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_248">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,868.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_248">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_89" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R20_ExcessConstruction.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,808.6666666666666" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_89" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R20_ExcessConstruction.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_247">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_247">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_107" IgnoreEmptySource="False" Source="[in_dt_R20_ConstructionGreaterThanArea]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_107" IgnoreEmptySource="False" Source="[in_dt_R20_ConstructionGreaterThanArea]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_123" IgnoreEmptySource="False" Source="[dt_R20_ExcessAreaCounts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1540,7 +1638,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -1562,45 +1660,52 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
-      <Sequence DisplayName="R21 — Regular / Irregular Taxpayers Details" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_252">
+      <Sequence DisplayName="R21 — Regular / Irregular Taxpayers Details" sap:VirtualizedContainerService.HintSize="650,1908.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_252">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="dt_R21_RegularIrregularCounts" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,57.333333333333336" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_68">
+        <ui:BuildDataTable DataTable="[dt_R21_RegularIrregularCounts]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_13" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Regular_x0020__x0020__x0026__x0020_Irregular_x0020_Tax_x0020_Payers_x0020_Metric&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Regular Taxpayers&quot;, in_dt_R21_RegularTaxpayers.Rows.Count}]" DataTable="[dt_R21_RegularIrregularCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_40" />
+        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {&quot;Non-Regular Taxpayers&quot;, in_dt_R21_NotRegularTaxPayers.Rows.Count}]" DataTable="[dt_R21_RegularIrregularCounts]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,223.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_41" />
+        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,1230" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_68">
           <ueab:ExcelProcessScopeX.Body>
             <ActivityAction x:TypeArguments="ui:IExcelProcess">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,108" sap2010:WorkflowViewState.IdRef="Sequence_251">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1122" sap2010:WorkflowViewState.IdRef="Sequence_251">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_90" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R21_Regular-IrregularTaxpayers.xlsx">
+                <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="452,1062" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_90" ResizeWindow="None" WorkbookPath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Generated_Output\R21_Regular-IrregularTaxpayers.xlsx">
                   <ueab:ExcelApplicationCard.Body>
                     <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,557.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_250">
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,810.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_250">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_108" IgnoreEmptySource="False" Source="[in_dt_R21_RegularTaxpayers]" />
-                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_109" IgnoreEmptySource="False" Source="[in_dt_R21_NotRegularTaxPayers]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet2&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,253.33333333333334" sap2010:WorkflowViewState.IdRef="WriteRangeX_109" IgnoreEmptySource="False" Source="[in_dt_R21_NotRegularTaxPayers]" />
+                        <ueab:WriteRangeX Destination="[Excel.Sheet(&quot;Sheet3&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="WriteRangeX_124" IgnoreEmptySource="False" Source="[dt_R21_RegularIrregularCounts]" />
                       </Sequence>
                     </ActivityAction>
                   </ueab:ExcelApplicationCard.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -1610,7 +1715,7 @@
           </ueab:ExcelProcessScopeX.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

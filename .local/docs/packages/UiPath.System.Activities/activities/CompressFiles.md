@@ -1,4 +1,4 @@
-# Compress/Zip Files
+# Compress Files
 
 `UiPath.Activities.System.Compression.Workflow.CompressFiles`
 
@@ -14,11 +14,11 @@ Compresses given contents into a ZIP archive.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `CompressedFileName` | Compressed file name | `InArgument` | `string` | Yes | — | Name of the output compressed file to create (including `.zip` extension). |
-| `ResourcesToArchive` | Resources to zip | `Property` | `InArgument<IEnumerable<IResource>>` | No | — | Collection of `IResource` items to compress. |
+| `ResourcesToArchive` | Content to zip | `Property` | `InArgument<IEnumerable<IResource>>` | No | — | Collection of `IResource` items to compress. |
 | `ContentToArchive` | Content to zip | `Property` | `List<InArgument<string>>` | No | — | List of local file or folder paths to compress. |
 | `AllowDuplicateContentNames` | Allow contents with duplicate names | `InArgument` | `bool` | No | `false` | When `true`, files with identical names from different directories are all included in the archive. |
 | `Password` | Password | `InArgument` | `string` | No | — | Password to protect the archive. Overload group: `Password`. |
-| `SecurePassword` | Secure Password | `InArgument` | `SecureString` | No | — | Password as a `SecureString` to protect the archive. Overload group: `Secure password`. |
+| `SecurePassword` | Secure password | `InArgument` | `SecureString` | No | — | Password as a `SecureString` to protect the archive. Overload group: `Secure password`. |
 
 ### Configuration
 
@@ -60,7 +60,7 @@ Two mutually exclusive overload groups:
 
 ```xml
 <ui2:CompressFiles
-    DisplayName="Compress/Zip Files"
+    DisplayName="Compress Files"
     CompressedFileName="C:\output\archive.zip"
     CompressionLevel="Normal"
     OverrideExistingFile="True"

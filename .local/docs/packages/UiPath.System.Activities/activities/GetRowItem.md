@@ -14,8 +14,8 @@ Gets a value from a DataRow variable according to a specified column.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | Row | Row | InArgument | DataRow | Yes | — | The DataRow from which to read the value. |
-| ColumnName | Column Name | InArgument | String | No* | — | The name of the column whose value to retrieve. |
-| ColumnIndex | Column Number | InArgument | Int32 | No* | — | The zero-based index of the column whose value to retrieve. |
+| ColumnName | Column name | InArgument | String | No* | — | The name of the column whose value to retrieve. |
+| ColumnIndex | Column number | InArgument | Int32 | No* | — | The zero-based index of the column whose value to retrieve. |
 
 \* One of `ColumnName` or `ColumnIndex` should be provided to identify the target cell. `Column` (a DataColumn object) is a third option available in the source but hidden in the designer (`isVisible: false`).
 

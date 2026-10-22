@@ -27,7 +27,7 @@ Allows to add or subtract a specified unit of time from the source date.
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `DateTime` | The resulting `DateTime` after the specified amount has been added or subtracted. |
+| `Result` | The modified DateTime | OutArgument | `DateTime` | The resulting `DateTime` after the specified amount has been added or subtracted. |
 
 ### Enum Reference
 

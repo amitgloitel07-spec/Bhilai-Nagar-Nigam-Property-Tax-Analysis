@@ -1,4 +1,4 @@
-# Select File
+# Browse for File
 
 `UiPath.Core.Activities.SelectFile`
 
@@ -14,7 +14,7 @@ Opens a file picker dialog and returns the selected file path or paths.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `Filter` | Filter | Property | `string` | No | `All files (*.*)\|*.*` | File dialog filter string. |
-| `InitialDirectory` | Initial Directory | `InArgument` | `string` | No | - | Folder opened when the dialog appears. |
+| `InitialDirectory` | Initial directory | `InArgument` | `string` | No | - | Folder opened when the dialog appears. |
 | `Multiselect` | Multiselect | `InArgument` | `bool` | No | `false` | Allows selecting multiple files. |
 
 ### Output
@@ -28,7 +28,7 @@ Opens a file picker dialog and returns the selected file path or paths.
 
 ```xml
 <ui:SelectFile
-    DisplayName="Select File"
+    DisplayName="Browse for File"
     Filter="Text files (*.txt)|*.txt|All files (*.*)|*.*"
     InitialDirectory="C:\input"
     SelectedFile="[filePath]" />

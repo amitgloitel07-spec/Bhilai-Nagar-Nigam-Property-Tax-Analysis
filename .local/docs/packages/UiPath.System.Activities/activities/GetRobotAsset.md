@@ -13,13 +13,13 @@ Gets a specified asset by using a provided AssetName. If the asset is not global
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `AssetName` | Asset Name | InArgument | `string` | No | — | The name of the Orchestrator asset to retrieve. |
+| `AssetName` | Asset name | InArgument | `string` | No | — | The name of the Orchestrator asset to retrieve. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `CacheStrategy` | Cache Strategy | `CacheStrategyEnum` | — | Controls whether and how the retrieved asset value is cached locally during robot execution. |
+| `CacheStrategy` | Cache strategy | `CacheStrategyEnum` | — | Controls whether and how the retrieved asset value is cached locally during robot execution. |
 
 ### Output
 

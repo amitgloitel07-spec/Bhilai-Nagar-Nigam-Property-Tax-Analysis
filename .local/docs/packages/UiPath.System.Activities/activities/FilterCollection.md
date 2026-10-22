@@ -14,7 +14,7 @@ Filter a collection based on custom conditions.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `Collection` | Collection | `InArgument` | `ICollection<T>` | Yes | — | The collection to filter. |
-| `FilterAction` | Filter Action | `InArgument` | `FilterAction` | No | `KeepMatchingElementsOnly` | Determines whether matching elements are kept or removed. Accepted values: `KeepMatchingElementsOnly`, `RemoveMatchingElements`. |
+| `FilterAction` | Filter action | `InArgument` | `FilterAction` | No | `KeepMatchingElementsOnly` | Determines whether matching elements are kept or removed. Accepted values: `KeepMatchingElementsOnly`, `RemoveMatchingElements`. |
 
 ### Configuration
 

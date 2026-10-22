@@ -21,7 +21,7 @@ Synchronously invokes a specified workflow, optionally passing it a list of inpu
 |------|-------------|------|---------|-------------|
 | `UnSafe` | Isolated | `bool` | — | When `True`, the invoked workflow runs in an isolated process. |
 | `Elevated` | Elevated | `bool` | `False` | When `True`, the isolated child executor runs at MediumPlus integrity. Requires `Isolated` to be `True` (validated at design time), and requires the robot to set the `UIPATH_MEDIUMPLUS_INVOKE` machine environment variable; otherwise the flag is silently ignored. Available for all target sessions. |
-| `TargetSession` | Target Session | `InvokeWorkflowTargetSession` | `Current` | The session in which the invoked workflow executes. |
+| `TargetSession` | Target session | `InvokeWorkflowTargetSession` | `Current` | The session in which the invoked workflow executes. |
 
 ## XAML Example
 

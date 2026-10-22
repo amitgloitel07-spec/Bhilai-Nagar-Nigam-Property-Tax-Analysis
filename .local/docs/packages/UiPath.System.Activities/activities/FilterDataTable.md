@@ -13,21 +13,21 @@ Filters a DataTable by specifying conditions in the Filter widget. The activity 
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InArgument | DataTable | No | — | The DataTable to filter. |
-| FilterRowsMode | Filter Rows Mode | InArgument | SelectMode | No | — | Whether matching rows are kept or removed. See **Enum Reference** below. |
+| DataTable | Data table | InArgument | DataTable | No | — | The DataTable to filter. |
+| FilterRowsMode | Action | InArgument | SelectMode | No | — | Whether matching rows are kept or removed. See **Enum Reference** below. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| Filters | Filters | Property (List\<FilterOperationArgument\>) | — | The filter conditions built using the designer's Filter widget. Each condition specifies a column reference, an operator, an operand value, and a logical operator. |
+| Filters | Configure filter | Property (List\<FilterOperationArgument\>) | — | The filter conditions built using the designer's Filter widget. Each condition specifies a column reference, an operator, an operand value, and a logical operator. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| OutputDataTable | Output Data Table | OutArgument | DataTable | The filtered DataTable result. |
-| OutputFirstRow | Output First Row | OutArgument | DataRow | The first DataRow of the filtered result, for convenience. |
+| OutputDataTable | Filtered data table | OutArgument | DataTable | The filtered DataTable result. |
+| OutputFirstRow | First row | OutArgument | DataRow | The first DataRow of the filtered result, for convenience. |
 
 ## Filter Conditions
 
@@ -51,14 +51,14 @@ The column for each condition is specified as an `InArgument` expression that ev
 | `GTE` | `>=` | Numeric/comparable types |
 | `EQ` | `=` | Any type |
 | `NOTEQ` | `!=` | Any type |
-| `EMPTY` | Is Empty | No value operand required |
-| `NOTEMPTY` | Is Not Empty | No value operand required |
-| `STARTSWITH` | Starts With | String only |
-| `ENDSWITH` | Ends With | String only |
+| `EMPTY` | Is empty | No value operand required |
+| `NOTEMPTY` | Is not empty | No value operand required |
+| `STARTSWITH` | Starts with | String only |
+| `ENDSWITH` | Ends with | String only |
 | `CONTAINS` | Contains | String only |
-| `NOTSTARTSWITH` | Does Not Start With | String only |
-| `NOTENDSWITH` | Does Not End With | String only |
-| `NOTCONTAINS` | Does Not Contain | String only |
+| `NOTSTARTSWITH` | Does not start with | String only |
+| `NOTENDSWITH` | Does not end with | String only |
+| `NOTCONTAINS` | Does not contain | String only |
 
 ## Enum Reference
 

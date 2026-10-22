@@ -13,15 +13,15 @@ Create a collection of items that have the same type as the first specified elem
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `FirstItem` | First Item | `InArgument` | `T` | Yes | — | The first element of the new collection. The type of this argument determines `T` for the entire activity. |
-| `NextItems` | Next Items | `InArgument` | `List<InArgument<T>>` | No | — | Additional individual items to include in the collection. Mutually exclusive with `Items` — only one may be set at a time. Visible by default when `Items` is not bound. |
+| `FirstItem` | First item | `InArgument` | `T` | Yes | — | The first element of the new collection. The type of this argument determines `T` for the entire activity. |
+| `NextItems` | Next items | `InArgument` | `List<InArgument<T>>` | No | — | Additional individual items to include in the collection. Mutually exclusive with `Items` — only one may be set at a time. Visible by default when `Items` is not bound. |
 | `Items` | Items | `InArgument` | `ICollection<T>` | No | — | An existing collection whose elements are appended after `FirstItem`. Mutually exclusive with `NextItems` — only one may be set at a time. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | `OutArgument` | `List<T>` | The newly built collection containing `FirstItem` followed by either all `NextItems` or all elements from `Items`. |
+| `Result` | New collection | `OutArgument` | `List<T>` | The newly built collection containing `FirstItem` followed by either all `NextItems` or all elements from `Items`. |
 
 ## Valid Configurations
 
@@ -32,7 +32,7 @@ The designer enforces that `NextItems` and `Items` cannot both be set simultaneo
 | Individual items mode (default) | `FirstItem`, `NextItems` |
 | Collection mode | `FirstItem`, `Items` |
 
-Use the **"Use Items"** menu action on `NextItems` to switch to collection mode, or **"Use Next Items"** on `Items` to switch back.
+Use the **"Use collection"** menu action on `NextItems` to switch to collection mode, or **"Use individual items"** on `Items` to switch back.
 
 ## XAML Example
 

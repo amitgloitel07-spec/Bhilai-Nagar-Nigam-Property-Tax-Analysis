@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ueawb="clr-namespace:UiPath.Excel.Activities.Windows.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -34,6 +34,14 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Numerics</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Windows.Business</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -94,10 +102,16 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="882,444.32333333333327" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1206.6666666666665,444.32333333333327" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="ValidMobileCount_Main" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_R23_PropertyTypeCount_Main" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_R22_Top50UserCharge_Main" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_R22_Top50PropertyTax_Main" />
@@ -141,6 +155,26 @@
       <Variable x:TypeArguments="x:Double" Name="HighestDemandAmount_Main" />
       <Variable x:TypeArguments="x:String" Name="HighestDemandWardName_Main" />
       <Variable x:TypeArguments="x:String" Name="HighestDemandWardNo_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="InvalidMobileCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="PlaceHolderMobileCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="MissingMobileCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R08_ValidAddressCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R08_MissingAddressCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R08_PlaceholderAddressCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R08_SuspiciousAddressCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="R11_DuplicateOwnerGroupCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="R11_DuplicateOwnerRecordCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R13_PaidCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R13_UnpaidCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R14_AppliedCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R14_NotAppliedCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R15_PropertyTaxAndUserChargePaidCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R15_PropertyTaxPaidUserChargeNotPaidCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R16_MainRoadCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R16_PrincipalMainRoadCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R16_OthersNullCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R18_DuplicateGroupCount_Main" />
+      <Variable x:TypeArguments="x:Int32" Name="R19_DuplicateGroupCount_Main" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -483,6 +517,27 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Apply_Rules - Invoke Workflow File (Apply_Rules.xaml)" sap:VirtualizedContainerService.HintSize="616,196.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Apply_Rules.xaml">
         <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R19_DuplicateGroupCount">[R19_DuplicateGroupCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R18_DuplicateGroupCount">[R18_DuplicateGroupCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R16_OthersNullCount">[R16_OthersNullCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R16_PrincipalMainRoadCount">[R16_PrincipalMainRoadCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R16_MainRoadCount">[R16_MainRoadCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R15_PropertyTaxPaidUserChargeNotPaidCount">[R15_PropertyTaxPaidUserChargeNotPaidCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R15_PropertyTaxAndUserChargePaidCount">[R15_PropertyTaxAndUserChargePaidCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R14_NotAppliedCount">[R14_NotAppliedCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R14_AppliedCount">[R14_AppliedCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R13_UnpaidCount">[R13_UnpaidCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R13_PaidCount">[R13_PaidCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R11_DuplicateOwnerRecordCount">[R11_DuplicateOwnerRecordCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R11_DuplicateOwnerGroupCount">[R11_DuplicateOwnerGroupCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R08_SuspiciousAddressCount">[R08_SuspiciousAddressCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R08_PlaceholderAddressCount">[R08_PlaceholderAddressCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R08_MissingAddressCount">[R08_MissingAddressCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_R08_ValidAddressCount">[R08_ValidAddressCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_MissingMobileCount">[MissingMobileCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_PlaceHolderMobileCount">[PlaceHolderMobileCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_InvalidMobileCount">[InvalidMobileCount_Main]</OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_ValidMobileCount">[ValidMobileCount_Main]</OutArgument>
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_R23_PropertyTypeCount">[dt_R23_PropertyTypeCount_Main]</OutArgument>
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_R22_Top50UserCharge">[dt_R22_Top50UserCharge_Main]</OutArgument>
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_R22_Top50PropertyTax">[dt_R22_Top50PropertyTax_Main]</OutArgument>
@@ -523,7 +578,7 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <Sequence DisplayName="Sequence - Invoke Workflow-Generate_Final_Report" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="Sequence_17">
+    <Sequence DisplayName="Sequence - Invoke Workflow-Generate_Final_Report" sap:VirtualizedContainerService.HintSize="650,57.333333333333336" sap2010:WorkflowViewState.IdRef="Sequence_17">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -532,6 +587,27 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Generate_Final_Report - Invoke Workflow File (Generate_Final_Report.xaml)" sap:VirtualizedContainerService.HintSize="616,196.66666666666666" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Generate_Final_Report.xaml">
         <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R19_DuplicateGroupCount">[R19_DuplicateGroupCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R18_DuplicateGroupCount">[R18_DuplicateGroupCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R16_OthersNullCount">[R16_OthersNullCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R16_PrincipalMainRoadCount">[R16_PrincipalMainRoadCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R16_MainRoadCount">[R16_MainRoadCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R15_PropertyTaxPaidUserChargeNotPaidCount">[R15_PropertyTaxPaidUserChargeNotPaidCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R15_PropertyTaxAndUserChargePaidCount">[R15_PropertyTaxAndUserChargePaidCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R14_NotAppliedCount">[R14_NotAppliedCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R14_AppliedCount">[R14_AppliedCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R13_UnpaidCount">[R13_UnpaidCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R13_PaidCount">[R13_PaidCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R11_DuplicateOwnerRecordCount">[R11_DuplicateOwnerRecordCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R11_DuplicateOwnerGroupCount">[R11_DuplicateOwnerGroupCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R08_SuspiciousAddressCount">[R08_SuspiciousAddressCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R08_PlaceholderAddressCount">[R08_PlaceholderAddressCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R08_MissingAddressCount">[R08_MissingAddressCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_R08_ValidAddressCount">[R08_ValidAddressCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_MissingMobileCount">[MissingMobileCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_PlaceHolderMobileCount">[PlaceHolderMobileCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_InvalidMobileCount">[InvalidMobileCount_Main]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ValidMobileCount">[ValidMobileCount_Main]</InArgument>
           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_R23_PropertyTypeCount">[dt_R23_PropertyTypeCount_Main]</InArgument>
           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_R22_Top50UserCharge">[dt_R22_Top50UserCharge_Main]</InArgument>
           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_R22_Top50PropertyTax">[dt_R22_Top50PropertyTax_Main]</InArgument>
@@ -564,6 +640,102 @@
           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_R01_ValidMobileDetails">[dt_R01_ValidMobileDetails_Main]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
+    </Sequence>
+    <Sequence DisplayName="Sequence - Generated Dashboard Report to pdf" sap:VirtualizedContainerService.HintSize="650,48" sap2010:WorkflowViewState.IdRef="Sequence_18">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="CurrentDate" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[CurrentDate]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[System.DateTime.Today.ToString("dd-MMM-yyyy")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="616,1633.3333333333333" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
+        <ueab:ExcelProcessScopeX.Body>
+          <ActivityAction x:TypeArguments="ui:IExcelProcess">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,1534.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ueab:ExcelApplicationCard DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="488,1474.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="Bhilai_PropertyTax_Audit_Dashboard.xlsx">
+                <ueab:ExcelApplicationCard.Body>
+                  <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,1223.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="ue:IReadRangeRef" Name="SelectedRange" />
+                        <Variable x:TypeArguments="x:String" Name="UsedRange" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ueawb:SelectRangeX DisplayName="Select Range" sap:VirtualizedContainerService.HintSize="452,124" sap2010:WorkflowViewState.IdRef="SelectRangeX_1" Range="[Excel.Sheet(&quot;Dashboard&quot;).Range(&quot;Print_Area&quot;)]" />
+                      <ueawb:GetSelectedRangeX DisplayName="Get Selected Range" sap:VirtualizedContainerService.HintSize="452,229.33333333333334" sap2010:WorkflowViewState.IdRef="GetSelectedRangeX_1" Range="[SelectedRange]" Workbook="[Excel]" />
+                      <Assign sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[UsedRange]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[SelectedRange.Address]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ueab:InvokeVBAX Result="{x:Null}" CodeFilePath="C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\SetPrintArea.txt" DisplayName="Invoke VBA" EntryMethodName="SetDashboardPrintArea" sap:VirtualizedContainerService.HintSize="452,389.3333333333333" sap2010:WorkflowViewState.IdRef="InvokeVBAX_1" Workbook="[Excel]">
+                        <ueab:InvokeVBAX.Body>
+                          <ActivityAction>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </ActivityAction>
+                        </ueab:InvokeVBAX.Body>
+                      </ueab:InvokeVBAX>
+                      <ueab:SaveAsPdfX DestinationPdfPath="[&quot;C:\Users\amitg\OneDrive\Documents\UiPath\Property Tax POC\Property_Tax_Audit_Dashboard-&quot;+CurrentDate.ToString.Trim+&quot;.pdf&quot;]" DisplayName="Save Excel File As PDF" sap:VirtualizedContainerService.HintSize="452,244" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" SaveQuality="StandardQuality" Workbook="[Excel]">
+                        <ueab:SaveAsPdfX.EndPage>
+                          <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                            <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="1" />
+                          </InArgument>
+                        </ueab:SaveAsPdfX.EndPage>
+                        <ueab:SaveAsPdfX.StartPage>
+                          <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                            <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="1" />
+                          </InArgument>
+                        </ueab:SaveAsPdfX.StartPage>
+                      </ueab:SaveAsPdfX>
+                    </Sequence>
+                  </ActivityAction>
+                </ueab:ExcelApplicationCard.Body>
+              </ueab:ExcelApplicationCard>
+            </Sequence>
+          </ActivityAction>
+        </ueab:ExcelProcessScopeX.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ueab:ExcelProcessScopeX>
     </Sequence>
   </Sequence>
 </Activity>

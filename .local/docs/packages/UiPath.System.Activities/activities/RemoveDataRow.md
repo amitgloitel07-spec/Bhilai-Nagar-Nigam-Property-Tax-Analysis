@@ -14,7 +14,7 @@ Removes a DataRow from a specified DataTable.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | Row | Row | InArgument | DataRow | Yes* | — | The DataRow object to remove from the DataTable. Mutually exclusive with **Row Index**. |
-| RowIndex | Row Index | InArgument | Int32 | Yes* | — | The zero-based index of the row to remove. Mutually exclusive with **Row**. |
+| RowIndex | Row index | InArgument | Int32 | Yes* | — | The zero-based index of the row to remove. Mutually exclusive with **Row**. |
 
 ### Input/Output
 
@@ -22,7 +22,7 @@ Removes a DataRow from a specified DataTable.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InOutArgument | DataTable | Yes | — | The DataTable from which the row will be removed. The variable is updated in place. |
+| DataTable | Data table | InOutArgument | DataTable | Yes | — | The DataTable from which the row will be removed. The variable is updated in place. |
 
 \* Exactly one of `Row` or `RowIndex` must be provided (overload groups).
 

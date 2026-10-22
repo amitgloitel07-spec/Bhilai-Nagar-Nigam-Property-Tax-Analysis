@@ -1,4 +1,4 @@
-# Generate Data Table From Text
+# Generate Data Table from Text
 
 `UiPath.Core.Activities.GenerateDataTable`
 
@@ -14,7 +14,7 @@ Generate a DataTable from structured text.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | Input | Input | InArgument | String | Yes* | — | The text to parse into a DataTable. Used with the **Use Text** overload group. |
-| ContinueOnError | Continue On Error | InArgument | Boolean | No | — | If true, the workflow continues even if the activity throws an error. |
+| ContinueOnError | Continue on error | InArgument | Boolean | No | — | If true, the workflow continues even if the activity throws an error. |
 
 \* `Input` is required when using the text-based parsing mode. The **Use Positions** overload group uses `Positions` instead (for positional/fixed-width parsing from coordinate data, typically used with Digitizer outputs).
 
@@ -22,19 +22,19 @@ Generate a DataTable from structured text.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| ParsingMethod | Parsing Method | Property (DataTableParsingMethod) | — | Determines how the text is split into columns. See **Enum Reference** below. |
-| AutoDetectTypes | Auto Detect Types | Property (Boolean) | true | When true, column data types are inferred from the parsed values. |
-| UseColumnHeader | Use Column Header | Property (Boolean) | false | When true, the first row of the text is treated as column headers. |
-| UseRowHeader | Use Row Header | Property (Boolean) | false | When true, the first column is treated as row labels. |
-| AllowMisalignedColumns | Allow Misaligned Columns | Property (Boolean) | false | When true, rows with a different number of columns than the header are accepted rather than causing an error. |
-| ColumnSeparators | Column Separators | InArgument | String | — | Custom column delimiter string(s). Visible only when `ParsingMethod` is `Custom`. |
-| NewLineSeparator | New Line Separator | InArgument | String | — | Custom row delimiter string. Visible only when `ParsingMethod` is `Custom`. |
+| ParsingMethod | Parsing method | Property (DataTableParsingMethod) | — | Determines how the text is split into columns. See **Enum Reference** below. |
+| AutoDetectTypes | Autodetect column types | Property (Boolean) | true | When true, column data types are inferred from the parsed values. |
+| UseColumnHeader | Use first row as column headers | Property (Boolean) | false | When true, the first row of the text is treated as column headers. |
+| UseRowHeader | Ignore first column | Property (Boolean) | false | When true, the first column is treated as row labels. |
+| AllowMisalignedColumns | Allow misaligned columns | Property (Boolean) | false | When true, rows with a different number of columns than the header are accepted rather than causing an error. |
+| ColumnSeparators | Column separator | InArgument (String) | — | Custom column delimiter string(s). Visible only when `ParsingMethod` is `Custom`. |
+| NewLineSeparator | New line separator | InArgument (String) | — | Custom row delimiter string. Visible only when `ParsingMethod` is `Custom`. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| DataTable | Data Table | OutArgument | DataTable | The DataTable generated from the parsed text. |
+| DataTable | Data table | OutArgument | DataTable | The DataTable generated from the parsed text. |
 
 ## Valid Configurations
 
@@ -51,6 +51,7 @@ Generate a DataTable from structured text.
 |-------|-------------|
 | `CSV` | Parses the input as comma-separated values. |
 | `Custom` | Uses the values supplied in `ColumnSeparators` and `NewLineSeparator` to split the text. |
+| `FixedWidthColumns` | Splits each line into columns of the widths supplied in `ColumnSizes`. |
 
 ## Notes
 
@@ -61,7 +62,7 @@ Generate a DataTable from structured text.
 ## XAML Example
 
 ```xml
-<ui:GenerateDataTable DisplayName="Generate Data Table From Text"
+<ui:GenerateDataTable DisplayName="Generate Data Table from Text"
                       AutoDetectTypes="True"
                       UseColumnHeader="True"
                       ParsingMethod="CSV"

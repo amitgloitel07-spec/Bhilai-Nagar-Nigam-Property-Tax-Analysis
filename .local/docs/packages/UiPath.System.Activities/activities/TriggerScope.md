@@ -13,13 +13,13 @@ Runs an action when one of its contained triggers fires.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `SchedulingMode` | Scheduling Mode | `ActionSchedulingMode` | `Sequential` | Controls how trigger events are queued and how action executions overlap. |
+| `SchedulingMode` | Scheduling mode | `ActionSchedulingMode` | `Sequential` | Controls how trigger events are queued and how action executions overlap. |
 
 ### Common
 
 | Name | Display Name | Kind | Type | Default | Description |
 |------|-------------|------|------|---------|-------------|
-| `ContinueOnError` | Continue On Error | `InArgument` | `bool` | `null` | When `true`, child trigger or handler faults are logged, marked as handled, and the trigger scope is stopped so the workflow can continue after the scope. When `false`, the fault propagates. |
+| `ContinueOnError` | Continue on error | `InArgument` | `bool` | `null` | When `true`, child trigger or handler faults are logged, marked as handled, and the trigger scope is stopped so the workflow can continue after the scope. When `false`, the fault propagates. |
 
 ### Trigger and Action Containers
 

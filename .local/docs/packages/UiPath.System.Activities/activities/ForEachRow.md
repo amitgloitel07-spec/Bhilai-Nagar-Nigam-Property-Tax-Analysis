@@ -13,14 +13,14 @@ Executes an action once for each row in the DataTable provided.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InArgument | DataTable | Yes | — | The DataTable whose rows will be iterated. |
-| MaxIterations | Max Iterations | InArgument | Int32 | No | — | Maximum number of rows to process. Leave empty to iterate all rows. |
+| DataTable | Data table | InArgument | DataTable | Yes | — | The DataTable whose rows will be iterated. |
+| MaxIterations | Max iterations | InArgument | Int32 | No | — | Maximum number of rows to process. Leave empty to iterate all rows. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| CurrentIndex | Current Index | OutArgument | Int32 | The zero-based index of the row currently being processed. |
+| CurrentIndex | Index | OutArgument | Int32 | The zero-based index of the row currently being processed. |
 
 ## Notes
 

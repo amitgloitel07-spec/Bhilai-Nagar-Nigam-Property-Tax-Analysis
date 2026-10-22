@@ -13,7 +13,7 @@ Contains job info such as Process name, Workflow name, User Name, User Email and
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Get Current Job Info | `OutArgument` | `CurrentJobInfo` | An object containing runtime information about the current job, including process name, process version, workflow name, robot name, folder name, user email, and execution mode. |
+| `Result` | Job data | `OutArgument` | `CurrentJobInfo` | An object containing runtime information about the current job, including process name, process version, workflow name, robot name, folder name, user email, and execution mode. |
 
 ## XAML Example
 

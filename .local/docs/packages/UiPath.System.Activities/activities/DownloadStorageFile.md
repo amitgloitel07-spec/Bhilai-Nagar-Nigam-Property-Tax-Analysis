@@ -14,15 +14,15 @@ Downloads a copy of a file in an Orchestrator storage bucket locally.
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
 | `StorageBucketName` | Storage bucket name | InArgument | `string` | Yes (inherited) | — | The name of the Orchestrator storage bucket. Inherited from the storage activity base class — declared on the activity element, not as a child binding. |
-| `FolderPath` | Folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
-| `Path` | Path | InArgument | `string` | Yes | — | The path of the file within the storage bucket to download (e.g., `reports/output.pdf`). |
-| `Destination` | Destination | InArgument | `string` | No | — | The local file system path where the downloaded file will be saved. If omitted, the file is saved in the current working directory using the source file's name. |
+| `FolderPath` | Orchestrator folder path | InArgument | `string` | No (inherited) | — | The Orchestrator folder containing the storage bucket. Inherited from the storage activity base class. Leave empty to use the robot's current folder. |
+| `Path` | File path | InArgument | `string` | Yes | — | The path of the file within the storage bucket to download (e.g., `reports/output.pdf`). |
+| `Destination` | File name and location | InArgument | `string` | No | — | The local file system path where the downloaded file will be saved. If omitted, the file is saved in the current working directory using the source file's name. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `ILocalResource` | A reference to the downloaded local file, providing access to the file name and full local path. |
+| `Result` | File | OutArgument | `ILocalResource` | A reference to the downloaded local file, providing access to the file name and full local path. |
 
 ## XAML Example
 

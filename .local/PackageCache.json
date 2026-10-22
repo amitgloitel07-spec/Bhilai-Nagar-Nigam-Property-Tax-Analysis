@@ -3,15 +3,15 @@
     {
       "Package": {
         "Id": "UiPath.Excel.Activities",
-        "Version": "3.6.1"
+        "Version": "3.7.0-preview"
       },
       "Assemblies": [
         "C:\\Users\\amitg\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\lib/net6.0/BouncyCastle.Cryptography.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\closedxml\\0.105.0\\lib/netstandard2.1/ClosedXML.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\closedxml\\0.105.1\\lib/netstandard2.1/ClosedXML.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\closedxml.parser\\2.0.0\\lib/netstandard2.1/ClosedXML.Parser.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.0.1\\lib/net8.0/CsvHelper.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml\\3.3.0\\lib/net8.0/DocumentFormat.OpenXml.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml.framework\\3.3.0\\lib/net8.0/DocumentFormat.OpenXml.Framework.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.1.0\\lib/net8.0/CsvHelper.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml\\3.5.1\\lib/net8.0/DocumentFormat.OpenXml.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml.framework\\3.5.1\\lib/net8.0/DocumentFormat.OpenXml.Framework.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\enums.net\\4.0.1\\lib/netcoreapp3.0/Enums.NET.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\excelnumberformat\\1.1.0\\lib/netstandard2.0/ExcelNumberFormat.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\extendednumerics.bigdecimal\\2025.1001.2.129\\lib/net8.0/ExtendedNumerics.BigDecimal.dll",
@@ -35,16 +35,16 @@
         "C:\\Users\\amitg\\.nuget\\packages\\rbush.signed\\4.0.0\\lib/net8.0/RBush.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\sharpziplib\\1.4.2\\lib/net6.0/ICSharpCode.SharpZipLib.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.fonts\\1.0.1\\lib/netcoreapp3.1/SixLabors.Fonts.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.imagesharp\\2.1.11\\lib/netcoreapp3.1/SixLabors.ImageSharp.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.imagesharp\\2.1.13\\lib/netcoreapp3.1/SixLabors.ImageSharp.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.activities.viewmodels\\1.20260609.1\\lib/net6.0-windows7.0/System.Activities.ViewModels.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.io.abstractions\\3.0.10\\lib/netstandard2.0/System.IO.Abstractions.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.codedworkflows\\24.10.3\\lib/net6.0-windows7.0/UiPath.CodedWorkflows.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.API.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.Package.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib/net6.0-windows7.0/UiPath.Excel.Activities.ViewModels.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib/net6.0-windows7.0/UiPath.Excel.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib/net6.0-windows7.0/UiPath.Excel.Activities.API.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib/net6.0-windows7.0/UiPath.Excel.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib/net6.0-windows7.0/UiPath.Excel.Activities.Package.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib/net6.0-windows7.0/UiPath.Excel.Activities.ViewModels.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib/net6.0-windows7.0/UiPath.Excel.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib/net6.0-windows7.0/UiPath.Excel.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/Microsoft.Office.Interop.Excel.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/Microsoft.Office.Interop.Outlook.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.officelibs\\1.0.0\\lib/net6.0-windows7.0/Microsoft.Office.Interop.PowerPoint.dll",
@@ -56,15 +56,15 @@
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.platform\\26.9.0\\lib/net6.0-windows7.0/UiPath.Platform.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.telemetry.client\\2.12.0\\lib/netstandard2.0/TelemetryClient.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview"
     },
     {
       "Package": {
         "Id": "UiPath.System.Activities",
-        "Version": "26.8.2"
+        "Version": "26.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.0.1\\lib/net8.0/CsvHelper.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.1.0\\lib/net8.0/CsvHelper.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\dynamicexpresso.core\\2.12.0\\lib/netstandard2.0/DynamicExpresso.Core.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\humanizer.core\\2.14.1\\lib/net6.0/Humanizer.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\json.more.net\\2.0.2\\lib/net8.0/Json.More.dll",
@@ -142,34 +142,35 @@
         "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.duplex\\4.10.3\\lib/net6.0/System.ServiceModel.Duplex.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.http\\4.10.3\\lib/net6.0/System.ServiceModel.Http.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.nettcp\\4.10.3\\lib/net6.0/System.ServiceModel.NetTcp.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib/net6.0/System.ServiceModel.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib/net6.0/System.ServiceModel.Primitives.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib/net6.0/System.ServiceModel.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.security\\4.10.3\\lib/net6.0/System.ServiceModel.Security.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.syndication\\8.0.0\\lib/net8.0/System.ServiceModel.Syndication.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.serviceprocess.servicecontroller\\8.0.1\\runtimes/win/lib/net8.0/System.ServiceProcess.ServiceController.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.speech\\8.0.0\\runtimes/win/lib/net8.0/System.Speech.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.web.services.description\\4.10.3\\lib/netstandard2.0/System.Web.Services.Description.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.businessrules.client\\2.1.0\\lib/netstandard2.0/UiPath.BusinessRules.Client.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.codedworkflows\\24.10.3\\lib/net6.0-windows7.0/UiPath.CodedWorkflows.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.errorinfo\\25.10.2\\lib/net8.0-windows7.0/UiPath.ErrorInfo.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.opentelemetry.contracts\\2.12.0\\lib/netstandard2.0/UiPath.OpenTelemetry.Contracts.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.platform\\26.9.0\\lib/net6.0-windows7.0/UiPath.Platform.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.plugin.activities.tracing\\1.0.1\\lib/net8.0-windows7.0/UiPath.Plugin.Activities.Tracing.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2\\lib/net8.0-windows7.0/UiPath.System.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2\\lib/net8.0-windows7.0/UiPath.System.Activities.Rules.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2\\lib/net8.0-windows7.0/UiPath.System.Activities.ViewModels.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime\\26.8.2\\lib/net8.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib/net8.0-windows7.0/UiPath.OrchestratorClient.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib/net8.0-windows7.0/UiPath.ServiceClients.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib/net8.0-windows7.0/UiPath.System.Activities.Api.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib/net8.0-windows7.0/UiPath.System.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0\\lib/net8.0-windows7.0/UiPath.System.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0\\lib/net8.0-windows7.0/UiPath.System.Activities.Rules.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0\\lib/net8.0-windows7.0/UiPath.System.Activities.ViewModels.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime\\26.10.0\\lib/net8.0-windows7.0/UiPath.System.Activities.Package.Runtime.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib/net8.0-windows7.0/UiPath.OrchestratorClient.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib/net8.0-windows7.0/UiPath.ServiceClients.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib/net8.0-windows7.0/UiPath.System.Activities.Api.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib/net8.0-windows7.0/UiPath.System.Activities.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.telemetry.client\\2.12.0\\lib/netstandard2.0/TelemetryClient.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0"
     },
     {
       "Package": {
         "Id": "UiPath.UIAutomation.Activities",
-        "Version": "26.10.5"
+        "Version": "26.10.6"
       },
       "Assemblies": [
         "C:\\Users\\amitg\\.nuget\\packages\\microsoft.azure.cognitiveservices.vision.computervision\\7.0.1\\lib/netstandard2.0/Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll",
@@ -195,19 +196,19 @@
         "C:\\Users\\amitg\\.nuget\\packages\\polly\\7.1.0\\lib/netstandard2.0/Polly.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.activities.viewmodels\\1.20260609.1\\lib/net6.0-windows7.0/System.Activities.ViewModels.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\system.io.abstractions\\3.0.10\\lib/netstandard2.0/System.IO.Abstractions.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib/net6.0-windows7.0/SapAutomationConnectivitySdk.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib/net6.0-windows7.0/SapAutomationLogger.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib/net6.0-windows7.0/SapWinGuiSdk.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib/net6.0-windows7.0/UiPath.Driver.ComInterop.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib/net6.0-windows7.0/UiPath.DriverCore.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib/net6.0-windows7.0/UiPath.Interop.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib/net6.0-windows7.0/SapAutomationConnectivitySdk.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib/net6.0-windows7.0/SapAutomationLogger.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib/net6.0-windows7.0/SapWinGuiSdk.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib/net6.0-windows7.0/UiPath.Driver.ComInterop.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib/net6.0-windows7.0/UiPath.DriverCore.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib/net6.0-windows7.0/UiPath.Interop.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.activities.runtimegovernance\\1.1.7\\lib/net6.0-windows7.0/UiPath.Activities.RuntimeGovernance.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.appsignatures\\26.10.207.36139\\lib/net6.0-windows7.0/AppSignatures.Locator.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.appsignatures\\26.10.210.65305\\lib/net6.0-windows7.0/AppSignatures.Locator.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.codedworkflows\\24.10.3\\lib/net6.0-windows7.0/UiPath.CodedWorkflows.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.coreipc\\2.1.0-20210811-12-fix\\lib/net5.0-windows7.0/UiPath.CoreIpc.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/Emgu.CV.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/concrt140.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/cvextern.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/Emgu.CV.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/libusb-1.0.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/msvcp140.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib/net6.0/msvcp140_1.dll",
@@ -225,30 +226,30 @@
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.platform\\26.9.0\\lib/net6.0-windows7.0/UiPath.Platform.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.plugin.activities.tracing\\1.0.1\\lib/net8.0-windows7.0/UiPath.Plugin.Activities.Tracing.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.telemetry.client\\2.12.0\\lib/netstandard2.0/TelemetryClient.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib/net6.0-windows7.0/UiPath.CV.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.Design.Contracts.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib/net6.0-windows7.0/UiPath.Wizards.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.CV.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.CV.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UiAutomation.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationCore.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.Contracts.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.API.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.ExternalIntegrations.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Migration.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\26.10.5\\lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Runtime.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\26.10.5\\lib/net6.0/UiPath.UIAutomation.Design.RecoveryPanel.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib/net6.0-windows7.0/UiPath.CV.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.Design.Contracts.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib/net6.0-windows7.0/UiPath.Wizards.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.CV.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.CV.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationCore.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.API.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.Contracts.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.ExternalIntegrations.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.Migration.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomationNext.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib/net6.0-windows7.0/UiPath.UiAutomation.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\26.10.6\\lib/net6.0-windows7.0/UiPath.UIAutomation.Activities.Runtime.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\26.10.6\\lib/net6.0/UiPath.UIAutomation.Design.RecoveryPanel.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.AzureComputerVision.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.Core.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.GoogleCloud.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.Tesseract.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.Tesseract.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib/net6.0-windows7.0/UiPath.Vision.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6"
     }
   ],
   "Conflicts": [],
@@ -260,7 +261,7 @@
     },
     "ClosedXML": {
       "Id": "ClosedXML",
-      "Version": "0.105.0",
+      "Version": "0.105.1",
       "Dependencies": [
         {
           "Item1": "ClosedXML.Parser",
@@ -280,7 +281,7 @@
         },
         {
           "Item1": "SixLabors.Fonts",
-          "Item2": "[1.0.0, )"
+          "Item2": "[1.0.0, 3.0.0)"
         }
       ]
     },
@@ -291,22 +292,22 @@
     },
     "CsvHelper": {
       "Id": "CsvHelper",
-      "Version": "33.0.1",
+      "Version": "33.1.0",
       "Dependencies": []
     },
     "DocumentFormat.OpenXml": {
       "Id": "DocumentFormat.OpenXml",
-      "Version": "3.3.0",
+      "Version": "3.5.1",
       "Dependencies": [
         {
           "Item1": "DocumentFormat.OpenXml.Framework",
-          "Item2": "[3.3.0, )"
+          "Item2": "[3.5.1, )"
         }
       ]
     },
     "DocumentFormat.OpenXml.Framework": {
       "Id": "DocumentFormat.OpenXml.Framework",
-      "Version": "3.3.0",
+      "Version": "3.5.1",
       "Dependencies": [
         {
           "Item1": "System.IO.Packaging",
@@ -1892,7 +1893,7 @@
     },
     "SixLabors.ImageSharp": {
       "Id": "SixLabors.ImageSharp",
-      "Version": "2.1.11",
+      "Version": "2.1.13",
       "Dependencies": [
         {
           "Item1": "System.Runtime.CompilerServices.Unsafe",
@@ -4150,7 +4151,7 @@
     },
     "UiPath": {
       "Id": "UiPath",
-      "Version": "26.10.207.36139",
+      "Version": "26.10.210.65305",
       "Dependencies": []
     },
     "UiPath.Activities.RuntimeGovernance": {
@@ -4165,8 +4166,18 @@
     },
     "UiPath.AppSignatures": {
       "Id": "UiPath.AppSignatures",
-      "Version": "26.10.207.36139",
+      "Version": "26.10.210.65305",
       "Dependencies": []
+    },
+    "UiPath.BusinessRules.Client": {
+      "Id": "UiPath.BusinessRules.Client",
+      "Version": "2.1.0",
+      "Dependencies": [
+        {
+          "Item1": "Newtonsoft.Json",
+          "Item2": "[13.0.3, )"
+        }
+      ]
     },
     "UiPath.CodedWorkflows": {
       "Id": "UiPath.CodedWorkflows",
@@ -4266,19 +4277,19 @@
     },
     "UiPath.Excel.Activities": {
       "Id": "UiPath.Excel.Activities",
-      "Version": "3.6.1",
+      "Version": "3.7.0-preview",
       "Dependencies": [
         {
           "Item1": "ClosedXML",
-          "Item2": "[0.105.0, )"
+          "Item2": "[0.105.1, )"
         },
         {
           "Item1": "CsvHelper",
-          "Item2": "[33.0.1, )"
+          "Item2": "[33.1.0, )"
         },
         {
           "Item1": "DocumentFormat.OpenXml",
-          "Item2": "[3.3.0, )"
+          "Item2": "[3.5.1, )"
         },
         {
           "Item1": "NPOI",
@@ -4290,7 +4301,7 @@
         },
         {
           "Item1": "SixLabors.ImageSharp",
-          "Item2": "[2.1.11, )"
+          "Item2": "[2.1.13, )"
         },
         {
           "Item1": "System.Activities.ViewModels",
@@ -4326,7 +4337,7 @@
         },
         {
           "Item1": "UiPath.CodedWorkflows",
-          "Item2": "[24.10.1, )"
+          "Item2": "[24.10.3, )"
         },
         {
           "Item1": "UiPath.OfficeLibs",
@@ -4334,7 +4345,7 @@
         },
         {
           "Item1": "UiPath.Platform",
-          "Item2": "[25.10.1, )"
+          "Item2": "[26.9.0, )"
         },
         {
           "Item1": "UiPath.Telemetry.Client",
@@ -4483,15 +4494,15 @@
     },
     "UiPath.System.Activities": {
       "Id": "UiPath.System.Activities",
-      "Version": "26.8.2",
+      "Version": "26.10.0",
       "Dependencies": [
         {
           "Item1": "UiPath.System.Activities.Runtime",
-          "Item2": "[26.8.2, )"
+          "Item2": "[26.10.0, )"
         },
         {
           "Item1": "CsvHelper",
-          "Item2": "[33.0.1, )"
+          "Item2": "[33.1.0, )"
         },
         {
           "Item1": "Microsoft.AspNet.SignalR.Client",
@@ -4546,6 +4557,10 @@
           "Item2": "[7.4.18, )"
         },
         {
+          "Item1": "UiPath.BusinessRules.Client",
+          "Item2": "[2.1.0, )"
+        },
+        {
           "Item1": "UiPath.CodedWorkflows",
           "Item2": "[24.10.1, )"
         },
@@ -4573,21 +4588,21 @@
     },
     "UiPath.System.Activities.Runtime": {
       "Id": "UiPath.System.Activities.Runtime",
-      "Version": "26.8.2",
+      "Version": "26.10.0",
       "Dependencies": [
         {
           "Item1": "UiPath.System.Activities.Runtime.Windows",
-          "Item2": "[26.8.2, )"
+          "Item2": "[26.10.0, )"
         }
       ]
     },
     "UiPath.System.Activities.Runtime.Windows": {
       "Id": "UiPath.System.Activities.Runtime.Windows",
-      "Version": "26.8.2",
+      "Version": "26.10.0",
       "Dependencies": [
         {
           "Item1": "CsvHelper",
-          "Item2": "[33.0.1, )"
+          "Item2": "[33.1.0, )"
         },
         {
           "Item1": "Microsoft.AspNet.SignalR.Client",
@@ -4640,6 +4655,10 @@
         {
           "Item1": "System.Management.Automation",
           "Item2": "[7.4.18, )"
+        },
+        {
+          "Item1": "UiPath.BusinessRules.Client",
+          "Item2": "[2.1.0, )"
         },
         {
           "Item1": "UiPath.CodedWorkflows",
@@ -4699,7 +4718,7 @@
     },
     "UiPath.UIAutomation.Activities": {
       "Id": "UiPath.UIAutomation.Activities",
-      "Version": "26.10.5",
+      "Version": "26.10.6",
       "Dependencies": [
         {
           "Item1": "System.Activities.ViewModels",
@@ -4707,29 +4726,29 @@
         },
         {
           "Item1": "UiPath.UIAutomation.Activities.Runtime",
-          "Item2": "[26.10.5, 26.10.5]"
+          "Item2": "[26.10.6, 26.10.6]"
         },
         {
           "Item1": "UiPath.UIAutomation.Design.RecoveryPanel",
-          "Item2": "[26.10.5, 26.10.5]"
+          "Item2": "[26.10.6, 26.10.6]"
         },
         {
           "Item1": "UiPath.UIAutomation.CLI",
-          "Item2": "[26.10.5, 26.10.5]"
+          "Item2": "[26.10.6, 26.10.6]"
         }
       ]
     },
     "UiPath.UIAutomation.Activities.Runtime": {
       "Id": "UiPath.UIAutomation.Activities.Runtime",
-      "Version": "26.10.5",
+      "Version": "26.10.6",
       "Dependencies": [
         {
           "Item1": "UiPath",
-          "Item2": "[26.10.207.36139, 26.10.207.36139]"
+          "Item2": "[26.10.210.65305, 26.10.210.65305]"
         },
         {
           "Item1": "UiPath.UIAutomation.Activities.Runtime.Design",
-          "Item2": "[26.10.5, 26.10.5]"
+          "Item2": "[26.10.6, 26.10.6]"
         },
         {
           "Item1": "UiPath.Vision",
@@ -4773,23 +4792,23 @@
         },
         {
           "Item1": "UiPath.AppSignatures",
-          "Item2": "[26.10.207.36139, )"
+          "Item2": "[26.10.210.65305, )"
         }
       ]
     },
     "UiPath.UIAutomation.Activities.Runtime.Design": {
       "Id": "UiPath.UIAutomation.Activities.Runtime.Design",
-      "Version": "26.10.5",
+      "Version": "26.10.6",
       "Dependencies": []
     },
     "UiPath.UIAutomation.CLI": {
       "Id": "UiPath.UIAutomation.CLI",
-      "Version": "26.10.5",
+      "Version": "26.10.6",
       "Dependencies": []
     },
     "UiPath.UIAutomation.Design.RecoveryPanel": {
       "Id": "UiPath.UIAutomation.Design.RecoveryPanel",
-      "Version": "26.10.5",
+      "Version": "26.10.6",
       "Dependencies": []
     },
     "UiPath.Vision": {
@@ -4821,12 +4840,12 @@
     {
       "Package": {
         "Id": "ClosedXML",
-        "Version": "0.105.0"
+        "Version": "0.105.1"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\closedxml\\0.105.0\\lib\\netstandard2.1\\ClosedXML.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\closedxml\\0.105.1\\lib\\netstandard2.1\\ClosedXML.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\closedxml\\0.105.0"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\closedxml\\0.105.1"
     },
     {
       "Package": {
@@ -4841,32 +4860,32 @@
     {
       "Package": {
         "Id": "CsvHelper",
-        "Version": "33.0.1"
+        "Version": "33.1.0"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.0.1\\lib\\net8.0\\CsvHelper.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.1.0\\lib\\net8.0\\CsvHelper.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.0.1"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\csvhelper\\33.1.0"
     },
     {
       "Package": {
         "Id": "DocumentFormat.OpenXml",
-        "Version": "3.3.0"
+        "Version": "3.5.1"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml\\3.3.0\\lib\\net8.0\\DocumentFormat.OpenXml.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml\\3.5.1\\lib\\net8.0\\DocumentFormat.OpenXml.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml\\3.3.0"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml\\3.5.1"
     },
     {
       "Package": {
         "Id": "DocumentFormat.OpenXml.Framework",
-        "Version": "3.3.0"
+        "Version": "3.5.1"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml.framework\\3.3.0\\lib\\net8.0\\DocumentFormat.OpenXml.Framework.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml.framework\\3.5.1\\lib\\net8.0\\DocumentFormat.OpenXml.Framework.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml.framework\\3.3.0"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\documentformat.openxml.framework\\3.5.1"
     },
     {
       "Package": {
@@ -6137,12 +6156,12 @@
     {
       "Package": {
         "Id": "SixLabors.ImageSharp",
-        "Version": "2.1.11"
+        "Version": "2.1.13"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.imagesharp\\2.1.11\\lib\\netcoreapp3.1\\SixLabors.ImageSharp.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.imagesharp\\2.1.13\\lib\\netcoreapp3.1\\SixLabors.ImageSharp.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.imagesharp\\2.1.11"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\sixlabors.imagesharp\\2.1.13"
     },
     {
       "Package": {
@@ -6304,8 +6323,8 @@
         "Version": "8.0.2"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.2\\runtimes\\win\\lib\\net8.0\\System.Diagnostics.EventLog.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.2\\runtimes\\win\\lib\\net8.0\\System.Diagnostics.EventLog.Messages.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.2\\runtimes\\win\\lib\\net8.0\\System.Diagnostics.EventLog.Messages.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.2\\runtimes\\win\\lib\\net8.0\\System.Diagnostics.EventLog.dll"
       ],
       "Path": "C:\\Users\\amitg\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.2"
     },
@@ -7001,8 +7020,8 @@
         "Version": "4.10.3"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib\\net6.0\\System.ServiceModel.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib\\net6.0\\System.ServiceModel.Primitives.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib\\net6.0\\System.ServiceModel.Primitives.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3\\lib\\net6.0\\System.ServiceModel.dll"
       ],
       "Path": "C:\\Users\\amitg\\.nuget\\packages\\system.servicemodel.primitives\\4.10.3"
     },
@@ -7231,17 +7250,17 @@
     {
       "Package": {
         "Id": "UiPath",
-        "Version": "26.10.207.36139"
+        "Version": "26.10.210.65305"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib\\net6.0-windows7.0\\SapAutomationConnectivitySdk.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib\\net6.0-windows7.0\\SapAutomationLogger.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib\\net6.0-windows7.0\\SapWinGuiSdk.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib\\net6.0-windows7.0\\UiPath.Driver.ComInterop.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib\\net6.0-windows7.0\\UiPath.DriverCore.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139\\lib\\net6.0-windows7.0\\UiPath.Interop.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib\\net6.0-windows7.0\\SapAutomationConnectivitySdk.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib\\net6.0-windows7.0\\SapAutomationLogger.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib\\net6.0-windows7.0\\SapWinGuiSdk.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib\\net6.0-windows7.0\\UiPath.Driver.ComInterop.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib\\net6.0-windows7.0\\UiPath.DriverCore.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305\\lib\\net6.0-windows7.0\\UiPath.Interop.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.207.36139"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath\\26.10.210.65305"
     },
     {
       "Package": {
@@ -7256,12 +7275,22 @@
     {
       "Package": {
         "Id": "UiPath.AppSignatures",
-        "Version": "26.10.207.36139"
+        "Version": "26.10.210.65305"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.appsignatures\\26.10.207.36139\\lib\\net6.0-windows7.0\\AppSignatures.Locator.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.appsignatures\\26.10.210.65305\\lib\\net6.0-windows7.0\\AppSignatures.Locator.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.appsignatures\\26.10.207.36139"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.appsignatures\\26.10.210.65305"
+    },
+    {
+      "Package": {
+        "Id": "UiPath.BusinessRules.Client",
+        "Version": "2.1.0"
+      },
+      "Assemblies": [
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.businessrules.client\\2.1.0\\lib\\netstandard2.0\\UiPath.BusinessRules.Client.dll"
+      ],
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.businessrules.client\\2.1.0"
     },
     {
       "Package": {
@@ -7289,9 +7318,9 @@
         "Version": "2.2.0"
       },
       "Assemblies": [
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\Emgu.CV.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\concrt140.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\cvextern.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\Emgu.CV.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\libusb-1.0.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\msvcp140.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.emgucvbundle\\2.2.0\\lib\\net6.0\\msvcp140_1.dll",
@@ -7316,17 +7345,17 @@
     {
       "Package": {
         "Id": "UiPath.Excel.Activities",
-        "Version": "3.6.1"
+        "Version": "3.7.0-preview"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.API.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.Package.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.ViewModels.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1\\lib\\net6.0-windows7.0\\UiPath.Excel.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.API.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.Package.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.ViewModels.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib\\net6.0-windows7.0\\UiPath.Excel.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview\\lib\\net6.0-windows7.0\\UiPath.Excel.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.6.1"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.excel.activities\\3.7.0-preview"
     },
     {
       "Package": {
@@ -7409,37 +7438,37 @@
     {
       "Package": {
         "Id": "UiPath.System.Activities",
-        "Version": "26.8.2"
+        "Version": "26.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Rules.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.System.Activities.ViewModels.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Rules.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.System.Activities.ViewModels.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.8.2"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities\\26.10.0"
     },
     {
       "Package": {
         "Id": "UiPath.System.Activities.Runtime",
-        "Version": "26.8.2"
+        "Version": "26.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Package.Runtime.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Package.Runtime.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime\\26.8.2"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime\\26.10.0"
     },
     {
       "Package": {
         "Id": "UiPath.System.Activities.Runtime.Windows",
-        "Version": "26.8.2"
+        "Version": "26.10.0"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.OrchestratorClient.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.ServiceClients.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Api.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2\\lib\\net8.0-windows7.0\\UiPath.System.Activities.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.OrchestratorClient.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.ServiceClients.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.System.Activities.Api.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0\\lib\\net8.0-windows7.0\\UiPath.System.Activities.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.8.2"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.system.activities.runtime.windows\\26.10.0"
     },
     {
       "Package": {
@@ -7454,63 +7483,63 @@
     {
       "Package": {
         "Id": "UiPath.UIAutomation.Activities",
-        "Version": "26.10.5"
+        "Version": "26.10.6"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.CV.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomation.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.Design.Contracts.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.Design.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.Wizards.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.CV.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomation.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.Design.Contracts.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.Design.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.Wizards.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.5"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities\\26.10.6"
     },
     {
       "Package": {
         "Id": "UiPath.UIAutomation.Activities.Runtime",
-        "Version": "26.10.5"
+        "Version": "26.10.6"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.CV.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.CV.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UiAutomation.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationCore.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.Contracts.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.API.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.ExternalIntegrations.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Migration.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.CV.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.CV.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationCore.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.API.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.Contracts.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Activities.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.ExternalIntegrations.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.Migration.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomationNext.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UiAutomation.Activities.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.5"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime\\26.10.6"
     },
     {
       "Package": {
         "Id": "UiPath.UIAutomation.Activities.Runtime.Design",
-        "Version": "26.10.5"
+        "Version": "26.10.6"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\26.10.5\\lib\\net6.0-windows7.0\\UiPath.UIAutomation.Activities.Runtime.Design.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\26.10.6\\lib\\net6.0-windows7.0\\UiPath.UIAutomation.Activities.Runtime.Design.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\26.10.5"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.activities.runtime.design\\26.10.6"
     },
     {
       "Package": {
         "Id": "UiPath.UIAutomation.CLI",
-        "Version": "26.10.5"
+        "Version": "26.10.6"
       },
       "Assemblies": [],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.cli\\26.10.5"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.cli\\26.10.6"
     },
     {
       "Package": {
         "Id": "UiPath.UIAutomation.Design.RecoveryPanel",
-        "Version": "26.10.5"
+        "Version": "26.10.6"
       },
       "Assemblies": [
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\26.10.5\\lib\\net6.0\\UiPath.UIAutomation.Design.RecoveryPanel.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\26.10.6\\lib\\net6.0\\UiPath.UIAutomation.Design.RecoveryPanel.dll"
       ],
-      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\26.10.5"
+      "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.uiautomation.design.recoverypanel\\26.10.6"
     },
     {
       "Package": {
@@ -7520,9 +7549,9 @@
       "Assemblies": [
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.AzureComputerVision.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.Core.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.dll",
         "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.GoogleCloud.dll",
-        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.Tesseract.dll"
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.Tesseract.dll",
+        "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0\\lib\\net6.0-windows7.0\\UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\amitg\\.nuget\\packages\\uipath.vision\\4.1.0"
     }

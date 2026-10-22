@@ -19,13 +19,13 @@ Creates a `DirectoryInfo` object for a specified folder path.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `ThrowIfNotExists` | Throw If Not Exists | `bool` | `false` | When `true`, throws if the folder does not exist. |
+| `ThrowIfNotExists` | Throw if not exists | `bool` | `false` | When `true`, throws if the folder does not exist. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Output` | OutputTo | `OutArgument` | `DirectoryInfo` | The `System.IO.DirectoryInfo` object created for the path. |
+| `Output` | Output to | `OutArgument` | `DirectoryInfo` | The `System.IO.DirectoryInfo` object created for the path. |
 
 ## XAML Example
 

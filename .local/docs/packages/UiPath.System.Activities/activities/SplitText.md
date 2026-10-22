@@ -13,15 +13,15 @@ Split the source text into a list of substrings based on a specified separator.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Source` | Source | InArgument | `String` | Yes | — | The text to be split. |
+| `Source` | Source text | InArgument | `String` | Yes | — | The text to be split. |
 | `Separator` | Separator | InArgument | `String` | Yes | — | The character or text used to divide the source string. Supports a dropdown of common predefined separators. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `String` | The first substring produced by the split operation. |
-| `Results` | Results | OutArgument | `IEnumerable<String>` | All substrings produced by splitting the source text at every occurrence of the separator. |
+| `Result` | First extracted text | OutArgument | `String` | The first substring produced by the split operation. |
+| `Results` | All extracted text | OutArgument | `IEnumerable<String>` | All substrings produced by splitting the source text at every occurrence of the separator. |
 
 ## Valid Configurations
 

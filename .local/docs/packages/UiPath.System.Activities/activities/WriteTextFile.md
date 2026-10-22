@@ -13,8 +13,8 @@ Copies a text and pastes it in a text file replacing any existing data in the fi
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `FileName` | Write Text File | `InArgument` | `string` | Yes* | — | Full path of the text file to write. Overload group: `FileName`. |
-| `File` | File | `InArgument` | `ILocalResource` | Yes* | — | Local resource reference to the file to write. Overload group: `File`. |
+| `FileName` | Write to file (local path) | `InArgument` | `string` | Yes* | — | Full path of the text file to write. Overload group: `FileName`. |
+| `File` | Write to file | `InArgument` | `ILocalResource` | Yes* | — | Local resource reference to the file to write. Overload group: `File`. |
 | `Text` | Text | `InArgument` | `string` | Yes | — | The text content to write to the file. |
 | `Encoding` | Encoding | `InArgument` | `string` | No | `null` | The encoding to use when writing the file (e.g. `"utf-8"`). When `null`, the system default encoding is used. Configurable as a project setting. |
 

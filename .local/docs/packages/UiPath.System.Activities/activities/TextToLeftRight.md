@@ -1,4 +1,4 @@
-# Text to Left/Right
+# Text to Left and Right
 
 `UiPath.Core.Activities.TextToLeftRight`
 

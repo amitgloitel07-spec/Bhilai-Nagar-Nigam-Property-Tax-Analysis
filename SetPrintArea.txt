@@ -1,0 +1,15 @@
+Sub SetDashboardPrintArea()
+
+    Dim ws As Worksheet
+
+    Set ws = ThisWorkbook.Worksheets("Dashboard")
+
+    ws.PageSetup.PrintArea = ws.UsedRange.Address
+    ws.PageSetup.Orientation = xlLandscape
+    ws.PageSetup.PaperSize = xlPaperA4
+
+    ws.PageSetup.Zoom = False
+    ws.PageSetup.FitToPagesWide = 1
+    ws.PageSetup.FitToPagesTall = 1
+
+End Sub

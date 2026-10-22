@@ -1,4 +1,4 @@
-# Remove From Collection
+# Remove from Collection
 
 `UiPath.Activities.System.Collections.RemoveFromCollection<T>`
 
@@ -21,13 +21,13 @@ Remove the specified element from a collection.
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `RemoveAllElements` | Remove All Elements | `bool` | `false` | When `true`, clears the entire collection. Controlled by the **Action Type** selector in the designer. |
+| `RemoveAllElements` | Remove all elements | `bool` | `false` | When `true`, clears the entire collection. Controlled by the **Action Type** selector in the designer. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | `OutArgument` | `List<T>` | The collection after removal. When `Result` is not bound, the original collection object is mutated in-place. When `Result` is bound to a different variable, a new `List<T>` is returned. |
+| `Result` | Result | `OutArgument` | `List<T>` | The collection after removal. The activity decides by **object identity**, not by which variable is used, so a second variable that already aliases the same collection counts as the same collection. For the `Item` and `Index` actions: when `Result` is unbound, or already refers to that same collection object, the original is mutated in-place; when it refers to a different collection object a copy is returned. **`All` does not follow that rule** — it empties the original instance only when `Result` already refers to that same collection object; otherwise it returns a new empty `List<T>` and leaves the original untouched, so an unbound `Result` means nothing is removed at all. |
 
 ## Valid Configurations
 
@@ -45,7 +45,7 @@ Setting `RemoveAllElements = true` together with `Item` or `Index` is a validati
 
 ```xml
 <usc:RemoveFromCollection x:TypeArguments="x:String"
-    DisplayName="Remove From Collection"
+    DisplayName="Remove from Collection"
     Collection="[myList]"
     Item="hello"
     Result="[updatedList]"

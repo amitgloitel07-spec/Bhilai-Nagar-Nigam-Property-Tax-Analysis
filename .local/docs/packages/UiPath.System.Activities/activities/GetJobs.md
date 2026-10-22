@@ -21,13 +21,13 @@ Retrieves a list of Orchestrator jobs according to a custom filter, using the Or
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| `FilterBuilder` | Filter Builder | `JobFilterSettings` | — | A structured filter built using the visual Filter Builder widget. Supports filtering by State, JobPriority, Key, ReleaseName, CreationTime, StartTime, and EndTime. |
+| `FilterBuilder` | Filter | `JobFilterSettings` | — | A structured filter built using the visual Filter Builder widget. Supports filtering by State, JobPriority, Key, ReleaseName, CreationTime, StartTime, and EndTime. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| `Result` | Result | OutArgument | `IEnumerable<OrchestratorJob>` | The list of jobs matching the specified filters. |
+| `Result` | Jobs | OutArgument | `IEnumerable<OrchestratorJob>` | The list of jobs matching the specified filters. |
 
 ## Valid Configurations
 

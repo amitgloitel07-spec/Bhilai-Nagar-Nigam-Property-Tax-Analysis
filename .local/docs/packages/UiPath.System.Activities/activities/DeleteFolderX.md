@@ -13,7 +13,7 @@ Deletes the specified folder.
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `Path` | Path | `InArgument` | `string` | Yes | - | Full path of the folder to delete. |
+| `Path` | Folder (local path) | `InArgument` | `string` | Yes | - | Full path of the folder to delete. |
 | `Recursive` | Recursive | `InArgument` | `bool` | No | `true` | When `true`, deletes subfolders and files recursively. |
 
 ## XAML Example

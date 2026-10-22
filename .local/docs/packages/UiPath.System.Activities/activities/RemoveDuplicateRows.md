@@ -13,13 +13,13 @@ Removes the duplicate rows from a specified DataTable, keeping only the first oc
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| DataTable | Data Table | InArgument | DataTable | Yes | — | The DataTable from which duplicate rows will be removed. |
+| DataTable | Input data table | InArgument | DataTable | Yes | — | The DataTable from which duplicate rows will be removed. |
 
 ### Output
 
 | Name | Display Name | Kind | Type | Description |
 |------|-------------|------|------|-------------|
-| OutputDataTable | Data Table | OutArgument | DataTable | A new DataTable containing only the unique rows, preserving the first occurrence of each duplicate group. |
+| OutputDataTable | Output data table | OutArgument | DataTable | A new DataTable containing only the unique rows, preserving the first occurrence of each duplicate group. |
 
 ## Notes
 

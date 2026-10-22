@@ -13,7 +13,7 @@ Merges the specified DataTable with the current DataTable, indicating whether to
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| Source | Source | InArgument | DataTable | Yes | — | The DataTable whose rows will be merged into the destination. |
+| Source | Source data table | InArgument | DataTable | Yes | — | The DataTable whose rows will be merged into the destination. |
 
 ### Input/Output
 
@@ -21,13 +21,13 @@ Merges the specified DataTable with the current DataTable, indicating whether to
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| Destination | Destination | InOutArgument | DataTable | Yes | — | The target DataTable that receives the merged rows. Modified in place. |
+| Destination | Destination data table | InOutArgument | DataTable | Yes | — | The target DataTable that receives the merged rows. Modified in place. |
 
 ### Configuration
 
 | Name | Display Name | Type | Default | Description |
 |------|-------------|------|---------|-------------|
-| MissingSchemaAction | MissingSchemaAction | Property (MissingSchemaAction) | Add | Controls what happens when the source contains columns not present in the destination. See **Enum Reference** below. |
+| MissingSchemaAction | Missing schema action | Property (MissingSchemaAction) | Add | Controls what happens when the source contains columns not present in the destination. See **Enum Reference** below. |
 
 ## Enum Reference
 

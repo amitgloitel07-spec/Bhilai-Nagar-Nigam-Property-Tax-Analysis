@@ -13,7 +13,7 @@ Forces a change notification for a global variable so subscribed global variable
 
 | Name | Display Name | Kind | Type | Required | Default | Description |
 |------|-------------|------|------|----------|---------|-------------|
-| `VariableName` | Variable Name | `InArgument` | `object` | Yes | - | Expression that references the global variable to notify. |
+| `VariableName` | Select global variable | `InArgument` | `object` | Yes | - | Expression that references the global variable to notify. |
 
 ## XAML Example
 
